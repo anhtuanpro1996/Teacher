@@ -1,0 +1,63 @@
+body{
+    font-family: Montserrat;
+}
+.wrapperWarehouse{
+    padding-left: 32px;
+}
+.ant-input{
+    padding-left: 35px;
+}
+.ant-input-suffix{
+    left: 12px;
+    font-size: 17px;
+    color: #646d84 !important;
+}
+.ant-btn{
+    height: 40px;
+    border-radius: 4px;
+    background-color: #4a90e2;
+}
+.listWarehouse{
+    border-radius: 8px;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.06);
+    background-color: #fff;
+    width: 100%;
+    padding: 0 16px;
+}
+.ant-select-arrow{
+  display: none;
+}
+.selectDoc > .icon-menu{
+    position: absolute;
+    float: left;
+    width: 24px;
+    height: 24px;
+    background-color: #646d84;
+    -webkit-mask:url(https://dvkhfbm6djrbs.cloudfront.net/5acc7360f161b700446f8349/5d4d2ac33bcd2e000ddaa46a/rectangle@2x.png) no-repeat 50% 50%;
+    -webkit-mask-size: 100% !important;
+    
+  }
+.selectDoc > .icon-dropdown{
+  float: left;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: #646d84;
+  -webkit-mask:url(https://dvkhfbm6djrbs.cloudfront.net/5acc7360f161b700446f8349/5d4d2ac33bcd2e000ddaa46a/arrow-downward-24-px@2x.png) no-repeat 50% 50%;
+  -webkit-mask-size: 100% !important;
+  right: 16px;
+  }
+.selectVal > .ant-select-selection{
+  border: none;
+}
+.selectVal > .ant-select-selection:focus{
+  -webkit-box-shadow: none;
+}
+.imgNoDocument{
+  width: 72px;
+  height: 72px;
+  background-color: #b0b5c1;
+  -webkit-mask:url(/images/icon/upload3x.png) no-repeat 50% 50%;
+  -webkit-mask-size: 100% !important;
+}
+
