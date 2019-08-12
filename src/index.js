@@ -10,12 +10,12 @@ import rootReducer from './reducers/rootReducer';
 import DevTools from './containers/DevTools';
 import { persistState } from 'redux-devtools';
 const enhancer = compose(
-  DevTools.instrument(),
-  persistState(
-    window.location.href.match(
-      /[?&]debug_session=([^&#]+)\b/
-    )
-  )
+	DevTools.instrument(),
+	persistState(
+		window.location.href.match(
+			/[?&]debug_session=([^&#]+)\b/
+		)
+	)
 );
 
 // initialState
@@ -25,12 +25,12 @@ const initialState = {}
 const store = createStore(rootReducer, initialState, enhancer);
 
 const appRoot = (
-  <Provider store={store}>
-    <div>
-      <TodoApp />
-      <DevTools />
-    </div>
-  </Provider>
+	<Provider store={store}>
+		<div>
+			<TodoApp />
+			<DevTools />
+		</div>
+	</Provider>
 )
 
 ReactDOM.render(appRoot, document.getElementById('root'))

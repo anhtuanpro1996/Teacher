@@ -1,7 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import TodoTextInput from './TodoTextInput';
 import autoBind from 'react-autobind';
+import PropTypes from 'prop-types';
 
 export default class TodoItem extends Component {
 	static propTypes = {

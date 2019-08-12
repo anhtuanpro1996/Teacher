@@ -1,9 +1,11 @@
 {
-  "name": "test-react-redux",
+  "name": "lms-front-end",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "babel-eslint": "^10.0.2",
     "classnames": "^2.2.5",
+    "eslint-plugin-react": "^7.14.3",
     "react-autobind": "^1.0.6",
     "react-scripts": "0.6.0",
     "redux-devtools": "^3.3.1",
@@ -12,14 +14,20 @@
     "todomvc-app-css": "^2.0.6"
   },
   "dependencies": {
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "redux": "^3.6.0"
+    "eslint": "^6.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-i18next": "^10.11.5",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --fix --ext .jsx --ext .js ."
   }
 }

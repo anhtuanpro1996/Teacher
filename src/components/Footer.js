@@ -1,7 +1,8 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import { SHOW_ALL, SHOW_MARKED, SHOW_UNMARKED } from '../constants/TodoFilters';
 import autoBind from 'react-autobind';
+import PropTypes from 'prop-types';
 
 const FILTER_TITLES = {
 	[SHOW_ALL]: 'All',
@@ -28,7 +29,7 @@ export default class Footer extends Component {
 			<footer className='footer'>
 				{this.renderTodoCount()}
 				<ul className='filters'>
-					{[SHOW_ALL, SHOW_UNMARKED, SHOW_MARKED].map(filter =>
+					{[SHOW_ALL, SHOW_UNMARKED, SHOW_MARKED].map((filter) =>
 						<li key={filter}>
 							{this.renderFilterLink(filter)}
 						</li>
@@ -46,7 +47,7 @@ export default class Footer extends Component {
 		return (
 			<span className='todo-count'>
 				<strong>{unmarkedCount || 'No'}</strong> {itemWord} left
-			</span>
+	        </span>
 		);
 	}
 
@@ -70,7 +71,7 @@ export default class Footer extends Component {
 				<button className='clear-completed'
 					onClick={onClearMarked} >
 					Clear completed
-				</button>
+	            </button>
 			);
 		}
 	}
