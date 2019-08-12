@@ -1,0 +1,19 @@
+{
+"Teacher": "Giảng viên",
+"Create Lecture":"Tạo khóa học",
+"User Info":"Thông tin cá nhân",
+"Course":"Khóa học",
+"Manage Course":"Quản trị khóa học",
+"Data Warehouse":"Kho học liệu",
+"Noti":"Thông báo",
+"Manage Study":"Quản lý học tập",
+"Logout":"Đăng xuất",
+"Hi EDumall":"Edumall xin chào bạn!",
+"Intro System":"Cho dù bạn đã giảng dạy trong nhiều năm hoặc lần đầu tiên giảng dạy, bạn có thể thực hiện tạo khóa học hấp dẫn. Chúng tôi đã biên soạn tài nguyên và thực tiễn tốt nhất để giúp bạn lên cấp độ tiếp theo, bất kể bạn bắt đầu từ đâu.",
+"Teach Create Lecture":"Hướng dẫn tạo khoá học",
+"Add":"Thêm mới",
+"Time":"Thời gian",
+"Name":"Tên",
+"Capacity":"Dung lượng",
+"txtNoDoc":"Kéo thả file để tải lên"
+}
