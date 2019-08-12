@@ -1,0 +1,80 @@
+.manage-course {
+  width: 100%;
+  padding-left: 32px;
+}
+ ul.ant-menu.ant-menu-light.ant-menu-root.ant-menu-inline {
+  background-color: rgb(249, 250, 252);
+}
+.manage-course .ant-menu-inline .ant-menu-submenu-inline .ant-menu-submenu-title {
+  padding-left: 0 !important;
+  font-size: 20px;
+  line-height: 1.6;
+}
+.ant-menu-inline, .ant-menu-vertical, .ant-menu-vertical-left {
+  border-right: unset;
+}
+.manage-course .ant-menu-inline .ant-menu-submenu-inline .ant-menu-submenu-title span {
+  float: left; 
+}
+
+.course-element {
+  width: 100%;
+  height: 112px;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.06);
+  background-color: white;
+  margin-bottom: 8px;
+  padding: 16px 16px;
+}
+
+
+.course-element .course-image {
+  width: 17%;
+  height: 80px;
+  float: left;
+
+}
+.course-element .box-text {
+  float: left;
+  width: 46%;
+  text-align: left;
+  margin-left: 13px;
+}
+.course-element .close-button {
+  float: right;
+}
+.course-element .box-text .title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: Open Sans, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.43;
+  width: 80%;
+  margin-bottom: 8px;
+}
+.course-element .box-text .teacher-code {
+  font-family: Open Sans, sans-serif;
+  font-size: 14px;
+  line-height: 1.43;
+}
+.course-element .course-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+.ant-table-tbody > tr > td {
+  border-bottom: none;
+  padding-left: 0;
+}
+
+.ant-table-thead > tr > th{
+  font-family: 'Open Sans sans-serif';
+  color: #4a4a4a;
+  line-height: 1.71;
+  font-size: 14px;
+  background: #fff;
+  padding: 12px 0px 12px 0px;
+}

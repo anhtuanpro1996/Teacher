@@ -9,6 +9,9 @@ import LayoutMain from './components/Layout';
 import './index.css';
 import 'antd/dist/antd.css';
 import {I18nextProvider} from 'react-i18next';
+import Home from './containers/Home/Home';
+import Warehouse from './containers/Warehouse/Warehouse';
+import ManageCourse from './containers/ManageCourse/ManageCourse';
 import i18next from 'i18next';
 import './i18n';
 // Dev tool
@@ -16,7 +19,7 @@ import DevTools from './containers/DevTools';
 import { persistState } from 'redux-devtools';
 import {BrowserRouter as Router, Switch,Route} from 'react-router-dom';
 i18next.init({
-  interpolation: { escapeValue: false },  // React already does escaping
+	interpolation: { escapeValue: false },  // React already does escaping
 });
 
 const enhancer = compose(
@@ -40,8 +43,11 @@ const appRoot = (
 			<Router>
 				<div className="App">
 					<LayoutMain>
-						{/* <TodoApp /> */}
-						{/* <DevTools /> */}
+						<Switch>
+							<Route path='/' exact component={Home}/>
+							<Route path='/warehouse' component={Warehouse}/>
+							<Route path='/manage/course' component={ManageCourse}/>
+						</Switch>
 					</LayoutMain>
 				</div>
 			</Router>
