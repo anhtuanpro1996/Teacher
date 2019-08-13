@@ -42,7 +42,7 @@ const appRoot = (
 		<I18nextProvider i18n={i18next}>
 			<Router>
 				<div className="App">
-					<LayoutMain>
+					<LayoutMain title= 'EDumall'>
 						<Switch>
 							<Route path='/' exact component={Home}/>
 							<Route path='/warehouse' component={Warehouse}/>
