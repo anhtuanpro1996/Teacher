@@ -19,16 +19,16 @@ import DevTools from './containers/DevTools';
 import { persistState } from 'redux-devtools';
 import {BrowserRouter as Router, Switch,Route} from 'react-router-dom';
 i18next.init({
-	interpolation: { escapeValue: false },  // React already does escaping
+  interpolation: { escapeValue: false },  // React already does escaping
 });
 
 const enhancer = compose(
-	DevTools.instrument(),
-	persistState(
-		window.location.href.match(
-			/[?&]debug_session=([^&#]+)\b/
-		)
-	)
+  DevTools.instrument(),
+  persistState(
+    window.location.href.match(
+      /[?&]debug_session=([^&#]+)\b/
+    )
+  )
 );
 
 // initialState
@@ -38,22 +38,22 @@ const initialState = {}
 const store = createStore(rootReducer, initialState, enhancer);
 
 const appRoot = (
-	<Provider store={store}>
-		<I18nextProvider i18n={i18next}>
-			<Router>
-				<div className="App">
-					<LayoutMain title= 'EDumall'>
-						<Switch>
-							<Route path='/' exact component={Home}/>
-							<Route path='/warehouse' component={Warehouse}/>
-							<Route path='/manage/course' component={ManageCourse}/>
-						</Switch>
-					</LayoutMain>
-				</div>
-			</Router>
-		</I18nextProvider>
+  <Provider store={store}>
+    <I18nextProvider i18n={i18next}>
+      <Router>
+        <div className="App">
+          <LayoutMain title= 'EDumall'>
+            <Switch>
+              <Route path='/' exact component={Home}/>
+              <Route path='/warehouse' component={Warehouse}/>
+              <Route path='/manage/course' component={ManageCourse}/>
+            </Switch>
+          </LayoutMain>
+        </div>
+      </Router>
+    </I18nextProvider>
 		
-	</Provider>
+  </Provider>
 )
 
 ReactDOM.render(appRoot, document.getElementById('root'))

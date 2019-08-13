@@ -27,7 +27,6 @@
   },
   "extends": ["plugin:react/recommended"],
   "rules": {
-    "indent": ["error", 2],
-    "indent": ["error", "tab"]
+    "indent": ["error", 2]
   }
 }

@@ -6,9 +6,9 @@ import autoBind from 'react-autobind';
 import PropTypes from 'prop-types';
 
 const TODO_FILTERS = {
-	[SHOW_ALL]: () => true,
-	[SHOW_UNMARKED]: (todo) => !todo.marked,
-	[SHOW_MARKED]: (todo) => todo.marked
+  [SHOW_ALL]: () => true,
+  [SHOW_UNMARKED]: (todo) => !todo.marked,
+  [SHOW_MARKED]: (todo) => todo.marked
 };
 
 export default class MainSection extends Component {
