@@ -16,6 +16,8 @@ import i18next from 'i18next';
 import './i18n';
 // Dev tool
 import DevTools from './containers/DevTools';
+import TodoInput from './components/TodoInput';
+import TodoList from './components/TodoList';
 import { persistState } from 'redux-devtools';
 import {BrowserRouter as Router, Switch,Route} from 'react-router-dom';
 i18next.init({
@@ -39,15 +41,18 @@ const store = createStore(rootReducer, initialState, enhancer);
 
 const appRoot = (
   <Provider store={store}>
+    {console.log("aba",store.initialState)}
     <I18nextProvider i18n={i18next}>
       <Router>
         <div className="App">
           <LayoutMain title= 'EDumall'>
-            <Switch>
-              <Route path='/' exact component={Home}/>
-              <Route path='/warehouse' component={Warehouse}/>
-              <Route path='/manage/course' component={ManageCourse}/>
-            </Switch>
+            <TodoApp/>
+					
+            {/* <TodoList />
+						 */}
+							
+            <DevTools />
+           
           </LayoutMain>
         </div>
       </Router>
