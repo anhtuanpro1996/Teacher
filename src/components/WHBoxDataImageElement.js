@@ -3,7 +3,7 @@ import {Col } from 'antd';
 const bg_img_test = 'https://picsum.photos/id/1/200/200';
 
 
-const thumbnailVideo={
+const thumbnail={
   width:'100%',
   height:'128px',
   backgroundImage:`url(${bg_img_test})`,
@@ -24,7 +24,7 @@ const titleBlock = {
 const titleIcon = {
   width:'24px',
   height:'24px',
-  WebkitMask:"url('/images/icon/movie.png') no-repeat 50% 50%",
+  WebkitMask:"url('/images/icon/collections.png') no-repeat 50% 50%",
   backgroundColor: '#646d84',
   WebkitMaskSize: '100%',
   marginRight: '8px'
@@ -45,7 +45,7 @@ export default function WHBoxDataImageElement(){
     <Col span={6}>
       <div className="data-element">
         <div className="image" style={imageBlock}>
-          <div className="thumbnail" style={thumbnailVideo}>
+          <div className="thumbnail" style={thumbnail}>
           </div>
         </div>
         <div className="title-data" style={titleBlock}>

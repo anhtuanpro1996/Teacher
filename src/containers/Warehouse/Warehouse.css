@@ -99,7 +99,7 @@ body{
 }
 
 .wrapperWarehouse .folder-data {
-  height: 687px;
+  height: auto;
   background-color: #ffffff;
   padding: 32px 0;
 }

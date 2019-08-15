@@ -1,19 +1,18 @@
 import React from 'react';
 import {Col } from 'antd';
-const bg_img_test = 'https://picsum.photos/id/1/200/200';
+
+
 const iconData={
-  width: '32px',
-  height: '32px',
-  backgroundColor: '#fff',
-  WebkitMask:"url('/images/icon/play-circle.png') no-repeat 50% 50%",
+  width: '72px',
+  height: '72px',
+  backgroundColor: '#b0b5c1',
+  WebkitMask:"url('/images/icon/library-music.png') no-repeat 50% 50%",
   WebkitMaskSize: '100%',
   marginRight: '8px'
 }
-
 const thumbnail={
   width:'100%',
   height:'128px',
-  backgroundImage:`url(${bg_img_test})`,
   backgroundRepeat: 'no-repeat',
   display:'flex',
   justifyContent: 'center',
@@ -31,7 +30,7 @@ const titleBlock = {
 const titleIcon = {
   width:'24px',
   height:'24px',
-  WebkitMask:"url('/images/icon/movie.png') no-repeat 50% 50%",
+  WebkitMask:"url('/images/icon/library-music-24-px.png') no-repeat 50% 50%",
   backgroundColor: '#646d84',
   WebkitMaskSize: '100%',
   marginRight: '8px'
@@ -47,7 +46,7 @@ const titleName = {
   fontFamily: 'Open Sans, sans-serif',
 
 }
-export default function WHBoxDataVideoElement(){
+export default function WHBoxDataSoundElement(){
   return(
     <Col span={6}>
       <div className="data-element">
@@ -58,7 +57,7 @@ export default function WHBoxDataVideoElement(){
         </div>
         <div className="title-data" style={titleBlock}>
           <div className="icon" style={titleIcon}></div>
-          <p style={titleName}>Tên video</p>
+          <p style={titleName}>Tên file âm thanh</p>
         </div>
       </div>
     </Col>
