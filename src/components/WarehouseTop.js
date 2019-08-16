@@ -1,7 +1,45 @@
 import React from 'react';
-import { Input, Button } from 'antd';
+import { Input } from 'antd';
 import { withTranslation } from 'react-i18next';
+import { Menu, Dropdown } from 'antd';
+import {Link} from 'react-router-dom';
+import WarehouseCreateFolder from './WarehouseCreateFolder';
+import {ModalProvider} from 'react-modal-hook';
+
 const { Search } = Input;
+
+const infoMenu = {
+  padding: '0'
+}
+const listMenu = {
+  height: '40px',
+  cusor: 'pointer',
+  fonTFamily: 'Open Sans',
+  fontSize: '14px',
+  fontWeight: 'normal',
+  fontStyle: 'normal',
+  fontStretch: 'normal',
+  lineHeight: '1.71',
+  letterSpacing: 'normal',
+  paddingLeft: '16px',
+  color: '#4a4a4a',
+  paddingTop: '8px'
+}
+const menu = (
+  <Menu style={infoMenu}>
+    <Menu.Item style={listMenu} className="listMenuItem" key="0">
+      <ModalProvider>
+        <WarehouseCreateFolder/>
+      </ModalProvider>
+    </Menu.Item>
+    <Menu.Item style={listMenu} className="listMenuItem" key="1">
+      <Link to="#"><span>Tải tệp tin</span></Link>
+    </Menu.Item>
+    <Menu.Item style={listMenu} className="listMenuItem" key="3">
+      <Link to="#"><span>Tải thư mục</span></Link>
+    </Menu.Item>
+  </Menu>
+);
 
 const topWarehourse={
   height: '40px',
@@ -36,17 +74,23 @@ const searchInput={
 }
 const btnAddNew={
   display: 'flex',
-  width: '141px',
+  height: '40px',
   float: 'right',
+  textAlign: 'center',
+  backgroundColor: '#4a90e2',
+  borderRadius: '6px',
+  padding: '0 20px',
+  alignItems: 'center'
+}
+const txtAddNew={
+  width: '69px',
+  fontFamily: 'Open Sans',
   fontSize: '14px',
   fontWeight: '600',
   fontStyle: 'normal',
   fontStretch: 'normal',
   letterSpacing: 'normal',
-  textAlign: 'center'
-}
-const txtAddNew={
-  paddingTop: "2px"
+  color: '#fff'
 }
 const iconAddNew={
   width: '24px',
@@ -55,7 +99,8 @@ const iconAddNew={
   WebkitMask:'url(https://dvkhfbm6djrbs.cloudfront.net/5acc7360f161b700446f8349/5c4582f821889700acab81b3/add-circle-24-px.png) no-repeat 50% 50%',
   WebkitMaskSize: '100% !important',
   float: 'left',
-  borderRadius: '50%'
+  borderRadius: '50%',
+  marginRight: '8px'
 }
 const TopWarehourse = ({t}) =>(
   <div style={topWarehourse}>
@@ -65,10 +110,12 @@ const TopWarehourse = ({t}) =>(
       onSearch={value => console.log(value)}
       style={searchInput}
     />
-    <Button style={btnAddNew} stype="" type="primary">
-      <div style={iconAddNew}></div> 
-      <span style={txtAddNew}>{t('Add')}</span>
-    </Button>
+    <Dropdown overlay={menu} trigger={['click']}>
+      <a style={btnAddNew} href="#">
+        <div style={iconAddNew}></div>
+        <span style={txtAddNew}>Thêm mới</span>
+      </a>
+    </Dropdown>
   </div>
 )
 export default withTranslation() (TopWarehourse);
