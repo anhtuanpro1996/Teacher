@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-export default function CourseElement(){
-  return(
+export default function CourseElement() {
+  return (
     <div className="course-element">
       <div className="course-image">
         <img alt="Nguyên lý kế toán - Làm chủ tình hình tài chính" src="https://static.edumall.vn/uploads/images/courses/nguyen-ly-ke-toan.jpg" />
@@ -18,5 +18,5 @@ export default function CourseElement(){
         <img alt="close" src="/images/icon/closeimg.png" />
       </div>
     </div>
-  )
+  );
 }

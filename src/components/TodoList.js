@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 import { toggleTodoComplete, deleteTodoAction } from '../actions/TestActions';
 
 const TodoList = (props) => {
-
   const { todos } = props.todos;
-  console.log("koko", todos.todos);
+  console.log('koko', todos.todos);
   const toggleComplete = (todoId) => {
     props.toggleTodoComplete(todoId);
   };
@@ -15,9 +14,9 @@ const TodoList = (props) => {
   };
 
   return (
-    
+
     <ul className="todo-list">
-      {console.log("dcme", todos)}
+      {console.log('dcme', todos)}
       {todos.map((todo) => (
         <li key={todo.id}>
           <input
@@ -39,7 +38,7 @@ const TodoList = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  todos: state.testReducer
+  todos: state.testReducer,
 });
 
 export default connect(

@@ -3,22 +3,22 @@ const initialState = {
     {
       id: 'ab',
       name: 'Read a bit',
-      complete: true
+      complete: true,
     },
     {
       id: 'cd',
       name: 'Do laundry',
-      complete: false
-    }
-  ]
+      complete: false,
+    },
+  ],
 };
 
-export default function testReducer(state=initialState, action) {
+export default function testReducer(state = initialState, action) {
   switch (action.type) {
   case 'ADD_TODO':
     return {
       ...state,
-      todos: [...state.todos, action.payload]
+      todos: [...state.todos, action.payload],
     };
   case 'TOGGLE_TODO':
     return {
@@ -27,12 +27,12 @@ export default function testReducer(state=initialState, action) {
         todo.id === action.payload
           ? { ...todo, complete: !todo.complete }
           : todo
-      )
+      ),
     };
   case 'DELETE_TODO':
     return {
       ...state,
-      todos: state.todos.filter((todo) => todo.id !== action.payload)
+      todos: state.todos.filter((todo) => todo.id !== action.payload),
     };
   default:
     return state;

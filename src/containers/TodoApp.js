@@ -44,7 +44,7 @@ import { toggleTodoComplete, deleteTodoAction } from '../actions/TestActions';
 const TodoApp = (props) => {
   const { todos, actions } = props;
   // const { todos } = props.todos;
-  console.log("koko", todos);
+  console.log('koko', todos);
   const toggleComplete = (todoId) => {
     props.toggleTodoComplete(todoId);
   };
@@ -61,10 +61,10 @@ const TodoApp = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  todos: state.todosReducers
+  todos: state.todosReducers,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(TodoActions, dispatch)
+  actions: bindActionCreators(TodoActions, dispatch),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(TodoApp);
