@@ -50,13 +50,11 @@ const appRoot = (
       <Router>
         <div className="App">
           <LayoutMain title= "EDumall">
-            <ShowUser/>
-
-            {/* <TodoList />
-						 */}
-
-            <DevTools />
-
+            <Switch>
+              <Route path = "/" exact component={Home}/>
+              <Route path = "/warehouse" component={Warehouse}/>
+              <Route path = "/manage/course" component={ManageCourse}/>
+            </Switch>
           </LayoutMain>
         </div>
       </Router>
