@@ -23,6 +23,7 @@ import TodoList from './components/TodoList';
 import ShowUser from './containers/ShowUser';
 import { persistState } from 'redux-devtools';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {fetchFolders} from './actions/FolderActions';
 
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
@@ -43,9 +44,10 @@ const initialState = {};
 // Create store
 const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
 store.dispatch(loadAuthors());
+store.dispatch(fetchFolders());
 const appRoot = (
   <Provider store={store}>
-    {console.log('aba', store)}
+    {/* {console.log('aba', store)} */}
     <I18nextProvider i18n={i18next}>
       <Router>
         <div className="App">
