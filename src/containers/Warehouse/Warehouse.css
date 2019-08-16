@@ -77,3 +77,82 @@ body{
 .wrapperModalCreateFolder .ant-modal-content{
   box-shadow: none;
 }
+.wrapperWarehouse .list-folder {
+  height: auto;
+  border-top: solid 1px #e8e8e8;
+  border-bottom: solid 1px #e8e8e8;
+  padding-top: 32px;
+  padding-bottom: 16px;
+  background-color: #ffffff;
+
+} 
+
+.wrapperWarehouse .list-folder .course-element {
+  height: 56px;
+  border-radius: 8px;
+  border: solid 1px #e0e0e0;
+  background-color: #f9fafc;
+  padding: 12px 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 16px;
+
+}
+
+.wrapperWarehouse .list-folder .course-element:hover {
+  background-color: #ecedf1;
+}
+
+
+.wrapperWarehouse .list-folder .course-element .folder-name {
+  font-family: Open Sans, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.71;
+  color: #4a4a4a;
+  float: left;
+  margin: 0;
+}
+
+.wrapperWarehouse .folder-data {
+  height: auto;
+  background-color: #ffffff;
+  padding: 32px 0;
+}
+.wrapperWarehouse .folder-data .tab-data .ant-tabs-nav-animated {
+  float: left;
+}
+
+.wrapperWarehouse .folder-data .tab-data .ant-tabs-tab {
+  padding: 0;
+  font-family: Open Sans, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.71;
+  text-align: center;
+  color: #b0b5c1;
+  padding-bottom: 3px;
+}
+
+.wrapperWarehouse .folder-data .tab-data .ant-tabs-tab-active {
+  color: #4a4a4a;
+  
+}
+
+.wrapperWarehouse .folder-data .tab-data .ant-tabs-ink-bar {
+  background-color: red ;
+}
+
+.wrapperWarehouse .folder-data .data-element {
+  height: 188px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: solid 1px #e0e0e0;
+  background-color: var(--white);
+}
+
+.wrapperWarehouse .folder-data .data-element .thumbnail {
+  height: 128px;
+}
+

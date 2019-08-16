@@ -1,4 +1,4 @@
-import React  from 'react'
+import React  from 'react';
 // import { useTranslation } from 'react-i18next';
 import 'antd/dist/antd.css';
 import { Menu } from 'antd';
@@ -7,9 +7,8 @@ import './manage_course.css';
 import CourseElement from '../../components/CourseElement';
 
 function ManageCourse() {
-
   // const { t } = useTranslation();
-  const { SubMenu } = Menu;  
+  const { SubMenu } = Menu;
   return (
     <div className="manage-course">
       <Menu mode="inline">
@@ -39,10 +38,9 @@ function ManageCourse() {
         </SubMenu>
       </Menu>
     </div>
-  )
-
+  );
 }
 // ManageCourse.propTypes = {
 //   t: PropTypes.any.isRequired
 // };
-export default ManageCourse
+export default ManageCourse;

@@ -3,11 +3,11 @@ import { withTranslation } from 'react-i18next';
 import { Select } from 'antd';
 
 const { Option } = Select;
-//style css
+// style css
 const topList = {
   height: '56px',
-  borderBottom: 'solid 1px #e8e8e8'
-}
+  borderBottom: 'solid 1px #e8e8e8',
+};
 const nameWareHourse = {
   fontFamily: 'Open Sans, sans-serif',
   fontSize: '16px',
@@ -20,15 +20,15 @@ const nameWareHourse = {
   textAlign: 'left',
   width: 'calc(100% - 133px)',
   float: 'left',
-  paddingTop: '16px'
-}
+  paddingTop: '16px',
+};
 
 const selectDoc = {
   width: '133px',
   float: 'right',
   paddingTop: '16px',
-  cursor: 'pointer'
-}
+  cursor: 'pointer',
+};
 
 const selectVal = {
   position: 'relative',
@@ -44,9 +44,8 @@ const selectVal = {
   lineHeight: '1.5',
   letterSpacing: 'normal',
   textAlign: 'right',
-  color: '#4a4a4a'
-}
-
+  color: '#4a4a4a',
+};
 
 
 function handleChange(value) {
@@ -57,15 +56,15 @@ const WarehouseTopList = ({t}) =>(
   <div style={topList}>
     <p style={nameWareHourse}>{t('Data Warehouse')}</p>
     <div className="selectDoc" style={selectDoc}>
-      <div className="icon-menu"></div>
+      <div className="icon-menu" />
       <Select className="selectVal" style={selectVal} defaultValue="time" onChange={handleChange}>
-        <Option value="time">{t("Time")}</Option>
-        <Option value="name">{t("Name")}</Option>
-        <Option value="capacity">{t("Capacity")}</Option>
+        <Option value="time">{t('Time')}</Option>
+        <Option value="name">{t('Name')}</Option>
+        <Option value="capacity">{t('Capacity')}</Option>
       </Select>
-      <div className="icon-dropdown"></div>
+      <div className="icon-dropdown" />
     </div>
   </div>
-)
+);
 
-export default withTranslation() (WarehouseTopList);
+export default withTranslation()(WarehouseTopList);

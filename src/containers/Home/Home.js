@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 // import 'antd/dist/antd.css';
 import './home.css';
@@ -10,8 +10,8 @@ function Home() {
       <div className="edumall_hi">{t('Hi EDumall')}</div>
       <div className="intro">
         <div className="intro-text">{t('Intro System')}</div>
-        <Button type="danger" style={{height: "40px",background: "#df322f",marginRight: "16px"}}>
-          <img  type="left" style={{filter: "brightness(0) invert(1)",paddingRight:"27.5px"}} alt="add_circle" src={"/images/add-circle.png"}></img>
+        <Button type="danger" style={{height: '40px', background: '#df322f', marginRight: '16px'}}>
+          <img  type="left" style={{filter: 'brightness(0) invert(1)', paddingRight: '27.5px'}} alt="add_circle" src={'/images/add-circle.png'} />
           <span>{t('Create Lecture')}</span>
         </Button>
       </div>
@@ -25,8 +25,7 @@ function Home() {
         </video>
       </div>
     </div>
-  )
-
+  );
 }
 
-export default Home
+export default Home;

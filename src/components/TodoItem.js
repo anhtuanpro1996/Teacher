@@ -9,13 +9,13 @@ export default class TodoItem extends Component {
 	  todo: PropTypes.object.isRequired,
 	  editTodo: PropTypes.func.isRequired,
 	  deleteTodo: PropTypes.func.isRequired,
-	  markTodo: PropTypes.func.isRequired
+	  markTodo: PropTypes.func.isRequired,
 	};
 
 	constructor(props, context) {
 	  super(props, context);
 	  this.state = {
-	    editing: false
+	    editing: false,
 	  };
 	  autoBind(this);
 	}
@@ -46,15 +46,15 @@ export default class TodoItem extends Component {
 	    );
 	  } else {
 	    element = (
-	      <div className='view'>
-	        <input className='toggle'
-	          type='checkbox'
+	      <div className="view">
+	        <input className="toggle"
+	          type="checkbox"
 	          checked={todo.marked}
 	          onChange={() => markTodo(todo.id)} />
 	        <label onDoubleClick={this.handleDoubleClick}>
 	          {todo.text}
 	        </label>
-	        <button className='destroy'
+	        <button className="destroy"
 	          onClick={() => deleteTodo(todo.id)} />
 	      </div>
 	    );
@@ -63,7 +63,7 @@ export default class TodoItem extends Component {
 	  return (
 	    <li className={classnames({
 	      completed: todo.marked,
-	      editing: this.state.editing
+	      editing: this.state.editing,
 	    })}>
 	      {element}
 	    </li>

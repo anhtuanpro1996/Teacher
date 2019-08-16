@@ -9,13 +9,13 @@ export default class TodoTextInput extends Component {
   	text: PropTypes.string,
   	placeholder: PropTypes.string,
   	editing: PropTypes.bool,
-  	newTodo: PropTypes.bool
+  	newTodo: PropTypes.bool,
   };
 
   constructor(props, context) {
   	super(props, context);
   	this.state = {
-  		text: this.props.text || ''
+  		text: this.props.text || '',
   	};
 
   	autoBind(this);
@@ -45,11 +45,11 @@ export default class TodoTextInput extends Component {
   	return (
   		<input className={classnames({
   			edit: this.props.editing,
-  			'new-todo': this.props.newTodo
+  			'new-todo': this.props.newTodo,
   		})}
-  		type='text'
+  		type="text"
   		placeholder={this.props.placeholder}
-  		autoFocus='true'
+  		autoFocus
   		value={this.state.text}
   		onBlur={this.handleBlur}
   		onChange={this.handleChange}

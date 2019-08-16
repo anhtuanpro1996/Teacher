@@ -2,14 +2,14 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Layout, Menu, Icon, Row, Col } from 'antd';
-import NavLeft from './NavLeft'
-const { Header, Sider, Footer, Content } = Layout;
+import NavLeft from './NavLeft';
 import 'antd/dist/antd.css';
+const { Header, Sider, Footer, Content } = Layout;
 
 const divStyle = {
   background: '#f9fafc',
   padding: '32px 0px 0px',
-  height: "100%"
+  height: '100%',
 };
 
 const LayoutMain = ({ title, children }) => (
