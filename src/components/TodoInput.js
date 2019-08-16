@@ -5,17 +5,17 @@ import { addTodoAction } from '../actions/TestActions';
 
 const TodoInput = (props) => {
   const [todo, setTodo] = useState('');
-  console.log("b",todo);
+  console.log('b', todo);
   const onChange = (event) => {
     setTodo(event.target.value);
   };
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log("a",props);
+    console.log('a', props);
     props.addTodoAction({
       id: 2,
       name: todo,
-      complete: false
+      complete: false,
     });
     setTodo('');
   };
@@ -37,7 +37,7 @@ const TodoInput = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  todos: state.testReducer
+  todos: state.testReducer,
 });
 
 export default connect(

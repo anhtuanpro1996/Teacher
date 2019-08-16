@@ -17,7 +17,7 @@ function Warehouse() {
         </div>
       </div>
     </React.Fragment>
-  )
+  );
 }
 
-export default Warehouse
+export default Warehouse;

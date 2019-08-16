@@ -1,4 +1,4 @@
-const BASE_URL = 'https://jsonplaceholder.typicode.com/'
+const BASE_URL = 'https://jsonplaceholder.typicode.com/';
 
 
 export const GET_ALL_USER = BASE_URL + 'users';

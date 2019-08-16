@@ -32,19 +32,19 @@ import PropTypes from 'prop-types';
 // }
 
 function Header(props) {
-  console.log("prop",props);
+  console.log('prop', props);
   const handleSave = (text) => {
     if (text.length !== 0) {
       props.addTodo(text);
     }
-  }
+  };
   return (
-    <header className='header'>
+    <header className="header">
       <h1>todos</h1>
-      <TodoTextInput newTodo={true}
+      <TodoTextInput newTodo
         onSave={handleSave}
-        placeholder='What needs to be done?' />
+        placeholder="What needs to be done?" />
     </header>
   );
 }
-export  default Header
+export  default Header;

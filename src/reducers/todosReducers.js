@@ -3,7 +3,7 @@ import { ADD_TODO, DELETE_TODO, EDIT_TODO, MARK_TODO, MARK_ALL, CLEAR_MARKED } f
 const initialState = [{
   text: 'Use Redux',
   marked: false,
-  id: 0
+  id: 0,
 }];
 
 export default function todosReducers(state = initialState, action) {
@@ -12,7 +12,7 @@ export default function todosReducers(state = initialState, action) {
     return [{
       id: (state.length === 0) ? 0 : state[0].id + 1,
       marked: false,
-      text: action.text
+      text: action.text,
     }, ...state];
 
   case DELETE_TODO:

@@ -5,7 +5,7 @@ import userReducer from './userReducer';
 const rootReducer = combineReducers({
   todosReducers,
   testReducer,
-  userReducer
+  userReducer,
 });
 
 export default rootReducer;

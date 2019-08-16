@@ -3,15 +3,15 @@ import { Input, Button } from 'antd';
 import { withTranslation } from 'react-i18next';
 const { Search } = Input;
 
-const topWarehourse={
+const topWarehourse = {
   height: '40px',
   marginBottom: '16px',
   paddingLeft: '8px',
   alignItems: 'center',
   display: 'flex',
-  justifyContent: 'space-between'
-}
-const titlePpage={
+  justifyContent: 'space-between',
+};
+const titlePpage = {
   width: '493px',
   textAlign: 'left',
   paddingTop: '5px',
@@ -27,14 +27,14 @@ const titlePpage={
   display: '-webkit-box',
   overflow: 'hidden',
   WebkitLineClamp: '1',
-  WebkitBoxOrient: 'vertical'
-}
-const searchInput={
+  WebkitBoxOrient: 'vertical',
+};
+const searchInput = {
   height: '100%',
   borderRadius: '6px',
-  marginRight: '16px'
-}
-const btnAddNew={
+  marginRight: '16px',
+};
+const btnAddNew = {
   display: 'flex',
   width: '141px',
   float: 'right',
@@ -43,20 +43,20 @@ const btnAddNew={
   fontStyle: 'normal',
   fontStretch: 'normal',
   letterSpacing: 'normal',
-  textAlign: 'center'
-}
-const txtAddNew={
-  paddingTop: "2px"
-}
-const iconAddNew={
+  textAlign: 'center',
+};
+const txtAddNew = {
+  paddingTop: '2px',
+};
+const iconAddNew = {
   width: '24px',
   height: '24px',
   backgroundColor: '#fff',
-  WebkitMask:'url(https://dvkhfbm6djrbs.cloudfront.net/5acc7360f161b700446f8349/5c4582f821889700acab81b3/add-circle-24-px.png) no-repeat 50% 50%',
+  WebkitMask: 'url(https://dvkhfbm6djrbs.cloudfront.net/5acc7360f161b700446f8349/5c4582f821889700acab81b3/add-circle-24-px.png) no-repeat 50% 50%',
   WebkitMaskSize: '100% !important',
   float: 'left',
-  borderRadius: '50%'
-}
+  borderRadius: '50%',
+};
 const TopWarehourse = ({t}) =>(
   <div style={topWarehourse}>
     <div style={titlePpage}>{t('Data Warehouse')}</div>
@@ -66,9 +66,9 @@ const TopWarehourse = ({t}) =>(
       style={searchInput}
     />
     <Button style={btnAddNew} stype="" type="primary">
-      <div style={iconAddNew}></div> 
+      <div style={iconAddNew} />
       <span style={txtAddNew}>{t('Add')}</span>
     </Button>
   </div>
-)
-export default withTranslation() (TopWarehourse);
+);
+export default withTranslation()(TopWarehourse);

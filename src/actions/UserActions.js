@@ -1,32 +1,32 @@
-import * as URL from '../constants/Url'
+import * as URL from '../constants/Url';
 import axios from 'axios';
 
 export const createPost = ({ name, username }) => {
   return (dispatch) => {
     return axios.post(`${URL.GET_ALL_USER}`, {name, username})
       .then(response => {
-        dispatch(createPostSuccess(response.data))
+        dispatch(createPostSuccess(response.data));
       })
       .catch(error => {
-        throw(error);
+        throw (error);
       });
   };
 };
 
 export const createPostSuccess =  (data) => {
-  console.log("HAHAHAH",data);
+  console.log('HAHAHAH', data);
   return {
     type: 'ADD_POST',
     payload: {
       name: data.name,
-      username: data.username
-    }
-  }
+      username: data.username,
+    },
+  };
 };
 
 
 export function loadAuthorsSuccess(users) {
-  console.log("KAKA",users);
+  console.log('KAKA', users);
   return { type: 'LOAD_USER_SUCCESS', users };
 }
 
