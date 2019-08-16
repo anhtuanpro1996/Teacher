@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 import { Table } from 'antd';
 
 const iconAddNew = {
@@ -62,8 +62,7 @@ for (let i = 0; i < 6; i++) {
 }
 
 function WarHouseList() {
-  
-  return (<Table  columns={columns} dataSource={data} />)
+  return (<Table  columns={columns} dataSource={data} />);
 }
 
-export default WarHouseList
+export default WarHouseList;
