@@ -4,6 +4,8 @@ import './Warehouse.css';
 import TopWarehouse from '../../components/WarehouseTop';
 import WarehouseTopList from '../../components/WarehouseTopList';
 import NoDocument from '../../components/WarehouseNoDocument';
+import WHBoxData from '../../components/WHBoxData';
+import WHListFolder from '../../components/WHListFolder';
 
 function Warehouse() {
   const { t } = useTranslation();
@@ -13,7 +15,9 @@ function Warehouse() {
         <TopWarehouse />
         <div className="listWarehouse">
           <WarehouseTopList />
-          <NoDocument />
+          {/* <NoDocument /> */}
+          <WHListFolder />
+          <WHBoxData />
         </div>
       </div>
     </React.Fragment>
