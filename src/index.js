@@ -1,7 +1,8 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, compose } from 'redux';
+import { createStore, compose, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux'
 import TodoApp from './containers/TodoApp';
 import rootReducer from './reducers/rootReducer';
@@ -17,9 +18,12 @@ import './i18n';
 // Dev tool
 import DevTools from './containers/DevTools';
 import TodoInput from './components/TodoInput';
+import {loadAuthors} from './actions/UserActions';
 import TodoList from './components/TodoList';
+import ShowUser from './containers/ShowUser'
 import { persistState } from 'redux-devtools';
 import {BrowserRouter as Router, Switch,Route} from 'react-router-dom';
+
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
 });
@@ -37,16 +41,16 @@ const enhancer = compose(
 const initialState = {}
 
 // Create store
-const store = createStore(rootReducer, initialState, enhancer);
-
+const store = createStore(rootReducer,initialState,applyMiddleware(thunk));
+store.dispatch(loadAuthors());
 const appRoot = (
   <Provider store={store}>
-    {console.log("aba",store.initialState)}
+    {console.log("aba",store)}
     <I18nextProvider i18n={i18next}>
       <Router>
         <div className="App">
           <LayoutMain title= 'EDumall'>
-            <TodoApp/>
+            <ShowUser/>
 					
             {/* <TodoList />
 						 */}
