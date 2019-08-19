@@ -1,7 +1,7 @@
 import React  from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import { Row, Col, Select, Input } from 'antd';
+import { Row, Col, Select, Input, Button } from 'antd';
 
 const { Option } = Select;
 
@@ -79,6 +79,16 @@ function MCreateInfoCourse() {
       {divcomon()}
       {divcomon()}
 
+      <Col className="gutter-row common-div div-description" span={24}>
+        <div className="common-div-txt">Mô tả khóa học</div>
+        <div className="common-div-detail">
+          <Input className="common-div-description" placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
+        </div>
+      </Col>
+      <Col className="gutter-row button-div" span={24}>
+        <Button className="btn-common cancel-btn">Hủy bỏ</Button>
+        <Button className="btn-common next-btn">Tiếp tục</Button>
+      </Col>
     </Row>
 
   );
