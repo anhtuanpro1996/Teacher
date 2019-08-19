@@ -2,7 +2,7 @@
   width: 100% !important;
 }
 .ant-tabs-tab{
-  width: 33% !important;
+  width: 33.333333% !important;
   min-width: 200px;
 }
 .ant-tabs-ink-bar-animated{
@@ -184,6 +184,7 @@
   justify-content: center;
   border: solid 1px #fff;
   margin-right: 20px;
+  display: none;
 }
 
 #Top-Tabs-1 {
@@ -193,7 +194,7 @@
   line-height: 48px;
   z-index: 3;
   position: relative;
-  width: 33%;
+  width: 33.333333%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -226,6 +227,12 @@
 .active::before{
   border-color: transparent transparent transparent #5c9cfe !important;
 }
+.active .c_circle{
+  display: flex !important;
+}
+.active .c_cicrle_parent{
+  display: none !important;
+}
 .Top-Tabs{
   height: 48px;
   display: flex;
@@ -237,7 +244,7 @@
   height: 48px;
   line-height: 48px;
   z-index: 2;
-  width: 33%;
+  width: 33.333333%;
   background: #fff;
   position: relative;
   display: flex;
@@ -268,11 +275,34 @@
 #Top-Tabs-3{
   height: 48px;
   line-height: 48px;
-  width: 33%;
+  width: 33.333333%;
   z-index: 1;
   position: relative;
   background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.c_cicrle_parent {
+  border-radius: 50%;
+  height: 30px; 
+  width: 30px;
+  background: #cfd3db;
+  line-height: 30px;
+  position: relative;
+  margin-right: 20px;
+  color: #fff
+}
+.c_cicrle_parent::before {
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  background: transparent;
+  line-height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  content:'';
+  border: 1px solid #cfd3db
 }
