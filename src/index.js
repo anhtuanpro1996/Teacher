@@ -13,11 +13,11 @@ import {I18nextProvider} from 'react-i18next';
 import Home from './containers/Home/Home';
 import Warehouse from './containers/Warehouse/Warehouse';
 import ManageCourse from './containers/ManageCourse/ManageCourse';
+import CreateCourses from './containers/ManageCourse/CreateCourses/CreateCourses';
 import i18next from 'i18next';
 import './i18n';
 // Dev tool
 import DevTools from './containers/DevTools';
-import TodoInput from './components/TodoInput';
 import {loadAuthors} from './actions/UserActions';
 import TodoList from './components/TodoList';
 import ShowUser from './containers/ShowUser';
@@ -54,6 +54,7 @@ const appRoot = (
               <Route path = "/" exact component={Home}/>
               <Route path = "/warehouse" component={Warehouse}/>
               <Route path = "/manage/course" component={ManageCourse}/>
+              <Route path = "/manage/createcourses" component={CreateCourses}/>
             </Switch>
           </LayoutMain>
         </div>
