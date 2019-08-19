@@ -16,5 +16,8 @@
 "Name":"Tên",
 "Capacity":"Dung lượng",
 "txtNoDoc":"Kéo thả file để tải lên",
+"Create Folder": "Tạo thư mục",
+"Down File": "Tải tệp tin",
+"Down Folder": "Tải thư mục",
 "InfoCourse":"Thông tin khóa học"
 }

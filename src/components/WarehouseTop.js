@@ -1,7 +1,46 @@
 import React from 'react';
-import { Input, Button } from 'antd';
-import { withTranslation } from 'react-i18next';
+import { Input } from 'antd';
+import { useTranslation } from 'react-i18next';
+import { Menu, Dropdown } from 'antd';
+import {Link} from 'react-router-dom';
+import WarehouseCreateFolder from './WarehouseCreateFolder';
+import {ModalProvider} from 'react-modal-hook';
+import WareHouseUploadFile from './WarehouseUploadFile';
+
 const { Search } = Input;
+
+const infoMenu = {
+  padding: '0',
+};
+const listMenu = {
+  height: '40px',
+  cusor: 'pointer',
+  fonTFamily: 'Open Sans',
+  fontSize: '14px',
+  fontWeight: 'normal',
+  fontStyle: 'normal',
+  fontStretch: 'normal',
+  lineHeight: '1.71',
+  letterSpacing: 'normal',
+  paddingLeft: '16px',
+  color: '#4a4a4a',
+  paddingTop: '8px',
+};
+const menu = (
+  <Menu style={infoMenu}>
+    <Menu.Item style={listMenu} className="listMenuItem">
+      <ModalProvider>
+        <WarehouseCreateFolder/>
+      </ModalProvider>
+    </Menu.Item>
+    <Menu.Item style={listMenu} className="listMenuItem">
+      <WareHouseUploadFile/>
+    </Menu.Item>
+    <Menu.Item style={listMenu} className="listMenuItem">
+      <Link to="#"><span>Tải thư mục</span></Link>
+    </Menu.Item>
+  </Menu>
+);
 
 const topWarehourse = {
   height: '40px',
@@ -36,17 +75,23 @@ const searchInput = {
 };
 const btnAddNew = {
   display: 'flex',
-  width: '141px',
+  height: '40px',
   float: 'right',
+  textAlign: 'center',
+  backgroundColor: '#4a90e2',
+  borderRadius: '6px',
+  padding: '0 20px',
+  alignItems: 'center',
+};
+const txtAddNew = {
+  width: '69px',
+  fontFamily: 'Open Sans',
   fontSize: '14px',
   fontWeight: '600',
   fontStyle: 'normal',
   fontStretch: 'normal',
   letterSpacing: 'normal',
-  textAlign: 'center',
-};
-const txtAddNew = {
-  paddingTop: '2px',
+  color: '#fff',
 };
 const iconAddNew = {
   width: '24px',
@@ -56,19 +101,25 @@ const iconAddNew = {
   WebkitMaskSize: '100% !important',
   float: 'left',
   borderRadius: '50%',
+  marginRight: '8px',
 };
-const TopWarehourse = ({t}) =>(
-  <div style={topWarehourse}>
-    <div style={titlePpage}>{t('Data Warehouse')}</div>
-    <Search
-      placeholder="Tìm kiếm..."
-      onSearch={value => console.log(value)}
-      style={searchInput}
-    />
-    <Button style={btnAddNew} stype="" type="primary">
-      <div style={iconAddNew} />
-      <span style={txtAddNew}>{t('Add')}</span>
-    </Button>
-  </div>
-);
-export default withTranslation()(TopWarehourse);
+function TopWarehourse() {
+  const { t } = useTranslation();
+  return (
+    <div style={topWarehourse}>
+      <div style={titlePpage}>{t('Data Warehouse')}</div>
+      <Search
+        placeholder="Tìm kiếm..."
+        onSearch={value => console.log(value)}
+        style={searchInput}
+      />
+      <Dropdown overlay={menu} trigger={['click']}>
+        <a style={btnAddNew} href="#">
+          <div style={iconAddNew} />
+          <span style={txtAddNew}>Thêm mới</span>
+        </a>
+      </Dropdown>
+    </div>
+  );
+};
+export default TopWarehourse;
