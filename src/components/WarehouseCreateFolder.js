@@ -1,11 +1,11 @@
-import React from "react";
-import {Modal, Button} from "antd";
+import React from 'react';
+import {Modal, Button} from 'antd';
 import {useState} from 'react';
 
-const itemCreateFolder={
-  color: '#4a4a4a'
-}
-const titleModal={
+const itemCreateFolder = {
+  color: '#4a4a4a',
+};
+const titleModal = {
   fontFamily: 'Open Sans',
   fontSize: '16px',
   fontWeight: '600',
@@ -14,8 +14,8 @@ const titleModal={
   lineHeight: '1.5',
   letterSpacing: 'normal',
   textAlign: 'left',
-  color: '#4a4a4a'
-}
+  color: '#4a4a4a',
+};
 const nameFolder = {
   width: '100%',
   height: '40px',
@@ -27,13 +27,13 @@ const nameFolder = {
   fontSize: '14px',
   lineHeight: '1.71',
   letterSpacing: 'normal',
-  color: '#b0b5c1'
-}
+  color: '#b0b5c1',
+};
 const footerModal = {
   width: '256px',
   margin: 'auto',
-  height: '40px'
-}
+  height: '40px',
+};
 const btnCloseModal = {
   width: '120px',
   height: '40px',
@@ -45,8 +45,8 @@ const btnCloseModal = {
   letterSpacing: '0.1px',
   textAlign: 'center',
   color: '#232731',
-  float: 'left'
-}
+  float: 'left',
+};
 const btnCreateFolder = {
   width: '120px',
   height: '40px',
@@ -58,17 +58,17 @@ const btnCreateFolder = {
   letterSpacing: '0.1px',
   textAlign: 'center',
   backgroundColor: '#e62020',
-  color: '#fff'
-}
+  color: '#fff',
+};
 
-function WareHouseCreateFolder (){
-  const [modal,setModal] = useState(false)
+function WareHouseCreateFolder() {
+  const [modal, setModal] = useState(false);
   const showModal = () => {
-    setModal(true)
-  }
+    setModal(true);
+  };
   const closeModal = () => {
     setModal(false);
-  }
+  };
   return (
     <div>
       <a style={itemCreateFolder} onClick={showModal}><span>Tạo tệp tin</span></a>
@@ -78,13 +78,13 @@ function WareHouseCreateFolder (){
         onCancel={() => setModal(false)}
       >
         <h3 style={titleModal}>Thư mục mới</h3>
-        <input type="text" placeholder="Tên thư mục" style={nameFolder}></input>
+        <input type="text" placeholder="Tên thư mục" style={nameFolder} />
         <div style={footerModal}>
           <Button style={btnCloseModal} onClick={closeModal}>Hủy bỏ</Button>
           <Button style={btnCreateFolder}>Đồng ý</Button>
         </div>
       </Modal>
     </div>
-  )
+  );
 };
 export default WareHouseCreateFolder;
