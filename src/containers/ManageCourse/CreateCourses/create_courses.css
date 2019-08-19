@@ -123,6 +123,7 @@
   padding: 16px;
   text-align: left;
   background: #fff;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.06);
 }
 .common-div-txt{
   font-size: 16px;
@@ -149,6 +150,22 @@
   height: 40px;
   padding-left: 16px;
   width: 95%;
+}
+.div-description{
+  margin-bottom: 16px;
+}
+.common-div-description{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  background: #f1f3f5;
+  letter-spacing: 0.14px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  height: 40px;
+  padding-left: 16px;
+  height: 100px;
 }
 .common-div-close-btn{
   width: 5%;
@@ -305,4 +322,24 @@
   left: 50%;
   content:'';
   border: 1px solid #cfd3db
+}
+.button-div{
+  display: flex;
+  justify-content: flex-end;
+}
+.button-div .btn-common{
+  width: 160px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.71;
+  letter-spacing: 0.1px;
+  color:#232731;
+  margin-bottom: 115px;
+}
+.button-div .cancel-btn{
+  background: #f1f3f5;
+}
+.button-div .next-btn{
+  margin-left: 15px;
+  background: #e62020;
 }
