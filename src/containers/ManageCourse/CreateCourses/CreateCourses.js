@@ -36,10 +36,19 @@ function CreateCourses() {
       <div className="Top-Tabs">
         <div id="Top-Tabs-1" className={active[0]} onClick={()=>handleActive(0)}>
           <div className="c_circle"> 1 </div>
+          <div className="c_cicrle_parent"> 1 </div>
           <span>Tạo thông tin</span>
         </div>
-        <div id="Top-Tabs-2" className={active[1]} onClick={()=>handleActive(1)}> Tạo đề cương</div>
-        <div id="Top-Tabs-3" className={active[2]} onClick={()=>handleActive(2)}> Gửi kiểm duyệt</div>
+        <div id="Top-Tabs-2" className={active[1]} onClick={()=>handleActive(1)}>
+          <div className="c_circle"> 2 </div>
+          <div className="c_cicrle_parent"> 2 </div>
+          <span>Tạo đề cương</span>
+        </div>
+        <div id="Top-Tabs-3" className={active[2]} onClick={()=>handleActive(2)}>
+          <div className="c_circle"> 3 </div>
+          <div className="c_cicrle_parent"> 3 </div>
+          <span>Gửi kiểm duyệt</span>
+        </div>
       </div>
       <InfoTab  active = {active}/>
       {/* <Tabs tabBarStyle={{color: 'red !important'}} size = "large" className="tab-data" defaultActiveKey="1">
