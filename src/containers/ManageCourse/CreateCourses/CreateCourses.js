@@ -10,7 +10,7 @@ import { Tabs, Icon } from 'antd';
 const { TabPane } = Tabs;
 
 const InfoTab = (props) => {
-  console.log("daa",props);
+  console.log('daa', props);
   const isActive = props.active;
   if (isActive[0] === 'active') {
     return <MCreateInfoCourse />;
