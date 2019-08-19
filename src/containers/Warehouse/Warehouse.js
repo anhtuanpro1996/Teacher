@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import {ModalProvider} from 'react-modal-hook';
 import './Warehouse.css';
 import TopWarehouse from '../../components/WarehouseTop';
-import Test from '../../components/WarehouseCreateFolder';
 import WarehouseTopList from '../../components/WarehouseTopList';
 import NoDocument from '../../components/WarehouseNoDocument';
-import WHBoxData from '../../components/WHBoxData';
-import WHListFolder from '../../components/WHListFolder';
 
 function Warehouse() {
   const { t } = useTranslation();
@@ -17,9 +13,7 @@ function Warehouse() {
         <TopWarehouse />
         <div className="listWarehouse">
           <WarehouseTopList />
-          {/* <NoDocument /> */}
-          <WHListFolder />
-          <WHBoxData />
+          <NoDocument />
         </div>
       </div>
     </React.Fragment>

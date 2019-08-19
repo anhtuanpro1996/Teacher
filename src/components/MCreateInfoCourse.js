@@ -10,7 +10,7 @@ const divcomon = () =>{
     <Col className="gutter-row common-div" span={24}>
       <div className="common-div-txt">Lợi ích từ khóa học</div>
       <div className="common-div-detail">
-        <Input className="common-div-detail-txt" placeholder='VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả' />
+        <Input className="common-div-detail-txt" placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
         <div className="common-div-close-btn">
           <div className="icon-close" style={{WebkitMask: 'url(/images/icon/closeimg.png) no-repeat 50% 50%'}}/>
         </div>
@@ -33,7 +33,7 @@ function MCreateInfoCourse() {
           <div className="M-info-detail">
             <div className="M-info-detail-name">
               <div className="M-info-detail-name-cate">Tên khóa học</div>
-              <Input className="M-info-detail-name-txt" placeholder='VD: Thành thạo Tiếng Anh trong 30 ngày' />
+              <Input className="M-info-detail-name-txt" placeholder="VD: Thành thạo Tiếng Anh trong 30 ngày" />
             </div>
             <div className="M-category">
               <div className="M-category-1">

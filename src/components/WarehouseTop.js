@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { Menu, Dropdown } from 'antd';
 import {Link} from 'react-router-dom';
 import WarehouseCreateFolder from './WarehouseCreateFolder';
-import {ModalProvider} from 'react-modal-hook';
 import WareHouseUploadFile from './WarehouseUploadFile';
 
 const { Search } = Input;
@@ -29,9 +28,7 @@ const listMenu = {
 const menu = (
   <Menu style={infoMenu}>
     <Menu.Item style={listMenu} className="listMenuItem">
-      <ModalProvider>
-        <WarehouseCreateFolder/>
-      </ModalProvider>
+      <WarehouseCreateFolder/>
     </Menu.Item>
     <Menu.Item style={listMenu} className="listMenuItem">
       <WareHouseUploadFile/>
