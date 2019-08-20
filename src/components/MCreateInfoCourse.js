@@ -72,7 +72,7 @@ function MCreateInfoCourse() {
       </Col>
       <Col className="gutter-row" span={4}>
         <div className="gutter-box M-image">
-          <img src="ur('/cac')" />
+          <img style={{width: '100%', height: '100%'}} src="/images/avatar.jpg" />
         </div>
       </Col>
       {divcomon()}
