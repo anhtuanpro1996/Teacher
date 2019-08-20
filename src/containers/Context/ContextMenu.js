@@ -1,7 +1,7 @@
 import React from 'react';
 import './ContextMenu.css';
-export default function ContextMenu(){
-  return(
+export default function ContextMenu() {
+  return (
     <div className="contextMenu" >
       <div className="top">
         <div className="itemContext">Di Chuyển tới</div>
@@ -10,7 +10,7 @@ export default function ContextMenu(){
         <div className="itemContext">Chi tiết</div>
         <div className="itemContext">Tải xuống</div>
       </div>
-      <div className="bottom>"></div>
+      <div className="bottom>" />
     </div>
   );
 }

@@ -14,7 +14,6 @@ export const createPost = ({ name, username }) => {
 };
 
 export const createPostSuccess =  (data) => {
-  console.log('HAHAHAH', data);
   return {
     type: 'ADD_POST',
     payload: {
@@ -26,7 +25,6 @@ export const createPostSuccess =  (data) => {
 
 
 export function loadAuthorsSuccess(users) {
-  console.log('KAKA', users);
   return { type: 'LOAD_USER_SUCCESS', users };
 }
 

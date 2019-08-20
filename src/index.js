@@ -12,6 +12,7 @@ import {I18nextProvider} from 'react-i18next';
 import Home from './containers/Home/Home';
 import Warehouse from './containers/Warehouse/Warehouse';
 import ManageCourse from './containers/ManageCourse/ManageCourse';
+import CreateCourses from './containers/ManageCourse/CreateCourses/CreateCourses';
 import i18next from 'i18next';
 import './i18n';
 import {loadAuthors} from './actions/UserActions';
@@ -39,6 +40,7 @@ const appRoot = (
               <Route path = "/" exact component={Home}/>
               <Route path = "/warehouse" component={Warehouse}/>
               <Route path = "/manage/course" component={ManageCourse}/>
+              <Route path = "/manage/createcourses" component={CreateCourses}/>
             </Switch>
           </LayoutMain>
         </div>

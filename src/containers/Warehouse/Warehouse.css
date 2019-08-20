@@ -24,8 +24,11 @@ body{
     width: 100%;
     padding: 0 16px;
 }
-.ant-select-arrow{
+/* .ant-select-arrow{
   display: none;
+} */
+.listMenuItem:hover{
+  background-color: #ecedf1;
 }
 .selectDoc > .icon-menu{
     position: absolute;
@@ -59,6 +62,20 @@ body{
   background-color: #b0b5c1;
   -webkit-mask:url(/images/icon/upload3x.png) no-repeat 50% 50%;
   -webkit-mask-size: 100% !important;
+}
+.wrapperModalCreateFolder{
+  width: 500px !important;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 0;
+  top: 50%;
+  margin-top: -135px;
+}
+.wrapperModalCreateFolder .ant-modal-footer, .wrapperModalCreateFolder .ant-modal-close{
+  display: none;
+}
+.wrapperModalCreateFolder .ant-modal-content{
+  box-shadow: none;
 }
 .wrapperWarehouse .list-folder {
   height: auto;
