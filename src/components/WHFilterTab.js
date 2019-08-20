@@ -5,15 +5,16 @@ import WHBoxDataImageList from './WHBoxDataImageList';
 import WHBoxDataSoundList from './WHBoxDataSoundList';
 import WHBoxDataOtherList from './WHBoxDataOtherList';
 import WHBoxDataAll from './WHBoxDataAll';
+import { connect } from 'react-redux';
 
 
 const { TabPane } = Tabs;
 
-export default function WHFilterTab() {
+const WHFilterTab = (props) => {
   return (
     <Tabs className="tab-data" defaultActiveKey="1">
       <TabPane tab="Tất cả" key="1">
-        <WHBoxDataAll />
+        <WHBoxDataAll dataFolder = {props.activeFolder} />
       </TabPane>
       <TabPane tab="Video" key="2">
         <WHBoxDataVideoList />
@@ -29,4 +30,12 @@ export default function WHFilterTab() {
       </TabPane>
     </Tabs>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  return {
+    activeFolder: state.folderActiveReducer,
+  };
+};
+
+export default connect(mapStateToProps)(WHFilterTab);

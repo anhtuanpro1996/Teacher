@@ -5,3 +5,4 @@ export const MARK_TODO = 'MARK_TODO';
 export const MARK_ALL = 'MARK_ALL';
 export const CLEAR_MARKED = 'CLEAR_MARKED';
 export const GET_FOLDER_LIST = 'SHOW_FOLDERS';
+export const SELECT_FOLDER = 'SELECT_FOLDER';

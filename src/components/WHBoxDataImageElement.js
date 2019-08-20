@@ -40,7 +40,8 @@ const titleName = {
   fontFamily: 'Open Sans, sans-serif',
 
 };
-export default function WHBoxDataImageElement() {
+export default function WHBoxDataImageElement(props) {
+  console.log('image-data', props.imageData);
   return (
     <Col span={6}>
       <div className="data-element">

@@ -10,8 +10,7 @@ import * as FolderActions from '../../actions/FolderActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-function Warehouse(props) {
-  const { folders , actions } = props;
+function Warehouse() {
   const { t } = useTranslation();
   return (
     <React.Fragment>
@@ -19,7 +18,8 @@ function Warehouse(props) {
         <TopWarehouse />
         <div className="listWarehouse">
           <WarehouseTopList />
-          { (folders.loading) ? <WHListFolder folders= { folders } /> : 'Loading'}
+          {/* { (folders.loading) ? <WHListFolder folders= { folders } /> : 'Loading'} */}
+          <WHListFolder />
           <WHBoxData />
         </div>
       </div>
@@ -27,11 +27,5 @@ function Warehouse(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  folders: state.foldersReducer,
-});
 
-const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(FolderActions, dispatch),
-});
-export default connect(mapStateToProps, mapDispatchToProps)(Warehouse);
+export default Warehouse;
