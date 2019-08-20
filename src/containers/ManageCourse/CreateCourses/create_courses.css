@@ -1,24 +1,3 @@
-/* .ant-tabs-nav.ant-tabs-nav-animated{
-  width: 100% !important;
-}
-.ant-tabs-tab{
-  width: 33.333333% !important;
-  min-width: 200px;
-}
-.ant-tabs-ink-bar-animated{
-  display: none !important;
-}
-.ant-tabs-tab-active.ant-tabs-tab{
-  background: url(/images/icon/rectangle.png) no-repeat;
-  background-position-x: right;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.13px;
-}
-.ant-tabs-bar{
-  border: none;
-} */
 .TabInfo{
   display: flex;
   align-items: center;
@@ -326,6 +305,7 @@
 .button-div{
   display: flex;
   justify-content: flex-end;
+  margin-top: 16px;
 }
 .button-div .btn-common{
   width: 160px;
@@ -342,4 +322,7 @@
 .button-div .next-btn{
   margin-left: 15px;
   background: #e62020;
+}
+.di-active{
+  display: none;
 }

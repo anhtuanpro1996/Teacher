@@ -5,23 +5,39 @@ import { Menu } from 'antd';
 import PropTypes from 'prop-types';
 import MCreateInfoCourse from '../../../components/MCreateInfoCourse';
 import './create_courses.css';
-import { Tabs, Icon } from 'antd';
+import { Tabs, Button, Col, Row } from 'antd';
 
 const { TabPane } = Tabs;
 
-const InfoTab = (props) => {
-  console.log('daa', props);
-  const isActive = props.active;
-  if (isActive[0] === 'active') {
-    return <MCreateInfoCourse />;
-  }
-  return <div />;
-};
-
 function CreateCourses() {
   const { t } = useTranslation();
+  const [curentpage, setCurrentPage] = useState(0);
   const [active, setActive] = useState({0: 'active', 1: '', 2: ''});
-  console.log('DCMN', active);
+
+  const nextPage = ()=>{
+    if (curentpage < 2) {
+      setCurrentPage(curentpage => curentpage + 1);
+      console.log('DCMN', curentpage);
+      if (curentpage == 0) {
+        handleActive(1);
+        console.log('DCMN', active);
+      }
+      if (curentpage == 1) {
+        handleActive(2);
+      }
+    }
+  };
+  const previousPage = ()=>{
+    if (curentpage >= 1) {
+      setCurrentPage(curentpage => curentpage - 1);
+    }
+    if (curentpage == 1) {
+      handleActive(0);
+    }
+    if (curentpage == 2) {
+      handleActive(1);
+    }
+  };
   const handleActive = (index)=>{
     for (const key in active) {
       if (index == key) {
@@ -31,43 +47,48 @@ function CreateCourses() {
       }
     }
   };
+  const InfoTab = (props) => {
+    console.log('daa', props);
+    const curentpage = props.curentpage;
+    if (curentpage === 0 ) {
+      return <MCreateInfoCourse />;
+    }
+    // if (curentpage === 1 ) {
+    //   handleActive(1);
+    //   return <div/>;
+    // }
+    // if (curentpage === 2 ) {
+    //   handleActive(2);
+    //   return <div />;
+    // }
+    return <div />;
+  };
   return (
-    <div>
+    <Row>
       <div className="Top-Tabs">
-        <div id="Top-Tabs-1" className={active[0]} onClick={()=>handleActive(0)}>
+        <div id="Top-Tabs-1" className={active[0]}>
           <div className="c_circle"> 1 </div>
           <div className="c_cicrle_parent"> 1 </div>
           <span>Tạo thông tin</span>
         </div>
-        <div id="Top-Tabs-2" className={active[1]} onClick={()=>handleActive(1)}>
+        <div id="Top-Tabs-2" className={active[1]}>
           <div className="c_circle"> 2 </div>
           <div className="c_cicrle_parent"> 2 </div>
           <span>Tạo đề cương</span>
         </div>
-        <div id="Top-Tabs-3" className={active[2]} onClick={()=>handleActive(2)}>
+        <div id="Top-Tabs-3" className={active[2]}>
           <div className="c_circle"> 3 </div>
           <div className="c_cicrle_parent"> 3 </div>
           <span>Gửi kiểm duyệt</span>
         </div>
       </div>
-      <InfoTab  active = {active}/>
-      {/* <Tabs tabBarStyle={{color: 'red !important'}} size = "large" className="tab-data" defaultActiveKey="1">
-        <TabPane  tab={
-          <span  className="TabInfo">
-            <div className="c_circle">1</div>
-            Tạo thông tin
-          </span>
-        } key="1">
-          <MCreateInfoCourse />
-        </TabPane>
-        <TabPane tab="Tab 2" disabled key="2">
-          Tab 2
-        </TabPane>
-        <TabPane tab="Tab 3" key="3">
-          Tab 3
-        </TabPane>
-      </Tabs> */}
-    </div>
+      <InfoTab  curentpage = {curentpage}/>
+      <Col className="gutter-row button-div" span={24}>
+        <Button className={'btn-common cancel-btn' + (curentpage == 0  ? '' : ' di-active')}>Hủy bỏ</Button>
+        <Button className={'btn-common cancel-btn' + (curentpage == 1  ? '' : ' di-active')} onClick={()=>previousPage()} >Quay lại</Button>
+        <Button className="btn-common next-btn" onClick={()=>nextPage()} >Tiếp tục</Button>
+      </Col>
+    </Row>
 
   );
 }
