@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Tabs } from 'antd';
 import WHBoxDataVideoList from './WHBoxDataVideoList';
 import WHBoxDataImageList from './WHBoxDataImageList';
@@ -9,8 +9,8 @@ import WHBoxDataAll from './WHBoxDataAll';
 
 const { TabPane } = Tabs;
 
-export default function WHFilterTab(){
-  return(
+export default function WHFilterTab() {
+  return (
     <Tabs className="tab-data" defaultActiveKey="1">
       <TabPane tab="Tất cả" key="1">
         <WHBoxDataAll />
@@ -28,5 +28,5 @@ export default function WHFilterTab(){
         <WHBoxDataOtherList />
       </TabPane>
     </Tabs>
-  )
+  );
 }
