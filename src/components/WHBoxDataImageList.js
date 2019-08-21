@@ -1,14 +1,9 @@
 import React from 'react';
 import { Row, Dropdown } from 'antd';
 import WHBoxDataImageElement from './WHBoxDataImageElement';
-import ContextMenu from '../containers/Context/ContextMenu';
+import ContextMenu from './Context/ContextMenu';
 import PropTypes from 'prop-types';
 
-// const contextMenuStyle = {
-//   height: '242px',
-//   width: '150px',
-//   backgroundColor: 'white',
-// };
 export default function WHBoxDataImageList(props) {
   const listImage = props.dataFolder.files.filter((value)=>{
     return value.fileType === 'IMAGE';
