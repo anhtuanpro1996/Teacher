@@ -92,7 +92,7 @@ function MCreateInfoCourse() {
       return (
         <React.Fragment>
           {benefit.map( (item, key) => < div key={key} className="common-div-detail">
-            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" defaultValue= {item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
+            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item == '' ? null : item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
             <div className="common-div-close-btn" onClick = {() => handleRemove(type, key)}>
               <div className="icon-close" style={{WebkitMask: 'url(/images/icon/closeimg.png) no-repeat 50% 50%'}}/>
             </div>
@@ -104,7 +104,7 @@ function MCreateInfoCourse() {
       return (
         <React.Fragment>
           {audience.map( (item, key) => < div key={key} className="common-div-detail">
-            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" defaultValue= {item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
+            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item == '' ? null : item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
             <div className="common-div-close-btn" onClick = {() => handleRemove(type, key)}>
               <div className="icon-close" style={{WebkitMask: 'url(/images/icon/closeimg.png) no-repeat 50% 50%'}}/>
             </div>
@@ -116,7 +116,7 @@ function MCreateInfoCourse() {
       return (
         <React.Fragment>
           {requirements.map( (item, key) => < div key={key} className="common-div-detail">
-            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" defaultValue= {item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
+            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item == '' ? null : item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
             <div className="common-div-close-btn" onClick = {() => handleRemove(type, key)}>
               <div className="icon-close" style={{WebkitMask: 'url(/images/icon/closeimg.png) no-repeat 50% 50%'}}/>
             </div>

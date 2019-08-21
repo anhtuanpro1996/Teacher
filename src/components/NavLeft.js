@@ -42,7 +42,7 @@ const textName = {
 const giangvien = {
   width: '72px',
   height: '24px',
-  fontFamily: 'Open Sans sans-serif',
+  fontFamily: 'Open Sans, sans-serif',
   fontSize: '14px',
   fontWeight: 'normal',
   fontStyle: 'normal',
@@ -55,7 +55,7 @@ const divLogo = {
 };
 const textButon = {
   paddingRight: '20px',
-  fontFamily: 'Open Sans sans-serif',
+  fontFamily: 'Open Sans, sans-serif',
   fontSize: '14px',
   fontWeight: 600,
   lineHeight: 1.71,
