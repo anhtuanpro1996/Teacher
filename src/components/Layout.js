@@ -1,10 +1,10 @@
 
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import { Layout, Menu, Icon, Row, Col } from 'antd';
+import React from 'react';
+import { Layout, Row, Col } from 'antd';
 import NavLeft from './NavLeft';
 import 'antd/dist/antd.css';
-const { Header, Sider, Footer, Content } = Layout;
+const { Content } = Layout;
 
 const divStyle = {
   background: '#f9fafc',
