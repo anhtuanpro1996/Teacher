@@ -157,6 +157,7 @@
 .common-div-end{
   height: 24px;
   margin-top: 16px;
+  max-width: 80px;
 }
 .icon-close{
   width: 24px;
