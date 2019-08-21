@@ -116,6 +116,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 .common-div-detail-txt{
   font-family: 'Open Sans', sans-serif;
