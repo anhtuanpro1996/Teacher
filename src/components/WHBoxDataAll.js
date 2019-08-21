@@ -4,6 +4,7 @@ import WHBoxDataImageElement from './WHBoxDataImageElement';
 import WHBoxDataOtherElement from './WHBoxDataOtherElement';
 import WHBoxDataSoundElement from './WHBoxDataSoundElement';
 import WHBoxDataVideoElement from './WHBoxDataVideoElement';
+import PropTypes from 'prop-types';
 
 export default function WHBoxDataAll(props) {
   const files = props.dataFolder.files;
@@ -16,11 +17,11 @@ export default function WHBoxDataAll(props) {
 
 const renderBoxData = (arr) => {
   return (
-    <div>
+    <React.Fragment>
       {arr.map((value, index)=>{
-        return <div key={index}>{conditionFilter(value)}</div>;
+        return <React.Fragment key={index}>{conditionFilter(value)}</React.Fragment>;
       })}
-    </div>
+    </React.Fragment>
   );
 };
 
@@ -29,11 +30,11 @@ const conditionFilter = (data) => {
   case 'IMAGE':
     return <WHBoxDataImageElement imageData={data}/>;
   case 'VIDEO':
-    return <WHBoxDataVideoElement />;
+    return <WHBoxDataVideoElement videoData={data} />;
   case 'AUDIO':
-    return <WHBoxDataSoundElement />;
+    return <WHBoxDataSoundElement audioData={data}/>;
   case 'OTHER':
-    return <WHBoxDataOtherElement />;
+    return <WHBoxDataOtherElement otherData={data} />;
   default:
     return (
       'No Thing'
@@ -45,4 +46,8 @@ const loading = () => {
   return (
     <div className="loader"/>
   );
+};
+
+WHBoxDataAll.propTypes = {
+  dataFolder: PropTypes.object.isRequired,
 };

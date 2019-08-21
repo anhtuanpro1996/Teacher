@@ -1,16 +1,24 @@
 import React from 'react';
 import { Row } from 'antd';
 import WHBoxDataOtherElement from './WHBoxDataOtherElement';
+import PropTypes from 'prop-types';
 
-export default function WHBoxDataOtherList() {
-  const arr = [1, 2, 3, 4, 5];
+
+export default function WHBoxDataOtherList(props) {
+  const listOther = props.dataFolder.files.filter((value)=>{
+    return value.fileType === 'OTHER';
+  });
   return (
     <Row gutter={16}>
-      {arr.map((item, index) => {
+      {listOther.map((item, index) => {
         return (
-          <WHBoxDataOtherElement key={index} index={index} />
+          <WHBoxDataOtherElement otherData={item} key={index} index={index} />
         );
       })}
     </Row>
   );
 }
+
+WHBoxDataOtherList.propTypes = {
+  dataFolder: PropTypes.object.isRequired,
+};

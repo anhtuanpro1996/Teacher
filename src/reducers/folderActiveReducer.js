@@ -1,10 +1,13 @@
 import { SELECT_FOLDER } from '../constants/ActionTypes';
 
-const folderActiveInitialState = {};
+const folderActiveInitialState = {
+  data: {},
+  isClick: false,
+};
 const folderActiveReducer = (state = folderActiveInitialState, action) => {
   switch (action.type) {
   case SELECT_FOLDER:
-    return action.payload;
+    return {...folderActiveInitialState, data: action.payload, isClick: true};
   default:
     return state;
   }

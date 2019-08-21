@@ -15,7 +15,7 @@ export function fetchFolders() {
 };
 
 export function folderClicked(folder) {
-  console.log(`You are clicked at folder name = ${folder.name}`);
+  // console.log(`You are clicked at folder name = ${folder.name}`);
   return {
     type: SELECT_FOLDER,
     payload: folder,

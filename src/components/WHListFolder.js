@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row, Col  } from 'antd';
-import FolderElement from './WHFolderElement';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -34,12 +33,19 @@ function WHListFolder(props) {
   );
 };
 
+const markFolderAction = () => {
+  console.log(this);
+};
 const renderFolder = (folders, action) => {
+  const onClick = (data) => {
+    action(data);
+    markFolderAction();
+  };
   return (
     <Row gutter={16}>
       {folders.map((item, index) => {
         return (
-          <Col onClick={() => action(item) } key={index} className="ant-col-8-cus" span={8}>
+          <Col onClick={() => onClick(item)} key={index} className="ant-col-8-cus" span={8}>
             <div className="course-element">
               <div className="folder-icon" style={iconFolder}/>
               <p className="folder-name" style={folderName} title={item.name}>
@@ -52,21 +58,6 @@ const renderFolder = (folders, action) => {
     </Row>
   );
 };
-
-// function CourseElement(folder) {
-//   return (
-//     <Col className="ant-col-8-cus" span={8}>
-//       <p>asdasdsad</p>
-//       <div className="course-element">
-//         <div className="folder-icon" style={iconFolder}/>
-//         <p className="folder-name" style={folderName} title={folder.folder.name}>
-//           {folder.folder.name}
-//         </p>
-//       </div>
-//     </Col>
-//   );
-// }
-
 const loading = () => {
   return (
     <div className="loader"/>
@@ -85,6 +76,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 WHListFolder.propTypes = {
   listFolder: PropTypes.object.isRequired,
+  folderClicked: PropTypes.func.isRequired,
 };
 
 

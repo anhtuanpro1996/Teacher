@@ -1,16 +1,24 @@
 import React from 'react';
-import { Tabs, Row, Col } from 'antd';
+import { Row } from 'antd';
 import WHBoxDataVideoElement from './WHBoxDataVideoElement';
+import PropTypes from 'prop-types';
 
-export default function WHBoxDataVideoList() {
-  const arr = [1, 2, 3, 4, 5, 6];
+export default function WHBoxDataVideoList(props) {
+  const listVideo = props.dataFolder.files.filter((value)=>{
+    return value.fileType === 'VIDEO';
+  });
   return (
     <Row gutter={16}>
-      {arr.map((item, index) => {
+      {listVideo.map((item, index) => {
         return (
-          <WHBoxDataVideoElement key={index} index={index} />
+          <WHBoxDataVideoElement videoData ={item} key={index} index={index}  />
         );
       })}
     </Row>
   );
 }
+
+
+WHBoxDataVideoList.propTypes = {
+  dataFolder: PropTypes.object.isRequired,
+};
