@@ -1,45 +1,46 @@
 import React from 'react';
 import { Upload, message } from 'antd';
-import {useState} from 'react';
+import {useState, useRef} from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as UploadingAction from '../actions/UploadingAction';
 
-// const inputFile = {
-//   display: 'none',
-// };
-// const uploadProgress = {
-//   width: '500px',
-//   height: '500px',
-//   position: 'absolute',
-//   backgroundColor: 'red',
-// };
-
-const props = {
-  name: 'file',
-  action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-  headers: {
-    authorization: 'authorization-text',
-  },
-  onChange(info) {
-    if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (info.file.status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
+const inputFile = {
+  width: '0.1px',
+  height: '0.1px',
+  opacity: '0',
+  overflow: 'hidden',
+  position: 'absolute',
+  zIndex: '-1',
 };
 
+function WareHouseUploadFile(props) {
+  const inputEl = useRef(null);
+  const { upload, actions } = props;
 
-function WareHouseUploadFile() {
+  const handleChange = () => {
+    const files = inputEl.current.files;
+    actions.getDataUpload(files);
+    // for (let i = 0; i < files.length; i++) {
+    //   console.log('fle la:', files[i]);
+    // }
+  };
+
   return (
     <React.Fragment>
-      <Upload {...props}>
-        {/* <input style={inputFile} type="file" name="file" id="file" className="inputfile" /> */}
-        <label htmlFor="file">Tải tệp tin</label>
-      </Upload>
+      <input style={inputFile} type="file" ref={inputEl} name="file" id="file" className="inputfile" onChange={handleChange} multiple />
+      <label htmlFor="file">Tải tệp tin</label>
     </React.Fragment>
   );
 }
 
-export default WareHouseUploadFile;
+const mapStateToProps = (state) => ({
+  upload: state.getFileUploadReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(UploadingAction, dispatch),
+});
+
+export default  connect(mapStateToProps, mapDispatchToProps)(WareHouseUploadFile);
