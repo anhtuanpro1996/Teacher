@@ -19,7 +19,6 @@ function Warehouse() {
         <div className="listWarehouse">
           <WarehouseTopList />
           {/* { (folders.loading) ? <WHListFolder folders= { folders } /> : 'Loading'} */}
-          <WHListFolder />
           <WHBoxData />
         </div>
       </div>
