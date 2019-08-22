@@ -14,10 +14,8 @@ function CreateCourses() {
   const nextPage = ()=>{
     if (curentpage < 2) {
       setCurrentPage(prevPage => prevPage + 1);
-      console.log('DCMN', curentpage);
       if (curentpage == 0) {
         handleActive(1);
-        console.log('DCMN', active);
       }
       if (curentpage == 1) {
         handleActive(2);
