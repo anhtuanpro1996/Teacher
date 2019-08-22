@@ -5,28 +5,42 @@ import WHBoxDataImageList from './WHBoxDataImageList';
 import WHBoxDataSoundList from './WHBoxDataSoundList';
 import WHBoxDataOtherList from './WHBoxDataOtherList';
 import WHBoxDataAll from './WHBoxDataAll';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 
 const { TabPane } = Tabs;
-
-export default function WHFilterTab() {
+const WHFilterTab = (props) => {
   return (
     <Tabs className="tab-data" defaultActiveKey="1">
       <TabPane tab="Tất cả" key="1">
-        <WHBoxDataAll />
+        <WHBoxDataAll dataFolder = {props.activeFolder.data} />
       </TabPane>
       <TabPane tab="Video" key="2">
-        <WHBoxDataVideoList />
+        <WHBoxDataVideoList dataFolder = {props.activeFolder.data} />
       </TabPane>
       <TabPane tab="Ảnh" key="3">
-        <WHBoxDataImageList/>
+        <WHBoxDataImageList dataFolder = {props.activeFolder.data}/>
       </TabPane>
       <TabPane tab="Âm thanh" key="4">
-        <WHBoxDataSoundList />
+        <WHBoxDataSoundList dataFolder = {props.activeFolder.data} />
       </TabPane>
       <TabPane tab="Tài liệu khác" key="5">
-        <WHBoxDataOtherList />
+        <WHBoxDataOtherList dataFolder = {props.activeFolder.data} />
       </TabPane>
     </Tabs>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  return {
+    activeFolder: state.folderActiveReducer,
+  };
+};
+
+
+WHFilterTab.propTypes = {
+  activeFolder: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(WHFilterTab);
