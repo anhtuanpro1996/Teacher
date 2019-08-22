@@ -1,6 +1,7 @@
 import React from 'react';
 import {Col } from 'antd';
-
+import styleFileName from './common/commonStyle';
+import PropTypes from 'prop-types';
 
 const iconData = {
   width: '72px',
@@ -36,17 +37,10 @@ const titleIcon = {
   marginRight: '8px',
 };
 
-const titleName = {
-  height: '14px',
-  opacity: '0.9',
-  lineHeight: '1.71',
-  fontSize: '14px',
-  fontWeight: '600',
-  color: '#4a4a4a',
-  fontFamily: 'Open Sans, sans-serif',
+const titleName = styleFileName;
 
-};
-export default function WHBoxDataOtherElement() {
+export default function WHBoxDataOtherElement(props) {
+  const otherData = props.otherData;
   return (
     <Col span={6}>
       <div className="data-element">
@@ -57,9 +51,13 @@ export default function WHBoxDataOtherElement() {
         </div>
         <div className="title-data" style={titleBlock}>
           <div className="icon" style={titleIcon} />
-          <p style={titleName}>Tên file zip</p>
+          <p style={titleName} title={otherData.name}>{otherData.name}</p>
         </div>
       </div>
     </Col>
   );
 }
+
+WHBoxDataOtherElement.propTypes = {
+  otherData: PropTypes.object.isRequired,
+};

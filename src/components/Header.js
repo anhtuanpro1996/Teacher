@@ -32,7 +32,6 @@ import PropTypes from 'prop-types';
 // }
 
 function Header(props) {
-  console.log('prop', props);
   const handleSave = (text) => {
     if (text.length !== 0) {
       props.addTodo(text);

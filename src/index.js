@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import { createStore, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import TodoApp from './containers/TodoApp';
 import rootReducer from './reducers/rootReducer';
 import LayoutMain from './components/Layout';
 import './index.css';
@@ -16,36 +15,23 @@ import ManageCourse from './containers/ManageCourse/ManageCourse';
 import CreateCourses from './containers/ManageCourse/CreateCourses/CreateCourses';
 import i18next from 'i18next';
 import './i18n';
-// Dev tool
-import DevTools from './containers/DevTools';
 import {loadAuthors} from './actions/UserActions';
-import TodoList from './components/TodoList';
-import ShowUser from './containers/ShowUser';
-import { persistState } from 'redux-devtools';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {fetchFolders} from './actions/FolderActions';
 
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
 });
-
-const enhancer = compose(
-  DevTools.instrument(),
-  persistState(
-    window.location.href.match(
-      /[?&]debug_session=([^&#]+)\b/
-    )
-  )
-);
-
 // initialState
 const initialState = {};
 
 // Create store
 const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
 store.dispatch(loadAuthors());
+store.dispatch(fetchFolders());
 const appRoot = (
   <Provider store={store}>
-    {console.log('aba', store)}
+    {/* {console.log('aba', store)} */}
     <I18nextProvider i18n={i18next}>
       <Router>
         <div className="App">

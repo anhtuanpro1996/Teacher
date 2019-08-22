@@ -1,5 +1,7 @@
 import React from 'react';
 import {Col } from 'antd';
+import styleFileName from './common/commonStyle';
+import PropTypes from 'prop-types';
 
 
 const iconData = {
@@ -36,17 +38,9 @@ const titleIcon = {
   marginRight: '8px',
 };
 
-const titleName = {
-  height: '14px',
-  opacity: '0.9',
-  lineHeight: '1.71',
-  fontSize: '14px',
-  fontWeight: '600',
-  color: '#4a4a4a',
-  fontFamily: 'Open Sans, sans-serif',
-
-};
-export default function WHBoxDataSoundElement() {
+const titleName = styleFileName;
+export default function WHBoxDataSoundElement(props) {
+  const audioData = props.audioData;
   return (
     <Col span={6}>
       <div className="data-element">
@@ -57,9 +51,13 @@ export default function WHBoxDataSoundElement() {
         </div>
         <div className="title-data" style={titleBlock}>
           <div className="icon" style={titleIcon} />
-          <p style={titleName}>Tên file âm thanh</p>
+          <p style={titleName} title={audioData.name}>{ audioData.name }</p>
         </div>
       </div>
     </Col>
   );
 }
+
+WHBoxDataSoundElement.propTypes = {
+  audioData: PropTypes.object.isRequired,
+};

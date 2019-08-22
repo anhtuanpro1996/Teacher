@@ -1,12 +1,28 @@
 import React from 'react';
-import {Col } from 'antd';
-const bg_img_test = 'https://picsum.photos/id/1/200/200';
+import { Col } from 'antd';
+import styleFileName from '../components/common/commonStyle';
+import PropTypes from 'prop-types';
 
+export default function WHBoxDataImageElement(props) {
+  const imageData = props.imageData;
+  return (
+    <Col span={6}>
+      <div className="data-element">
+        <div className="image" style={imageBlock}>
+          <img src={imageData.url} style={thumbnail}/>
+        </div>
+        <div className="title-data" style={titleBlock}>
+          <div className="icon" style={titleIcon} />
+          <p style={titleName} title={imageData.name}>{imageData.name}</p>
+        </div>
+      </div>
+    </Col>
+  );
+}
 
 const thumbnail = {
   width: '100%',
   height: '128px',
-  backgroundImage: `url(${bg_img_test})`,
   backgroundRepeat: 'no-repeat',
   display: 'flex',
   justifyContent: 'center',
@@ -30,28 +46,8 @@ const titleIcon = {
   marginRight: '8px',
 };
 
-const titleName = {
-  height: '14px',
-  opacity: '0.9',
-  lineHeight: '1.71',
-  fontSize: '14px',
-  fontWeight: '600',
-  color: '#4a4a4a',
-  fontFamily: 'Open Sans, sans-serif',
+const titleName = styleFileName;
 
+WHBoxDataImageElement.propTypes = {
+  imageData: PropTypes.object.isRequired,
 };
-export default function WHBoxDataImageElement() {
-  return (
-    <Col span={6}>
-      <div className="data-element">
-        <div className="image" style={imageBlock}>
-          <div className="thumbnail" style={thumbnail} />
-        </div>
-        <div className="title-data" style={titleBlock}>
-          <div className="icon" style={titleIcon} />
-          <p style={titleName}>Tên ảnh</p>
-        </div>
-      </div>
-    </Col>
-  );
-}
