@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { } from 'react';
 import { useTranslation } from 'react-i18next';
 // import 'antd/dist/antd.css';
 import './home.css';
 import { Button } from 'antd';
 function Home() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="home">
       <div className="edumall_hi">{t('Hi EDumall')}</div>

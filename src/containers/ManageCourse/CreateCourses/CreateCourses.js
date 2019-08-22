@@ -14,12 +14,10 @@ function CreateCourses() {
   const nextPage = ()=>{
     if (curentpage < 2) {
       setCurrentPage(prevPage => prevPage + 1);
-      console.log('DCMN', curentpage);
-      if (curentpage == 0) {
+      if (curentpage === 0) {
         handleActive(1);
-        console.log('DCMN', active);
       }
-      if (curentpage == 1) {
+      if (curentpage === 1) {
         handleActive(2);
       }
     }
@@ -28,16 +26,16 @@ function CreateCourses() {
     if (curentpage >= 1) {
       setCurrentPage(prevPage => prevPage - 1);
     }
-    if (curentpage == 1) {
+    if (curentpage === 1) {
       handleActive(0);
     }
-    if (curentpage == 2) {
+    if (curentpage === 2) {
       handleActive(1);
     }
   };
   const handleActive = (index)=>{
     for (const key in active) {
-      if (index == key) {
+      if (index === parseInt(key)) {
         setActive(prevState =>({...prevState, [key]: 'active'}));
       } else {
         setActive(prevState =>({...prevState, [key]: ''}));
@@ -71,8 +69,8 @@ function CreateCourses() {
       </div>
       <InfoTab />
       <Col className="gutter-row button-div" span={24}>
-        <Button className={'btn-common cancel-btn' + (curentpage == 0  ? '' : ' di-active')}>Hủy bỏ</Button>
-        <Button className={'btn-common cancel-btn' + (curentpage == 1  ? '' : ' di-active')} onClick={()=>previousPage()} >Quay lại</Button>
+        <Button className={'btn-common cancel-btn' + (curentpage === 0  ? '' : ' di-active')}>Hủy bỏ</Button>
+        <Button className={'btn-common cancel-btn' + (curentpage === 1  ? '' : ' di-active')} onClick={()=>previousPage()} >Quay lại</Button>
         <Button className="btn-common next-btn" onClick={()=>nextPage()} >Tiếp tục</Button>
       </Col>
     </Row>
