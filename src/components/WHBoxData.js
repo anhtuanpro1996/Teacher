@@ -10,6 +10,7 @@ const WHBoxData = (props) => {
   console.log('WHBoxData', props);
   return (
     <React.Fragment>
+      <WHListFolder/>
       <div className="folder-data">
         <FilterTab />
       </div>
