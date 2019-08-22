@@ -35,7 +35,7 @@ function CreateCourses() {
   };
   const handleActive = (index)=>{
     for (const key in active) {
-      if (index === key) {
+      if (index === parseInt(key)) {
         setActive(prevState =>({...prevState, [key]: 'active'}));
       } else {
         setActive(prevState =>({...prevState, [key]: ''}));
