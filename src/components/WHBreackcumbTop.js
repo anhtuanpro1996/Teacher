@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const chevronRight = {
   width: '24px',
   height: '24px',
-  backgroundImage: "url('/images/icon/folder.png')",
+  backgroundImage: "url('/images/icon/che.png')",
 };
 const WHBreackcumbTop = (props) => {
   const data = props.activeFolder.data;
