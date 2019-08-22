@@ -1,6 +1,6 @@
-import React, {useState, useReducer, useEffect} from 'react';
+import React, {useState, useReducer} from 'react';
 import { useTranslation } from 'react-i18next';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Row, Col, Select, Input } from 'antd';
 
 const { Option } = Select;
@@ -8,9 +8,6 @@ const { Option } = Select;
 function MCreateInfoCourse() {
   const { t } = useTranslation();
   const [coursesName, setcoursesName] = useState('');
-  useEffect(() => {
-    setcoursesName(coursesName => coursesName);
-  });
   const [benefit, dispatch] = useReducer((myArray, { type, value, stt }) => {
     switch (type) {
     case 'addbenefit':
@@ -18,7 +15,7 @@ function MCreateInfoCourse() {
     case 'removebenefit':
       return myArray.filter((_, index) => index !== stt);
     case 'editbenefit':
-      return myArray.map((todo, index) => index === stt ? todo = value : todo = todo);
+      return myArray.map((todo, index) => index === stt ? value : todo);
     default:
       return myArray;
     }
@@ -30,7 +27,7 @@ function MCreateInfoCourse() {
     case 'removeAudience':
       return myArray.filter((_, index) => index !== stt);
     case 'editAudience':
-      return myArray.map((todo, index) => index === stt ? todo = value : todo = todo);
+      return myArray.map((todo, index) => index === stt ? value : todo );
     default:
       return myArray;
     }
@@ -42,7 +39,7 @@ function MCreateInfoCourse() {
     case 'removeRequirements':
       return myArray.filter((_, index) => index !== stt);
     case 'editRequirements':
-      return myArray.map((todo, index) => index === stt ? todo = value : todo = todo);
+      return myArray.map((todo, index) => index === stt ? value : todo);
     default:
       return myArray;
     }
@@ -86,22 +83,22 @@ function MCreateInfoCourse() {
     }
   };
   const AddBenefit = (e, type, key)=>{
-    if (type == 'benefit') {
+    if (type === 'benefit') {
       dispatch({ type: 'editbenefit', value: e.target.value, stt: key});
     }
-    if (type == 'audience') {
+    if (type === 'audience') {
       dispatchAudience({ type: 'editAudience', value: e.target.value, stt: key});
     }
-    if (type == 'requirements') {
+    if (type === 'requirements') {
       dispatchRequirements({ type: 'editRequirements', value: e.target.value, stt: key});
     }
   };
   const generateDiv = (type) => {
-    if (type == 'benefit') {
+    if (type === 'benefit') {
       return (
         <React.Fragment>
           {benefit.map( (item, key) => < div key={key} className="common-div-detail">
-            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item == '' ? null : item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
+            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item === '' ? null : item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
             <div className="common-div-close-btn" onClick = {() => handleRemove(type, key)}>
               <div className="icon-close" style={{WebkitMask: 'url(/images/icon/closeimg.png) no-repeat 50% 50%'}}/>
             </div>
@@ -109,11 +106,11 @@ function MCreateInfoCourse() {
         </React.Fragment>
       );
     }
-    if (type == 'audience') {
+    if (type === 'audience') {
       return (
         <React.Fragment>
           {audience.map( (item, key) => < div key={key} className="common-div-detail">
-            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item == '' ? null : item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
+            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item === '' ? null : item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
             <div className="common-div-close-btn" onClick = {() => handleRemove(type, key)}>
               <div className="icon-close" style={{WebkitMask: 'url(/images/icon/closeimg.png) no-repeat 50% 50%'}}/>
             </div>
@@ -121,11 +118,11 @@ function MCreateInfoCourse() {
         </React.Fragment>
       );
     }
-    if (type == 'requirements') {
+    if (type === 'requirements') {
       return (
         <React.Fragment>
           {requirements.map( (item, key) => < div key={key} className="common-div-detail">
-            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item == '' ? null : item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
+            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item === '' ? null : item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
             <div className="common-div-close-btn" onClick = {() => handleRemove(type, key)}>
               <div className="icon-close" style={{WebkitMask: 'url(/images/icon/closeimg.png) no-repeat 50% 50%'}}/>
             </div>
@@ -167,7 +164,7 @@ function MCreateInfoCourse() {
             <div className="M-info-detail-name">
               <div className="M-info-detail-name-cate">Tên khóa học</div>
               <Input value={coursesName} maxLength={70} className="M-info-detail-name-txt"  placeholder="VD: Thành thạo Tiếng Anh trong 30 ngày" onChange={(e)=>inputNameCourses(e)}/>
-              <div className={'M-info-count' + (coursesName.length == 0 ? ' di-active' : '')}>{70 - coursesName.length}</div>
+              <div className={'M-info-count' + (coursesName.length === 0 ? ' di-active' : '')}>{70 - coursesName.length}</div>
             </div>
             <div className="M-category">
               <div className="M-category-1">
