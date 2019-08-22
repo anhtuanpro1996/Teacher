@@ -23,29 +23,25 @@ const folderName = {
 };
 
 function WHListFolder(props) {
-  const rawdata = props.listFolder;
-  const childFolders = rawdata.folders.childFolders;
-  const clickedFolder = props.folderClicked;
+  console.log(props);
+  // const rawdata = props.listFolder;
+  // const childFolders = rawdata.folders.childFolders;
+  // const clickedFolder = props.folderClicked;
   return (
     <div className="list-folder">
-      {(rawdata.loading) ? renderFolder(childFolders, clickedFolder) : loading()}
+      {/* {(rawdata.loading) ? renderFolder(childFolders, clickedFolder) : loading()} */}
+      {renderFolder(props.listFolder)}
     </div>
   );
 };
 
-const markFolderAction = () => {
-  console.log(this);
-};
+
 const renderFolder = (folders, action) => {
-  const onClick = (data) => {
-    action(data);
-    markFolderAction();
-  };
   return (
     <Row gutter={16}>
       {folders.map((item, index) => {
         return (
-          <Col onClick={() => onClick(item)} key={index} className="ant-col-8-cus" span={8}>
+          <Col onClick={() => action(item)} key={index} className="ant-col-8-cus" span={8}>
             <div className="course-element">
               <div className="folder-icon" style={iconFolder}/>
               <p className="folder-name" style={folderName} title={item.name}>
@@ -58,28 +54,23 @@ const renderFolder = (folders, action) => {
     </Row>
   );
 };
-const loading = () => {
-  return (
-    <div className="loader"/>
-  );
-};
 
-const mapStateToProps = (state) => {
-  return {
-    listFolder: state.foldersReducer,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     listFolder: state.foldersReducer,
+//   };
+// };
 
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({folderClicked: folderClicked}, dispatch);
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return bindActionCreators({folderClicked: folderClicked}, dispatch);
+// };
 WHListFolder.propTypes = {
-  listFolder: PropTypes.object.isRequired,
-  folderClicked: PropTypes.func.isRequired,
+  listFolder: PropTypes.array.isRequired,
 };
 
+export default WHListFolder;
 
-export default connect(mapStateToProps, mapDispatchToProps)(WHListFolder);
+// export default connect(mapStateToProps, mapDispatchToProps)(WHListFolder);
 
 

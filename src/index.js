@@ -18,6 +18,7 @@ import './i18n';
 import {loadAuthors} from './actions/UserActions';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {fetchFolders} from './actions/FolderActions';
+import { fetchRootFolders } from './actions/thunks/fetchRootFolders';
 
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
@@ -29,6 +30,7 @@ const initialState = {};
 const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
 store.dispatch(loadAuthors());
 store.dispatch(fetchFolders());
+store.dispatch(fetchRootFolders());
 const appRoot = (
   <Provider store={store}>
     {/* {console.log('aba', store)} */}

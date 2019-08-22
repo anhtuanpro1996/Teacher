@@ -1,7 +1,7 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 import { Select } from 'antd';
-import WHBreackcumbTop from './WHBreackcumbTop';
+import WHBreadcrumbTop from './WHBreadcrumbTop';
 
 const { Option } = Select;
 // style css
@@ -58,7 +58,7 @@ const WarehouseTopList = ({t}) =>(
   <div style={topList}>
     <div style={nameWareHourse}>
       <p>{t('Data Warehouse')}</p>
-      <WHBreackcumbTop/>
+      <WHBreadcrumbTop/>
     </div>
     <div className="selectDoc" style={selectDoc}>
       <div className="icon-menu" />
