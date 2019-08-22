@@ -2,7 +2,7 @@ import React  from 'react';
 // import { useTranslation } from 'react-i18next';
 import 'antd/dist/antd.css';
 import { Menu } from 'antd';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import './manage_course.css';
 import CourseElement from '../../components/CourseElement';
 
