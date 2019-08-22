@@ -5,13 +5,15 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchRootFolderSuccess } from '../actions/RootFolderAction';
 import WarehouseNoDocument from './WarehouseNoDocument';
+import { getChildFolderData } from '../actions/thunks/fetchChildFolders';
 
 
 const WHBoxData = (props) => {
   const dataRootFolder = props.dataRootFolder;
+  // console.log('WHBoxData-child',dataRootFolder);
   return (
     <React.Fragment>
-      {!dataRootFolder.pending ? renderRootFolder(dataRootFolder) : ''}
+      {dataRootFolder.pending ? renderRootFolder(dataRootFolder) : ''}
     </React.Fragment>
   );
 };
@@ -19,7 +21,6 @@ const WHBoxData = (props) => {
 const renderRootFolder = (dataRaw) => {
   const listFile = dataRaw.datas.files;
   const listFolder = dataRaw.datas.childFolders;
-
   if (listFile.length === 0 && listFolder.length > 0) {
     return (
       <WHListFolder listFolder = { listFolder } />
@@ -28,14 +29,14 @@ const renderRootFolder = (dataRaw) => {
 
   if (listFile.length > 0 && listFolder.length === 0) {
     return (
-      <FilterTab />
+      <FilterTab listFile={listFile} />
     );
   };
   if (listFolder.length > 0 && listFile.length > 0) {
     return (
       <React.Fragment>
         <WHListFolder listFolder = {listFolder}/>
-        <FilterTab />
+        <FilterTab listFile = {listFile} />
       </React.Fragment>
     );
   };
@@ -47,13 +48,13 @@ const renderRootFolder = (dataRaw) => {
 
 const mapStateToProps = (state) => {
   return {
-    dataRootFolder: state.folderRootReducer,
+    dataRootFolder: state.childFolderReducer,
   };
 };
 
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({fetchRootFolderSuccess: fetchRootFolderSuccess}, dispatch);
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return bindActionCreators({fetchRootFolderSuccess: getChildFolderData}, dispatch);
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WHBoxData);
+export default connect(mapStateToProps)(WHBoxData);

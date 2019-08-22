@@ -57,7 +57,6 @@ function handleChange(value) {
 const WarehouseTopList = ({t}) =>(
   <div style={topList}>
     <div style={nameWareHourse}>
-      <p>{t('Data Warehouse')}</p>
       <WHBreadcrumbTop/>
     </div>
     <div className="selectDoc" style={selectDoc}>

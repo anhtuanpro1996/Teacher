@@ -6,7 +6,6 @@ import WarehouseTopList from '../../components/WarehouseTopList';
 import NoDocument from '../../components/WarehouseNoDocument';
 import WHBoxData from '../../components/WHBoxData';
 import WHListFolder from '../../components/WHListFolder';
-import * as FolderActions from '../../actions/FolderActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 

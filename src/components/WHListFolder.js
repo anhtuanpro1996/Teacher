@@ -3,7 +3,7 @@ import { Row, Col  } from 'antd';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { folderClicked } from '../actions/FolderActions';
+import { getChildFolderData } from '../actions/thunks/fetchChildFolders';
 
 const iconFolder = {
   width: '32px',
@@ -23,25 +23,19 @@ const folderName = {
 };
 
 function WHListFolder(props) {
-  console.log(props);
-  // const rawdata = props.listFolder;
-  // const childFolders = rawdata.folders.childFolders;
-  // const clickedFolder = props.folderClicked;
   return (
     <div className="list-folder">
       {/* {(rawdata.loading) ? renderFolder(childFolders, clickedFolder) : loading()} */}
-      {renderFolder(props.listFolder)}
+      {renderFolder(props.listFolder, props.folderClicked)}
     </div>
   );
 };
-
-
 const renderFolder = (folders, action) => {
   return (
     <Row gutter={16}>
       {folders.map((item, index) => {
         return (
-          <Col onClick={() => action(item)} key={index} className="ant-col-8-cus" span={8}>
+          <Col onClick={() => action(item.id)} key={index} className="ant-col-8-cus" span={8}>
             <div className="course-element">
               <div className="folder-icon" style={iconFolder}/>
               <p className="folder-name" style={folderName} title={item.name}>
@@ -55,22 +49,22 @@ const renderFolder = (folders, action) => {
   );
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     listFolder: state.foldersReducer,
-//   };
-// };
+const mapStateToProps = (state) => {
+  return {
+    listChildFolder: state.childFolderReducer,
+  };
+};
 
 
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators({folderClicked: folderClicked}, dispatch);
-// };
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({folderClicked: getChildFolderData}, dispatch);
+};
 WHListFolder.propTypes = {
   listFolder: PropTypes.array.isRequired,
 };
 
-export default WHListFolder;
+// export default WHListFolder;
 
-// export default connect(mapStateToProps, mapDispatchToProps)(WHListFolder);
+export default connect(mapStateToProps, mapDispatchToProps)(WHListFolder);
 
 

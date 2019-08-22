@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 export default function WHBoxDataOtherList(props) {
-  const listOther = props.dataFolder.files.filter((value)=>{
+  const listOther = props.dataFiles.filter((value)=>{
     return value.fileType === 'OTHER';
   });
   return (
@@ -20,5 +20,5 @@ export default function WHBoxDataOtherList(props) {
 }
 
 WHBoxDataOtherList.propTypes = {
-  dataFolder: PropTypes.object.isRequired,
+  dataFiles: PropTypes.array.isRequired,
 };
