@@ -8,7 +8,7 @@ export default function WHBoxDataImageList(props) {
   const listImage = props.dataFiles.filter((value)=>{
     return value.fileType === 'IMAGE';
   });
-  const menu = <ContextMenu />;
+  const menu = <ContextMenu data ={{name: 'quanbh'}} />;
   return (
     <div>
       <Row gutter={16}>

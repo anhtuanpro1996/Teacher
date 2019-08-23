@@ -53,7 +53,7 @@ const iconData = {
   WebkitMask: "url('/images/icon/play-circle.png') no-repeat 50% 50%",
   WebkitMaskSize: '100%',
   marginTop: '-76px',
-  marginLeft: '76px',
+  marginLeft: '45%',
 };
 
 
