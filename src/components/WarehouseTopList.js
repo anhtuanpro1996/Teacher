@@ -1,6 +1,7 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 import { Select } from 'antd';
+import WHBreadcrumbTop from './WHBreadcrumbTop';
 
 const { Option } = Select;
 // style css
@@ -21,6 +22,7 @@ const nameWareHourse = {
   width: 'calc(100% - 133px)',
   float: 'left',
   paddingTop: '16px',
+  display: 'flex',
 };
 
 const selectDoc = {
@@ -54,7 +56,9 @@ function handleChange(value) {
 
 const WarehouseTopList = ({t}) =>(
   <div style={topList}>
-    <p style={nameWareHourse}>{t('Data Warehouse')}</p>
+    <div style={nameWareHourse}>
+      <WHBreadcrumbTop/>
+    </div>
     <div className="selectDoc" style={selectDoc}>
       <div className="icon-menu" />
       <Select className="selectVal" style={selectVal} defaultValue="time" onChange={handleChange}>

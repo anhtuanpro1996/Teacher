@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import './Warehouse.css';
 import TopWarehouse from '../../components/WarehouseTop';
 import WarehouseTopList from '../../components/WarehouseTopList';
 import WHBoxData from '../../components/WHBoxData';
-import WHListFolder from '../../components/WHListFolder';
 
 function Warehouse() {
   const { t } = useTranslation();
@@ -15,7 +14,6 @@ function Warehouse() {
         <div className="listWarehouse">
           <WarehouseTopList />
           {/* { (folders.loading) ? <WHListFolder folders= { folders } /> : 'Loading'} */}
-          <WHListFolder />
           <WHBoxData />
         </div>
       </div>

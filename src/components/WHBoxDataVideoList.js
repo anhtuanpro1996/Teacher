@@ -4,7 +4,7 @@ import WHBoxDataVideoElement from './WHBoxDataVideoElement';
 import PropTypes from 'prop-types';
 
 export default function WHBoxDataVideoList(props) {
-  const listVideo = props.dataFolder.files.filter((value)=>{
+  const listVideo = props.dataFiles.filter((value)=>{
     return value.fileType === 'VIDEO';
   });
   return (
@@ -20,5 +20,5 @@ export default function WHBoxDataVideoList(props) {
 
 
 WHBoxDataVideoList.propTypes = {
-  dataFolder: PropTypes.object.isRequired,
+  dataFiles: PropTypes.array.isRequired,
 };
