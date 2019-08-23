@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
-import { getChildFolderData } from '../actions/thunks/fetchChildFolders';
+import { clickedBreadcumb } from '../actions/thunks/fetchChildFolders';
 
 const chevronRight = {
   width: '24px',
@@ -17,29 +17,32 @@ const WHBreadcrumbTop = (props) => {
   const data = props.activeFolder.breadcumb;
   return (
     <React.Fragment>
-      {(props.activeFolder.pending) ? renderBreadcrumbItem(data) : ''}
+      {(props.activeFolder.pending) ? renderBreadcrumbItem(data, props.breadcumbClicked) : ''}
     </React.Fragment>
   );
 };
 
-const renderBreadcrumbItem = (data) => {
-  console.log('renderBreadcrumbItem', data);
+const handleClickBreadcumb = (arr, index, action) => {
+  const newArr = arr.filter((value, key) => {
+    return key <= index;
+  });
+  const currentItem = newArr[newArr.length - 1];
+  action(newArr, currentItem.id);
+  // action(currentItem.id);
+};
 
+const renderBreadcrumbItem = (data, action) => {
   return (
     <React.Fragment>
       {data.map((value, key) => {
         return (
           <div key={key} className="listBC" style={listBC}>
             {(key === 0) ? '' : <div className="chevronRight" style={chevronRight}/>}
-            <p>{value.title}</p>
+            <p onClick={() => handleClickBreadcumb(data, key, action)}>{value.title}</p>
           </div>
         );
       })}
     </React.Fragment>
-    // <React.Fragment>
-    //   <p onClick={() => action()} style={{cursor:'pointer'}}>{data.name}</p>
-    //   <div className="chevronRight" style={chevronRight}/>
-    // </React.Fragment>
   );
 };
 const mapStateToProps = (state) => {
@@ -48,7 +51,7 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({folderClick: getChildFolderData}, dispatch);
+  return bindActionCreators({breadcumbClicked: clickedBreadcumb}, dispatch);
 };
 
 
