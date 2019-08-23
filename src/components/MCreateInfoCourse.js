@@ -98,7 +98,7 @@ function MCreateInfoCourse() {
       return (
         <React.Fragment>
           {benefit.map( (item, key) => < div key={key} className="common-div-detail">
-            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item === '' ? null : item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
+            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item === '' ? null : item} placeholder={t('CreateCoursesPage', {returnObjects: true}).benefitPlaceholder} />
             <div className="common-div-close-btn" onClick = {() => handleRemove(type, key)}>
               <div className="icon-close" style={{WebkitMask: 'url(/images/icon/closeimg.png) no-repeat 50% 50%'}}/>
             </div>
@@ -110,7 +110,7 @@ function MCreateInfoCourse() {
       return (
         <React.Fragment>
           {audience.map( (item, key) => < div key={key} className="common-div-detail">
-            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item === '' ? null : item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
+            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item === '' ? null : item} placeholder={t('CreateCoursesPage', {returnObjects: true}).audiencePlaceholder} />
             <div className="common-div-close-btn" onClick = {() => handleRemove(type, key)}>
               <div className="icon-close" style={{WebkitMask: 'url(/images/icon/closeimg.png) no-repeat 50% 50%'}}/>
             </div>
@@ -122,7 +122,7 @@ function MCreateInfoCourse() {
       return (
         <React.Fragment>
           {requirements.map( (item, key) => < div key={key} className="common-div-detail">
-            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item === '' ? null : item} placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
+            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item === '' ? null : item} placeholder={t('CreateCoursesPage', {returnObjects: true}).RequirePlaceholder} />
             <div className="common-div-close-btn" onClick = {() => handleRemove(type, key)}>
               <div className="icon-close" style={{WebkitMask: 'url(/images/icon/closeimg.png) no-repeat 50% 50%'}}/>
             </div>
@@ -163,7 +163,7 @@ function MCreateInfoCourse() {
           <div className="M-info-detail">
             <div className="M-info-detail-name">
               <div className="M-info-detail-name-cate">Tên khóa học</div>
-              <Input value={coursesName} maxLength={70} className="M-info-detail-name-txt"  placeholder="VD: Thành thạo Tiếng Anh trong 30 ngày" onChange={(e)=>inputNameCourses(e)}/>
+              <Input value={coursesName} maxLength={70} className="M-info-detail-name-txt"  placeholder={t('CreateCoursesPage', {returnObjects: true}).NameCouresPlaceholder} onChange={(e)=>inputNameCourses(e)}/>
               <div className={'M-info-count' + (coursesName.length === 0 ? ' di-active' : '')}>{70 - coursesName.length}</div>
             </div>
             <div className="M-category">
@@ -227,7 +227,7 @@ function MCreateInfoCourse() {
           <div title="World Health Organization" className="common-suggest"/>
         </div>
         <div className="common-div-detail">
-          <Input className="common-div-description" placeholder="VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả" />
+          <Input.TextArea className="common-div-description" placeholder={t('CreateCoursesPage', {returnObjects: true}).DescriptionPlaceholder} />
         </div>
       </Col>
     </Row>
