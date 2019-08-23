@@ -148,7 +148,7 @@
   border-radius: 4px;
   height: 40px;
   padding-left: 16px;
-  height: 100px;
+  height: 100px !important;
 }
 .common-div-close-btn{
   width: 5%;
