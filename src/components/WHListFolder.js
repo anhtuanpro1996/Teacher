@@ -23,6 +23,7 @@ const folderName = {
 };
 
 function WHListFolder(props) {
+  // console.log('WHListFolder',props);
   return (
     <div className="list-folder">
       {/* {(rawdata.loading) ? renderFolder(childFolders, clickedFolder) : loading()} */}

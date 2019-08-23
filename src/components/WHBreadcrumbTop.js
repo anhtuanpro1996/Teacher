@@ -9,25 +9,37 @@ const chevronRight = {
   height: '24px',
   backgroundImage: "url('/images/icon/chevron-right-24-px.png')",
 };
+const listBC = {
+  display: 'flex',
+  cursor: 'pointer',
+};
 const WHBreadcrumbTop = (props) => {
-  const data = props.activeFolder.datas;
+  const data = props.activeFolder.breadcumb;
   return (
     <React.Fragment>
-      {(props.activeFolder.pending) ? renderBreadcrumbItem(data,test) : ''}
+      {(props.activeFolder.pending) ? renderBreadcrumbItem(data) : ''}
     </React.Fragment>
   );
 };
 
-const test = () => {
-  console.log('aaaa');
-};
+const renderBreadcrumbItem = (data) => {
+  console.log('renderBreadcrumbItem', data);
 
-const renderBreadcrumbItem = (data,action) => {
   return (
     <React.Fragment>
-      <p onClick={() => action()} style={{cursor:'pointer'}}>{data.name}</p>
-      <div className="chevronRight" style={chevronRight}/>
+      {data.map((value, key) => {
+        return (
+          <div key={key} className="listBC" style={listBC}>
+            {(key === 0) ? '' : <div className="chevronRight" style={chevronRight}/>}
+            <p>{value.title}</p>
+          </div>
+        );
+      })}
     </React.Fragment>
+    // <React.Fragment>
+    //   <p onClick={() => action()} style={{cursor:'pointer'}}>{data.name}</p>
+    //   <div className="chevronRight" style={chevronRight}/>
+    // </React.Fragment>
   );
 };
 const mapStateToProps = (state) => {
