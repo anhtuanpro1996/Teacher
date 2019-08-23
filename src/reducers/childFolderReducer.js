@@ -12,6 +12,12 @@ const childFolderReducer = (state = childFolderInitialState, action) => {
       datas: action.payload,
       breadcumb: [...state.breadcumb, {id: action.payload.id, title: action.payload.name}],
     };
+  case 'FETCH_DATA_BREADCUMB_SUCCESS':
+    return {
+      ...state,
+      datas: action.payload.res,
+      breadcumb: action.payload.breadcumb,
+    };
   default:
     return state;
   }
