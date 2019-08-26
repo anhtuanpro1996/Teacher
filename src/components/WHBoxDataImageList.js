@@ -8,17 +8,13 @@ export default function WHBoxDataImageList(props) {
   const listImage = props.dataFiles.filter((value)=>{
     return value.fileType === 'IMAGE';
   });
-  const menu = <ContextMenu data ={{name: 'quanbh'}} />;
+  // const menu = <ContextMenu data ={{name: 'quanbh'}} />;
   return (
     <div>
       <Row gutter={16}>
         {listImage.map((item, index) => {
           return (
-            <Dropdown overlay={menu} trigger={['contextMenu']} key={index}>
-              <div>
-                <WHBoxDataImageElement imageData = {item} />
-              </div>
-            </Dropdown>
+            <WHBoxDataImageElement imageData = {item} key={index} index={index} />
           );
         })}
       </Row>

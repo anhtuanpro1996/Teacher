@@ -1,22 +1,26 @@
 import React from 'react';
-import { Col } from 'antd';
+import { Col, Dropdown } from 'antd';
 import styleFileName from '../components/common/commonStyle';
 import PropTypes from 'prop-types';
+import ContextMenu from './Context/ContextMenu';
 
 export default function WHBoxDataImageElement(props) {
   const imageData = props.imageData;
+  const menu = <ContextMenu dataContext = {imageData} />;
   return (
-    <Col span={6}>
-      <div className="data-element">
-        <div className="image" style={imageBlock}>
-          <img src={imageData.url} style={thumbnail}/>
+    <Dropdown overlay={menu} trigger={['contextMenu']}>
+      <Col span={6}>
+        <div className="data-element">
+          <div className="image" style={imageBlock}>
+            <img src={imageData.url} style={thumbnail}/>
+          </div>
+          <div className="title-data" style={titleBlock}>
+            <div className="icon" style={titleIcon} />
+            <p style={titleName} title={imageData.name}>{imageData.name}</p>
+          </div>
         </div>
-        <div className="title-data" style={titleBlock}>
-          <div className="icon" style={titleIcon} />
-          <p style={titleName} title={imageData.name}>{imageData.name}</p>
-        </div>
-      </div>
-    </Col>
+      </Col>
+    </Dropdown>
   );
 }
 
