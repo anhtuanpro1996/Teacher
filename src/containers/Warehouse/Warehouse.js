@@ -12,6 +12,7 @@ function Warehouse(props) {
   const { t } = useTranslation();
   let popupProgressUpload;
 
+  // eslint-disable-next-line react/prop-types
   if (props.upload.length > 1) {
     popupProgressUpload = (
       <div className="wrapperProgress">

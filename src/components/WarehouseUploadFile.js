@@ -21,10 +21,43 @@ function WareHouseUploadFile(props) {
 
   const handleChange = () => {
     const files = inputEl.current.files;
-    actions.getDataUpload(files);
-    // for (let i = 0; i < files.length; i++) {
-    //   console.log('fle la:', files[i]);
-    // }
+    const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+    const infoFile = { 'listFile': files, 'folderId': 7 };
+    axios.post('http://171.16.0.31:8081/files', infoFile, config)
+      .then(response => {
+        console.log('uploaddddd', response);
+      })
+      .catch(error => {
+        console.log('falseUpload', error);
+      });
+    // actions.getDataUpload(files);
+
+    // const headers = {
+    //   'Content-Type': 'application/json',
+    // };
+    // const data = {'folder_id': 7, 'list_file_name': ['Menu_005.png']};
+    // axios.post('http://171.16.0.31:8081/files/check-duplicate-filename', data, headers)
+    //   .then(res => {
+    //     console.log('aaaaaaaa', res.data);
+    //     if (res.data.isExit === true) {
+    //       // upload file trung
+    //     } else {
+    //       // upload file ko trung
+    //       const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+    //       const infoFile = { 'listFile': files, 'folderId': 7 };
+    //       console.log('infoFile:', infoFile);
+    //       axios.post('http://171.16.0.31:8081/files', infoFile, config)
+    //         .then(response => {
+    //           console.log('uploaddddd', response);
+    //         })
+    //         .catch(error => {
+    //           console.log('falsUpload', error);
+    //         });
+    //     }
+    //   })
+    //   .catch(error => {
+    //     console.log('bbbbbbbbbbb', error.response);
+    //   });
   };
 
   return (
