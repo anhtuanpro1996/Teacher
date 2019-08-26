@@ -21,14 +21,35 @@ function WareHouseUploadFile(props) {
 
   const handleChange = () => {
     const files = inputEl.current.files;
-    const config = { headers: { 'Content-Type': 'multipart/form-data' } };
-    const infoFile = { 'listFile': files, 'folderId': 7 };
-    axios.post('http://171.16.0.31:8081/files', infoFile, config)
-      .then(response => {
-        console.log('uploaddddd', response);
+    // const infoFile = { 'listFile': files, 'folderId': 7 };
+    // debugger;
+    const form = new FormData();
+    form.append('listFile', files);
+    // for (let i = 0; i < files.length; i++) {
+    // form.append('listFie', '/home/anhtuan96/Desktop/Bee.jpg');
+    // };
+    form.append('folderId', '7');
+    // axios.post('http://171.16.0.31:8081/files', form, config: { headers: {'Content-Type': 'multipart/form-data' }})
+    //   .then(response => {
+    //     console.log('uploaddddd', response);
+    //   })
+    //   .catch(error => {
+    //     console.log('falseUpload', error);
+    //   });
+
+    axios({
+      method: 'post',
+      url: 'http://171.16.0.31:8081/files',
+      data: form,
+      config: { headers: {'Content-Type': 'multipart/form-data' }},
+    })
+      .then(function(response) {
+        // handle success
+        console.log(response);
       })
-      .catch(error => {
-        console.log('falseUpload', error);
+      .catch(function(response) {
+        // handle error
+        console.log(response);
       });
     // actions.getDataUpload(files);
 
