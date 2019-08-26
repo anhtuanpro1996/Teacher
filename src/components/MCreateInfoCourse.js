@@ -1,11 +1,15 @@
-import React, {useState, useReducer} from 'react';
+import React, {useState, useReducer, useEffect, useRef} from 'react';
 import { useTranslation } from 'react-i18next';
-// import PropTypes from 'prop-types';
-import { Row, Col, Select, Input } from 'antd';
+import { bindActionCreators } from 'redux';
+import { Row, Col, Select, Input, Button } from 'antd';
+import { connect } from 'react-redux';
+import * as CourseActions from '../actions/CourseActions';
 
 const { Option } = Select;
 
-function MCreateInfoCourse() {
+function MCreateInfoCourse(props) {
+  console.log('hihi', props);
+  const {courseinfo, actions} = props;
   const { t } = useTranslation();
   const [coursesName, setcoursesName] = useState('');
   const [benefit, dispatch] = useReducer((myArray, { type, value, stt }) => {
@@ -156,6 +160,13 @@ function MCreateInfoCourse() {
       setcoursesName(only70c);
     }
   };
+  const CancelPage = () =>{
+    console.log('a');
+  };
+  const setPage = () => {
+    console.log('actions', actions);
+    actions.SetActivePage({page: 1});
+  };
   return (
     <Row>
       <Col className="gutter-row" span={20}>
@@ -230,11 +241,22 @@ function MCreateInfoCourse() {
           <Input.TextArea className="common-div-description" placeholder={t('CreateCoursesPage', {returnObjects: true}).DescriptionPlaceholder} />
         </div>
       </Col>
+      <Col className="gutter-row button-div" span={24}>
+        <Button className="btn-common cancel-btn" onClick={() => CancelPage()}>Hủy bỏ</Button>
+        {/* <Button className={'btn-common cancel-btn' + (curentpage === 1  ? '' : ' di-active')} onClick={()=>previousPage()} >Quay lại</Button> */}
+        <Button className="btn-common next-btn" onClick={()=>setPage()} > Lưu và tiếp tục</Button>
+      </Col>
     </Row>
 
   );
 }
-// MCreateInfoCourse.propTypes = {
-//   t: PropTypes.any.isRequired,
-// };
-export default MCreateInfoCourse;
+
+const mapStateToProps = (state) => ({
+  courseinfo: state.courseReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(CourseActions, dispatch),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(MCreateInfoCourse);
+
