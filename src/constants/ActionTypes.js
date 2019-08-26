@@ -6,3 +6,7 @@ export const MARK_ALL = 'MARK_ALL';
 export const CLEAR_MARKED = 'CLEAR_MARKED';
 export const GET_FOLDER_LIST = 'SHOW_FOLDERS';
 export const SELECT_FOLDER = 'SELECT_FOLDER';
+export const CREATE_COURSE_INFOS = 'CREATE_COURSE_INFOS';
+export const SET_COURSE_INFOS = 'SET_COURSE_INFOS';
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+export const SET_ACTIVE_PAGE = 'SET_ACTIVE_PAGE';
