@@ -1,7 +1,6 @@
 import React from 'react';
 import { Row, Dropdown } from 'antd';
 import WHBoxDataImageElement from './WHBoxDataImageElement';
-import ContextMenu from './Context/ContextMenu';
 import PropTypes from 'prop-types';
 
 export default function WHBoxDataImageList(props) {

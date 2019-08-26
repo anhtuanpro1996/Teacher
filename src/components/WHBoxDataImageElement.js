@@ -2,11 +2,12 @@ import React from 'react';
 import { Col, Dropdown } from 'antd';
 import styleFileName from '../components/common/commonStyle';
 import PropTypes from 'prop-types';
-import ContextMenu from './Context/ContextMenu';
+import ImageContextMenu from './Context/ImageContextMenu';
+
 
 export default function WHBoxDataImageElement(props) {
   const imageData = props.imageData;
-  const menu = <ContextMenu dataContext = {imageData} />;
+  const menu = <ImageContextMenu dataContext = {imageData}/>;
   return (
     <Dropdown overlay={menu} trigger={['contextMenu']}>
       <Col span={6}>
