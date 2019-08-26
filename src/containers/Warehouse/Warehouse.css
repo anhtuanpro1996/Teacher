@@ -144,6 +144,10 @@ body{
   background-color: red ;
 }
 
+.uploadSuccess {
+  background-color: #00c48c !important;
+}
+
 .wrapperWarehouse .folder-data .data-element {
   height: 188px;
   margin-bottom: 16px;
@@ -155,4 +159,84 @@ body{
 .wrapperWarehouse .folder-data .data-element .thumbnail {
   height: 128px;
 }
+.wrapperProgress{
+  width: 416px;
+  height: 248px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  border-radius: 8px;
+  border: solid 1px #e4e4e4;
+  background-color: #fff;
+}
+.wrapperProgress > .topProgress{
+  width: 100%;
+  height: 48px;
+  opacity: 0.75;
+  border-top-left-radius: 8px;
+  background-color: #202020;
+  padding: 12px 16px;
+}
+.topProgress > .txtProgress{
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.44;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+}
+.wrapperProgress > .progressFile {
+  padding: 16px;
+  width: 100%;
+  overflow: scroll;
+  overflow-x: unset;
+  max-height: 200px;
+}
 
+.progressFile > .infoProgress{
+  width: 100%;
+  height: 40px;
+  margin-bottom: 4px;
+}
+.infoProgress > .iconFileType,.infoProgress > .iconAction{
+  width: 24px;
+  height: 24px;
+  background-color: #646d84;
+  float: left;
+  margin-top: 8px;
+  border-radius: 50%;
+}
+.infoProgress > .infoFile {
+  width: calc(100% - 48px);
+  float: left;
+  padding: 8px 16px;
+}
+.infoFile > .nameFile{
+  text-align: left;
+  margin: 0;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  color: #4a4a4a;
+}
+.infoFile > .progress{
+  width: 100%;
+  height: 5px;
+  background-color: #d8d8d8;
+  position: relative;
+  border-radius: 2.5px;
+  margin-top: 5px;
+}
+.progress > .progressActive {
+  position: absolute;
+  height: 100%;
+  border-radius: 2.5px;
+  background-color: #00c48c;
+}

@@ -14,12 +14,12 @@ function CreateCourses(props) {
   const { t } = useTranslation();
   // const [curentpage, setCurrentPage] = useState(0);
   const [active, setActive] = useState({0: 'active', 1: '', 2: ''});
-  const {courseinfo,actions} = props;
+  const {courseinfo, actions} = props;
   const curentpage = courseinfo.filter(c => c.active === true)[0].page;
 
-  console.log('p',courseinfo);
+  console.log('p', courseinfo);
   const InfoTab = () => {
-    console.log('d',courseinfo );
+    console.log('d', courseinfo );
     if (curentpage === 0 ) {
       return <MCreateInfoCourse />;
     }
