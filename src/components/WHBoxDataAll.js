@@ -7,7 +7,7 @@ import WHBoxDataVideoElement from './WHBoxDataVideoElement';
 import PropTypes from 'prop-types';
 
 export default function WHBoxDataAll(props) {
-  const files = props.dataFolder.files;
+  const files = props.dataFiles;
   return (
     <Row gutter={16}>
       {(files) ? renderBoxData(files) : loading()}
@@ -49,5 +49,5 @@ const loading = () => {
 };
 
 WHBoxDataAll.propTypes = {
-  dataFolder: PropTypes.object.isRequired,
+  dataFiles: PropTypes.array.isRequired,
 };

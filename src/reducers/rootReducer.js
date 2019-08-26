@@ -5,6 +5,7 @@ import userReducer from './userReducer';
 import foldersReducer from './folderReducer';
 import folderActiveReducer from './folderActiveReducer';
 import courseReducer from './courseReducer';
+import childFolderReducer from './childFolderReducer';
 const rootReducer = combineReducers({
   todosReducers,
   testReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   foldersReducer,
   folderActiveReducer,
   courseReducer,
+  childFolderReducer,
 });
 
 export default rootReducer;

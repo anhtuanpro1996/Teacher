@@ -5,7 +5,7 @@ import ContextMenu from './Context/ContextMenu';
 import PropTypes from 'prop-types';
 
 export default function WHBoxDataImageList(props) {
-  const listImage = props.dataFolder.files.filter((value)=>{
+  const listImage = props.dataFiles.filter((value)=>{
     return value.fileType === 'IMAGE';
   });
   const menu = <ContextMenu />;
@@ -27,5 +27,5 @@ export default function WHBoxDataImageList(props) {
 }
 
 WHBoxDataImageList.propTypes = {
-  dataFolder: PropTypes.object.isRequired,
+  dataFiles: PropTypes.array.isRequired,
 };
