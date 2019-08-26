@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col } from 'antd';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 const iconFolder = {
   width: '32px',
   height: '32px',
@@ -9,13 +10,22 @@ const iconFolder = {
   WebkitMaskSize: '100%',
   marginRight: '8px',
 };
-export default function CourseElement() {
+const folderName = {
+  display: 'block',
+  width: '50%',
+  overflow: 'hidden',
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
+  textAlign: 'left',
+};
+function CourseElement(folder) {
   return (
     <Col className="ant-col-8-cus" span={8}>
+      <p>asdasdsad</p>
       <div className="course-element">
-        <div className="folder-icon" style={iconFolder} />
-        <p className="folder-name">
-          Thanhnv5.0123456789
+        <div className="folder-icon" style={iconFolder}/>
+        <p className="folder-name" style={folderName} title={folder.folder.name}>
+          {folder.folder.name}
         </p>
       </div>
     </Col>
@@ -25,3 +35,11 @@ export default function CourseElement() {
 CourseElement.propTypes = {
   index: PropTypes.number.isRequired,
 };
+
+const mapStateToProps = (state) => {
+  return {
+    listFolder: state.foldersReducer,
+  };
+};
+
+export default connect(mapStateToProps)(CourseElement);

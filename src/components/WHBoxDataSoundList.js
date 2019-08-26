@@ -1,16 +1,25 @@
 import React from 'react';
-import { Tabs, Row, Col } from 'antd';
+import { Row } from 'antd';
 import WHBoxDataSoundElement from './WHBoxDataSoundElement';
+import PropTypes from 'prop-types';
 
-export default function WHBoxDataSoundList() {
-  const arr = [1, 2, 3, 4, 5];
+
+export default function WHBoxDataSoundList(props) {
+  const listAudio = props.dataFiles.filter((value)=>{
+    return value.fileType === 'AUDIO';
+  });
   return (
     <Row gutter={16}>
-      {arr.map((item, index) => {
+      {listAudio.map((item, index) => {
         return (
-          <WHBoxDataSoundElement key={index} index={index} />
+          <WHBoxDataSoundElement audioData={item} key={index} index={index} />
         );
       })}
     </Row>
   );
 }
+
+
+WHBoxDataSoundList.propTypes = {
+  dataFiles: PropTypes.array.isRequired,
+};

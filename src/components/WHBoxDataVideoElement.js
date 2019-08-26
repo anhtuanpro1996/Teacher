@@ -1,32 +1,61 @@
 import React from 'react';
 import {Col } from 'antd';
-const bg_img_test = 'https://picsum.photos/id/1/200/200';
+import styleFileName from './common/commonStyle';
+import PropTypes from 'prop-types';
+
+export default function WHBoxDataVideoElement(props) {
+  const videoData = props.videoData;
+  return (
+    <Col span={6}>
+      <div className="data-element" style={dataElement}>
+        <div className="image" style={imageBlock}>
+          <img src ="https://picsum.photos/id/1/200/200" style={thumbnail}/>
+          <div className="icon" style={iconData} />
+        </div>
+        <div className="title-data" style={titleBlock}>
+          <div className="icon" style={titleIcon} />
+          <p style={titleName} title={videoData.name}>{videoData.name}</p>
+        </div>
+      </div>
+    </Col>
+  );
+}
+const dataElement = {
+  display: 'flex',
+  flexDirection: 'column',
+};
+
+const imageBlock = {
+  padding: '8px',
+  height: '144px',
+};
+
+const thumbnail = {
+  width: '100%',
+  height: '128px',
+  backgroundRepeat: 'no-repeat',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
+
+const titleBlock = {
+  borderTop: 'solid 1px #e8e8e8',
+  padding: '8px',
+  display: 'flex',
+  height: '42px',
+};
+
 const iconData = {
   width: '32px',
   height: '32px',
   backgroundColor: '#fff',
   WebkitMask: "url('/images/icon/play-circle.png') no-repeat 50% 50%",
   WebkitMaskSize: '100%',
-  marginRight: '8px',
+  marginTop: '-76px',
+  marginLeft: '76px',
 };
 
-const thumbnail = {
-  width: '100%',
-  height: '128px',
-  backgroundImage: `url(${bg_img_test})`,
-  backgroundRepeat: 'no-repeat',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-};
-const imageBlock = {
-  padding: '8px',
-};
-const titleBlock = {
-  borderTop: 'solid 1px #e8e8e8',
-  padding: '8px',
-  display: 'flex',
-};
 
 const titleIcon = {
   width: '24px',
@@ -37,30 +66,8 @@ const titleIcon = {
   marginRight: '8px',
 };
 
-const titleName = {
-  height: '14px',
-  opacity: '0.9',
-  lineHeight: '1.71',
-  fontSize: '14px',
-  fontWeight: '600',
-  color: '#4a4a4a',
-  fontFamily: 'Open Sans, sans-serif',
+const titleName = {...styleFileName, height: '18px'};
 
+WHBoxDataVideoElement.propTypes = {
+  videoData: PropTypes.object.isRequired,
 };
-export default function WHBoxDataVideoElement() {
-  return (
-    <Col span={6}>
-      <div className="data-element">
-        <div className="image" style={imageBlock}>
-          <div className="thumbnail" style={thumbnail}>
-            <div className="icon" style={iconData} />
-          </div>
-        </div>
-        <div className="title-data" style={titleBlock}>
-          <div className="icon" style={titleIcon} />
-          <p style={titleName}>Tên video</p>
-        </div>
-      </div>
-    </Col>
-  );
-}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import './Warehouse.css';
 import { connect } from 'react-redux';
@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import * as UploadingAction from '../../actions/UploadingAction';
 import TopWarehouse from '../../components/WarehouseTop';
 import WarehouseTopList from '../../components/WarehouseTopList';
-import NoDocument from '../../components/WarehouseNoDocument';
+import WHBoxData from '../../components/WHBoxData';
 
 function Warehouse(props) {
   const { t } = useTranslation();
@@ -71,7 +71,8 @@ function Warehouse(props) {
         <TopWarehouse />
         <div className="listWarehouse">
           <WarehouseTopList />
-          <NoDocument />
+          {/* { (folders.loading) ? <WHListFolder folders= { folders } /> : 'Loading'} */}
+          <WHBoxData />
         </div>
       </div>
       { popupProgressUpload }
