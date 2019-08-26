@@ -1,6 +1,7 @@
 import React from 'react';
 import {Modal, Button} from 'antd';
-import {useState} from 'react';
+import {useState, useRef } from 'react';
+import axios from 'axios';
 
 const itemCreateFolder = {
   color: '#4a4a4a',
@@ -61,13 +62,34 @@ const btnCreateFolder = {
   color: '#fff',
 };
 
-function WareHouseCreateFolder() {
+function WareHouseCreateFolder(props) {
   const [modal, setModal] = useState(false);
+  const inputNameFolder = useRef();
   const showModal = () => {
     setModal(true);
   };
   const closeModal = () => {
     setModal(false);
+  };
+  const creatFolder = () => {
+    const nameFolder = inputNameFolder.current.value;
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+    const data = {
+      'parentFolder': {
+        'id': 7,
+      },
+      'name': nameFolder,
+    };
+    axios.post('http://171.16.0.31:8081/folders', data, headers)
+      .then(response => {
+        console.log('uploaddddd', response);
+        closeModal();
+      })
+      .catch(error => {
+        console.log('falsUpload', error);
+      });
   };
   return (
     <div>
@@ -78,10 +100,10 @@ function WareHouseCreateFolder() {
         onCancel={() => setModal(false)}
       >
         <h3 style={titleModal}>Thư mục mới</h3>
-        <input type="text" placeholder="Tên thư mục" style={nameFolder} />
+        <input type="text" placeholder="Tên thư mục" ref={inputNameFolder} name="nameFolder" style={nameFolder} />
         <div style={footerModal}>
           <Button style={btnCloseModal} onClick={closeModal}>Hủy bỏ</Button>
-          <Button style={btnCreateFolder}>Đồng ý</Button>
+          <Button style={btnCreateFolder} onClick={creatFolder}>Đồng ý</Button>
         </div>
       </Modal>
     </div>
