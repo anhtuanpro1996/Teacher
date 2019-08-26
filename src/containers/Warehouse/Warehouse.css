@@ -144,6 +144,10 @@ body{
   background-color: red ;
 }
 
+.uploadSuccess {
+  background-color: #00c48c !important;
+}
+
 .wrapperWarehouse .folder-data .data-element {
   height: 188px;
   margin-bottom: 16px;
@@ -186,7 +190,12 @@ body{
 }
 .wrapperProgress > .progressFile {
   padding: 16px;
+  width: 100%;
+  overflow: scroll;
+  overflow-x: unset;
+  max-height: 200px;
 }
+
 .progressFile > .infoProgress{
   width: 100%;
   height: 40px;
@@ -195,7 +204,7 @@ body{
 .infoProgress > .iconFileType,.infoProgress > .iconAction{
   width: 24px;
   height: 24px;
-  background-color: red;
+  background-color: #646d84;
   float: left;
   margin-top: 8px;
   border-radius: 50%;
@@ -228,7 +237,6 @@ body{
 .progress > .progressActive {
   position: absolute;
   height: 100%;
-  width: 66%;
   border-radius: 2.5px;
   background-color: #00c48c;
 }

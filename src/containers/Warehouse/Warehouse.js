@@ -7,64 +7,66 @@ import * as UploadingAction from '../../actions/UploadingAction';
 import TopWarehouse from '../../components/WarehouseTop';
 import WarehouseTopList from '../../components/WarehouseTopList';
 import WHBoxData from '../../components/WHBoxData';
-
+import {validateFileType} from '../../helpers/validateType';
 function Warehouse(props) {
   const { t } = useTranslation();
-  let popupProgressUpload;
-
+  const {upload, actions} = props;
   // eslint-disable-next-line react/prop-types
-  if (props.upload.length > 1) {
-    popupProgressUpload = (
-      <div className="wrapperProgress">
-        <div className="topProgress">
-          <div className="txtProgress">Đã tải lên 1/4 tệp tin</div>
-          <div className="icon"> </div>
-        </div>
-        <div className="progressFile">
-          <div className="infoProgress">
-            <div className="iconFileType"> </div>
+
+  const getPercentage = (percentage) =>{
+    const percent = percentage + '%';
+    return percent;
+  };
+  const listFileUpload = (data) =>{
+    console.log('kokoko', getImageType(data[0].file.type));
+    return (
+      <React.Fragment>
+        {data.map( (item, key) =>
+          <div key={key} className="infoProgress">
+            <div className="iconFileType" style={{WebkitMask: getImageType(item.file.type)}}> </div>
             <div className="infoFile">
-              <p className="nameFile">Bài 1.mp4</p>
+              <p className="nameFile">{item.file.name}</p>
               <div className="progress">
-                <div className="progressActive"> </div>
+                <div className="progressActive" style={{width: getPercentage(item.progress)}}> </div>
               </div>
             </div>
-            <div className="iconAction"> </div>
+            <div className={'iconAction' + (item.progress === 100 ? ' uploadSuccess' : '') } style={{ WebkitMask: getImageProgress(item.progress) }}> </div>
           </div>
-          <div className="infoProgress">
-            <div className="iconFileType"> </div>
-            <div className="infoFile">
-              <p className="nameFile">Bài 1.mp4</p>
-              <div className="progress">
-                <div className="progressActive"> </div>
-              </div>
-            </div>
-            <div className="iconAction"> </div>
-          </div>
-          <div className="infoProgress">
-            <div className="iconFileType"> </div>
-            <div className="infoFile">
-              <p className="nameFile">Bài 1.mp4</p>
-              <div className="progress">
-                <div className="progressActive"> </div>
-              </div>
-            </div>
-            <div className="iconAction"> </div>
-          </div>
-          <div className="infoProgress">
-            <div className="iconFileType"> </div>
-            <div className="infoFile">
-              <p className="nameFile">Bài 1.mp4</p>
-              <div className="progress">
-                <div className="progressActive"> </div>
-              </div>
-            </div>
-            <div className="iconAction"> </div>
-          </div>
-        </div>
-      </div>
+        )}
+      </React.Fragment>
     );
-  }
+  };
+  const getImageType = (type)=> {
+    const fileType = validateFileType(type);
+    if (fileType === 'image') {
+      return 'url(/images/icon/collections.png) no-repeat 50% 50%';
+    }
+  };
+  const getImageProgress = (progress)=> {
+    if (progress < 100) {
+      return 'url(/images/icon/closeimg.png) no-repeat 50% 50%';
+    } else {
+      return 'url(/images/icon/correct.png) no-repeat 50% 50%';
+    }
+  };
+  const popupProgressUpload = (upload) => {
+    const uploaded = upload.filter(c => c.progress === 100).length;
+    if (upload.length > 0) {
+      return (
+        <div className="wrapperProgress">
+          <div className="topProgress">
+            <div className="txtProgress"> Đã tải lên {uploaded}/{upload.length} </div>
+            <div className="icon" > </div>
+          </div>
+          <div className="progressFile">
+            {listFileUpload(upload)}
+          </div>
+        </div>
+      );
+    }
+  };
+
+
   return (
     <React.Fragment>
       <div className="wrapperWarehouse">
@@ -75,7 +77,7 @@ function Warehouse(props) {
           <WHBoxData />
         </div>
       </div>
-      { popupProgressUpload }
+      { popupProgressUpload(upload) }
     </React.Fragment>
   );
 }
