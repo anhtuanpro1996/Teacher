@@ -30,7 +30,7 @@ function Warehouse(props) {
                 <div className="progressActive" style={{width: getPercentage(item.progress)}}> </div>
               </div>
             </div>
-            <div className={'iconAction' + (item.progress === 100 ? ' uploadSuccess' : '') } style={{ WebkitMask: getImageProgress(item.progress) }}> </div>
+            <div className={'iconAction' + (item.progress === 100 && item.uploading === true ? ' uploadSuccess' : '') } style={{ WebkitMask: getImageProgress(item.progress) }}> </div>
           </div>
         )}
       </React.Fragment>
@@ -41,6 +41,15 @@ function Warehouse(props) {
     if (fileType === 'image') {
       return 'url(/images/icon/collections.png) no-repeat 50% 50%';
     }
+    if (fileType === 'video') {
+      return 'url(/images/icon/movie.png) no-repeat 50% 50%';
+    }
+    if (fileType === 'audio') {
+      return 'url(/images/icon/library-music-24-px.png) no-repeat 50% 50%';
+    }
+    if (fileType === 'other') {
+      return 'url(/images/icon/folder.png) no-repeat 50% 50%';
+    }
   };
   const getImageProgress = (progress)=> {
     if (progress < 100) {
@@ -50,7 +59,7 @@ function Warehouse(props) {
     }
   };
   const popupProgressUpload = (upload) => {
-    const uploaded = upload.filter(c => c.progress === 100).length;
+    const uploaded = upload.filter(c => c.progress === 100 && c.uploading === true).length;
     if (upload.length > 0) {
       return (
         <div className="wrapperProgress">
