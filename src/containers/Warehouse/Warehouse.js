@@ -8,6 +8,7 @@ import TopWarehouse from '../../components/WarehouseTop';
 import WarehouseTopList from '../../components/WarehouseTopList';
 import WHBoxData from '../../components/WHBoxData';
 import {validateFileType} from '../../helpers/validateType';
+import * as URL from '../../constants/Url';
 function Warehouse(props) {
   const { t } = useTranslation();
   const {upload, actions} = props;
@@ -35,10 +36,10 @@ function Warehouse(props) {
           <div key={key} className="infoProgress">
             <div className="iconFileType" style={{WebkitMask: getImageType(item.file.type)}}> </div>
             <div className="infoFile">
-              <p className={ 'nameFile ' + (item.progress === 100 && item.uploading === false ? 'changeName' : '') }>{item.file.name}</p>
-              <p className={ 'noUpload ' + (item.progress === 100 && item.uploading === false ? 'showText' : 'hideText') }>Tải lên không thành công</p>
+              <p className={ 'nameFile ' + (item.uploading === false ? 'changeName' : '') }>{item.file.name}</p>
+              <p className={ 'noUpload ' + (item.uploading === false ? 'showText' : 'hideText') }>Tải lên không thành công</p>
               <div className="progress">
-                <div className={(item.progress === 100 && item.uploading === false ? 'progressFail' : 'progressActive') } style={{width: getPercentage(item.progress)}}> </div>
+                <div className={(item.uploading === false ? 'progressFail' : 'progressActive') } style={{width: getPercentage(item.progress)}}> </div>
               </div>
             </div>
             <p>{item.uploading}</p>
@@ -49,7 +50,6 @@ function Warehouse(props) {
     );
   };
   const getImageType = (type)=> {
-    console.log('abcd', type);
     const fileType = validateFileType(type);
     if (fileType === 'image') {
       return 'url(/images/icon/collections.png) no-repeat 50% 50%';
