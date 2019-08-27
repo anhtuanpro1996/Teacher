@@ -5,6 +5,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as UploadingAction from '../actions/UploadingAction';
+import * as URL from  '../constants/Url';
 
 const inputFile = {
   width: '0.1px',
@@ -32,7 +33,12 @@ function WareHouseUploadFile(props) {
           const progress = ProgressEvent.loaded / ProgressEvent.total * 100;
           actions.updateProgress({indx: i, progress: progress});
         },
-      });
+      }).then(function (response) {
+        actions.uploadSucess({indx: i, upload: true});
+      })
+        .catch(function (error) {
+          console.log('error', error.response);
+        });
     };
   };
 
