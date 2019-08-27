@@ -17,9 +17,7 @@ function CreateCourses(props) {
   const {courseinfo, actions} = props;
   const curentpage = courseinfo.filter(c => c.active === true)[0].page;
 
-  console.log('p', courseinfo);
   const InfoTab = () => {
-    console.log('d', courseinfo );
     if (curentpage === 0 ) {
       return <MCreateInfoCourse />;
     }
