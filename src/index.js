@@ -27,7 +27,7 @@ const initialState = {};
 
 // Create store
 const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
-store.dispatch(loadAuthors());
+// store.dispatch(loadAuthors());
 store.dispatch(getChildFolderData(0));
 const appRoot = (
   <Provider store={store}>

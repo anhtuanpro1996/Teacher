@@ -8,6 +8,7 @@ import TopWarehouse from '../../components/WarehouseTop';
 import WarehouseTopList from '../../components/WarehouseTopList';
 import WHBoxData from '../../components/WHBoxData';
 import {validateFileType} from '../../helpers/validateType';
+import * as URL from '../../constants/Url';
 function Warehouse(props) {
   const { t } = useTranslation();
   const {upload, actions} = props;
@@ -18,7 +19,6 @@ function Warehouse(props) {
     return percent;
   };
   const listFileUpload = (data) =>{
-    console.log('kokoko', data[0]);
     return (
       <React.Fragment>
         {data.map( (item, key) =>
@@ -38,7 +38,6 @@ function Warehouse(props) {
     );
   };
   const getImageType = (type)=> {
-    console.log('abcd', type);
     const fileType = validateFileType(type);
     if (fileType === 'image') {
       return 'url(/images/icon/collections.png) no-repeat 50% 50%';
