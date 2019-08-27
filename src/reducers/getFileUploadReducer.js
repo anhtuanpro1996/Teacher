@@ -1,4 +1,4 @@
-import { UPLOADING, ADD_FILE_UPLOAD, UPDATE_PROGRESS_UPLOAD } from '../constants/ActionTypes';
+import { UPLOADING, ADD_FILE_UPLOAD, UPDATE_PROGRESS_UPLOAD, UPLOAD_SUCESS } from '../constants/ActionTypes';
 
 const initialState = [
 ];
@@ -14,6 +14,8 @@ export default function getFileUploadReducer(state = initialState, action) {
     }, ...state];
   case UPDATE_PROGRESS_UPLOAD:
     return state.map((todo,index) => index === action.data.indx ? { ...todo, progress: action.data.progress } : todo);
+  case UPLOAD_SUCESS:
+    return state.map((todo,index) => index === action.data.indx ? { ...todo, uploading: true } : todo);
   default:
     return state;
   }
