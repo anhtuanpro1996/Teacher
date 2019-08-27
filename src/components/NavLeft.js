@@ -12,6 +12,7 @@ const divStyle = {
   background: '#f9fafc',
   float: 'left',
   marginRight: '33px',
+  minHeight: '900px',
 };
 const CourseStyle = {
   background: '#f9fafc',
