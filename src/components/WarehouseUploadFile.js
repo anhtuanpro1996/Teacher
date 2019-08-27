@@ -28,7 +28,7 @@ function WareHouseUploadFile(props) {
       form.append('folderId', current_point.id);
       form.append('listFile', files[i]);
       actions.addFileUpload(files[i]);
-      axios.post('http://157.230.255.33:8890/api/lms/files', form, {
+      axios.post(URL.UPLOAD_FILE, form, {
         onUploadProgress: ProgressEvent => {
           const progress = ProgressEvent.loaded / ProgressEvent.total * 100;
           actions.updateProgress({indx: i, progress: progress});
@@ -38,7 +38,7 @@ function WareHouseUploadFile(props) {
         actions.uploadSucess({indx: i, upload: true});
       })
         .catch(function(error) {
-          console.log('error', error.response);
+          actions.uploadSucess({indx: i, upload: false});
         });
     };
   };

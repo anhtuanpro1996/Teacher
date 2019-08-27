@@ -95,7 +95,7 @@ function WareHouseCreateFolder(props) {
   };
   return (
     <div>
-      <a style={itemCreateFolder} onClick={showModal}><span>Tạo tệp tin</span></a>
+      <a style={itemCreateFolder} onClick={showModal}><span>Tạo thư mục</span></a>
       <Modal className="wrapperModalCreateFolder"
         visible={modal}
         onOk={() => setModal(false)}
