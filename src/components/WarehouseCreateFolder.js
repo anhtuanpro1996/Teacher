@@ -2,6 +2,7 @@ import React from 'react';
 import {Modal, Button} from 'antd';
 import {useState, useRef } from 'react';
 import axios from 'axios';
+import * as URL from  '../constants/Url';
 
 const itemCreateFolder = {
   color: '#4a4a4a',
@@ -63,6 +64,8 @@ const btnCreateFolder = {
 };
 
 function WareHouseCreateFolder(props) {
+  const current_point = props.currentFolder[props.currentFolder.length - 1];
+  console.log('WareHouseCreateFolder', current_point);
   const [modal, setModal] = useState(false);
   const inputNameFolder = useRef();
   const showModal = () => {
@@ -78,11 +81,11 @@ function WareHouseCreateFolder(props) {
     };
     const data = {
       'parentFolder': {
-        'id': 7,
+        'id': current_point.id,
       },
       'name': nameFolder,
     };
-    axios.post('http://171.16.0.31:8081/folders', data, headers)
+    axios.post(URL.CREATE_FOLDER, data, headers)
       .then(response => {
         console.log('uploaddddd', response);
         closeModal();

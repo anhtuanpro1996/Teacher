@@ -16,15 +16,16 @@ const inputFile = {
 };
 
 function WareHouseUploadFile(props) {
+  const current_point = props.currentFolder[props.currentFolder.length - 1];
   const inputEl = useRef(null);
   const { upload, actions } = props;
-  console.log('actions', actions);
+  // console.log('actions', actions);
   const handleChange = () => {
     const files = inputEl.current.files;
     actions.getDataUpload(files);
     for (let i = 0; i < files.length; i++) {
       const form = new FormData();
-      form.append('folderId', '1');
+      form.append('folderId', current_point.id);
       form.append('listFile', files[i]);
       actions.addFileUpload(files[i]);
       axios.post(URL.UPLOAD_FILE, form, {
