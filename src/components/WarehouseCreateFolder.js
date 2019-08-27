@@ -63,6 +63,8 @@ const btnCreateFolder = {
 };
 
 function WareHouseCreateFolder(props) {
+  const current_point = props.currentFolder[props.currentFolder.length - 1];
+  console.log('WareHouseCreateFolder', current_point);
   const [modal, setModal] = useState(false);
   const inputNameFolder = useRef();
   const showModal = () => {
@@ -78,11 +80,11 @@ function WareHouseCreateFolder(props) {
     };
     const data = {
       'parentFolder': {
-        'id': 7,
+        'id': 2,
       },
       'name': nameFolder,
     };
-    axios.post('http://171.16.0.31:8081/folders', data, headers)
+    axios.post('http://157.230.255.33:8890/api/lms/folders', data, headers)
       .then(response => {
         console.log('uploaddddd', response);
         closeModal();
