@@ -1,5 +1,5 @@
 export function getChildFolderData(idFolder) {
-  const url = 'http://localhost:4000/folders/' + idFolder;
+  const url = 'http://157.230.255.33:8890/api/lms/folders/' + idFolder;
   return dispatch => {
     fetch(url)
       .then(res => res.json())
@@ -14,7 +14,7 @@ export function getChildFolderData(idFolder) {
 };
 
 export function clickedBreadcumb(data, idFolder) {
-  const url = 'http://localhost:4000/folders/' + idFolder;
+  const url = 'http://157.230.255.33:8890/api/lms/folders/' + idFolder;
   const payload = {};
   payload.breadcumb = data;
   return dispatch => {

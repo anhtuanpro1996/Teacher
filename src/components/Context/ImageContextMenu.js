@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 // import './ContextMenu.css';
 import './ImageContext.css';
 import { Modal } from 'antd';
+import { bindActionCreators } from 'redux';
+import { changeNameFile } from '../../actions/thunks/fileContextAction';
+import { connect } from 'react-redux';
 
 const headerModal = {
   width: '100%',
@@ -70,12 +73,13 @@ const moveTo = {
   height: '200px',
   backgroundColor: 'blue',
 };
-export default function ImageContextMenu(props) {
+const ImageContextMenu = (props) => {
   const [moveToValue, movedHandle] = useState(false);
   const [hiddenContext, clickHandle] = useState(false);
   const [visibleDetail, showModalDetail] = useState(false);
   const [visibleRemove, showModalRemove] = useState(false);
   const [visibleChangeName, showModalChangeName] = useState(false);
+  const [valueInputChangeName, setValueInputChangeName] = useState('');
 
   const detailClicked = () => {
     showModalDetail(true);
@@ -95,6 +99,7 @@ export default function ImageContextMenu(props) {
   const changeNameClicked = () => {
     showModalChangeName(true);
     clickHandle(true);
+    setValueInputChangeName(props.dataContext.name);
   };
 
   const clickedCloseModalDetail = () => {
@@ -111,6 +116,7 @@ export default function ImageContextMenu(props) {
     showModalChangeName(false);
     clickHandle(false);
   };
+
 
   const renderDetailModal = () => {
     console.log('renderDetailModal',props.dataContext);
@@ -167,18 +173,24 @@ export default function ImageContextMenu(props) {
     );
   };
 
+  const confirmChangeName = () => {
+    // console.log('valueInputChangeName', valueInputChangeName);
+    props.changeNameFile(props.dataContext.id, valueInputChangeName);
+  };
+
   const renderChangeName = () => {
+    console.log('renderChangeName', props);
     return (
       <Modal className="change-name-modal" visible={visibleChangeName}>
         <div className="content">
           <div className="title">Đổi tên</div>
-          <input className="input-value" value={props.dataContext.name}/>
+          <input className="input-value" defaultValue={valueInputChangeName} onChange={(e) => setValueInputChangeName(e.target.value)}/>
           <div className="action-btn">
             <div className="cancel-btn" onClick={() => clickedCloseModalChangeName()}>
               <div className="name">Hủy bỏ</div>
             </div>
             <div className="agree-btn">
-              <div className="name">Đồng ý</div>
+              <div className="name" onClick={() => confirmChangeName()}>Đồng ý</div>
             </div>
           </div>
         </div>
@@ -227,4 +239,13 @@ export default function ImageContextMenu(props) {
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    contextFileReducer: state.contextFileReducer,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({changeNameFile: changeNameFile}, dispatch);
+};
 
+export default connect(mapStateToProps, mapDispatchToProps)(ImageContextMenu);
