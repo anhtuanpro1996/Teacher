@@ -37,7 +37,7 @@ function WareHouseUploadFile(props) {
         actions.uploadSucess({indx: i, upload: true});
       })
         .catch(function(error) {
-          console.log('error', error.response);
+          actions.uploadSucess({indx: i, upload: false});
         });
     };
   };

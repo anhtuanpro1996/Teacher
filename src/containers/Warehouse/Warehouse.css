@@ -145,7 +145,21 @@ body{
 }
 
 .uploadSuccess {
+  -webkit-mask:url(/images/icon/correct.png) no-repeat 50% 50%;
+  -webkit-mask-size: 100% !important;
   background-color: #00c48c !important;
+}
+
+.uploadFail {
+  -webkit-mask:url(/images/icon/refresh.png) no-repeat 50% 50%;
+  -webkit-mask-size: 100% !important;
+  background-color: #646d84 !important;
+}
+
+.uploading{
+  -webkit-mask:url(/images/icon/closeimg.png) no-repeat 50% 50%;
+  -webkit-mask-size: 100% !important;
+  background-color: #646d84 !important;
 }
 
 .wrapperWarehouse .folder-data .data-element {
@@ -215,6 +229,7 @@ body{
   padding: 8px 16px;
 }
 .infoFile > .nameFile{
+  height: 15px;
   text-align: left;
   margin: 0;
   opacity: 0.9;
@@ -231,6 +246,27 @@ body{
   letter-spacing: normal;
   color: #4a4a4a;
 }
+.infoFile > .changeName {
+  display: inline-block;
+  float: left;
+}
+.infoFile > .noUpload{
+  opacity: 0.9;
+  font-family: Open Sans;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.17;
+  letter-spacing: normal;
+  color: #4a4a4a;
+}
+.infoFile > .showText{
+  display: block;
+}
+.infoFile > .hideText{
+  display: none;
+}
 .infoFile > .progress{
   width: 100%;
   height: 5px;
@@ -244,4 +280,10 @@ body{
   height: 100%;
   border-radius: 2.5px;
   background-color: #00c48c;
+}
+.progress > .progressFail{
+  position: absolute;
+  height: 100%;
+  border-radius: 2.5px;
+  background-color: #e62020;
 }
