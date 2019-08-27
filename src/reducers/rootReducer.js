@@ -5,6 +5,7 @@ import userReducer from './userReducer';
 import getFileUploadReducer from './getFileUploadReducer';
 import courseReducer from './courseReducer';
 import childFolderReducer from './childFolderReducer';
+import contextFileReducer from './contextFileReducer';
 const rootReducer = combineReducers({
   todosReducers,
   testReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   getFileUploadReducer,
   courseReducer,
   childFolderReducer,
+  contextFileReducer,
 });
 
 export default rootReducer;

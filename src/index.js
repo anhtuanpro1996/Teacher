@@ -15,7 +15,7 @@ import ManageCourse from './containers/ManageCourse/ManageCourse';
 import CreateCourses from './containers/ManageCourse/CreateCourses/CreateCourses';
 import i18next from 'i18next';
 import './i18n';
-import {loadAuthors} from './actions/UserActions';
+// import {loadAuthors} from './actions/UserActions';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { getChildFolderData } from './actions/thunks/fetchChildFolders';
 
@@ -27,8 +27,8 @@ const initialState = {};
 
 // Create store
 const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
-store.dispatch(loadAuthors());
-store.dispatch(getChildFolderData(0));
+// store.dispatch(loadAuthors());
+store.dispatch(getChildFolderData(1));
 const appRoot = (
   <Provider store={store}>
     {/* {console.log('aba', store)} */}
