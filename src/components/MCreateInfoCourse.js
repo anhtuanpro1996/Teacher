@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Row, Col, Select, OptGroup, Input, Button } from 'antd';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import * as URL from  '../constants/Url';
 
 import * as CourseActions from '../actions/CourseActions';
 
@@ -175,7 +176,7 @@ function MCreateInfoCourse(props) {
   useEffect(() => {
     if (isLoading === false) {
       console.log('vao day');
-      axios.get('http://171.16.0.31:8081/category', { headers: { ContentType: 'application/json' } })
+      axios.get(URL.CATEGORY, { headers: { ContentType: 'application/json' } })
         .then(response => {
           console.log('er', response.data);
           setCategory(response.data);

@@ -24,10 +24,10 @@ function WareHouseUploadFile(props) {
     actions.getDataUpload(files);
     for (let i = 0; i < files.length; i++) {
       const form = new FormData();
-      form.append('folderId', '7');
+      form.append('folderId', '1');
       form.append('listFile', files[i]);
       actions.addFileUpload(files[i]);
-      axios.post('http://157.230.255.33:8890/api/lms/files', form, {
+      axios.post(URL.UPLOAD_FILE, form, {
         onUploadProgress: ProgressEvent => {
           const progress = ProgressEvent.loaded / ProgressEvent.total * 100;
           actions.updateProgress({indx: i, progress: progress});
