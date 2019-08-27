@@ -9,6 +9,18 @@ const contextFileReducer = (state = contextFileInitialState, action) => {
       ...state,
       pending: false,
       response: action.payload,
+    };
+  case 'DELETE_FILE_SUCCESS':
+    return {
+      ...state,
+      pending: false,
+      response: action.payload,
+    }
+  case 'DOWNLOAD_FILE_SUCCESS':
+    return {
+      ...state,
+      pending: false,
+      response: action.payload,
     }
   default:
     return state

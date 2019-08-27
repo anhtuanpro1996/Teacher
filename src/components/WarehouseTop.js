@@ -5,6 +5,9 @@ import { Menu, Dropdown } from 'antd';
 import {Link} from 'react-router-dom';
 import WarehouseCreateFolder from './WarehouseCreateFolder';
 import WareHouseUploadFile from './WarehouseUploadFile';
+import { bindActionCreators } from 'redux';
+import { clickedBreadcumb } from '../actions/thunks/fetchChildFolders';
+import { connect } from 'react-redux';
 
 const { Search } = Input;
 
@@ -25,19 +28,7 @@ const listMenu = {
   color: '#4a4a4a',
   paddingTop: '8px',
 };
-const menu = (
-  <Menu style={infoMenu}>
-    <Menu.Item style={listMenu} className="listMenuItem">
-      <WarehouseCreateFolder/>
-    </Menu.Item>
-    <Menu.Item style={listMenu} className="listMenuItem">
-      <WareHouseUploadFile/>
-    </Menu.Item>
-    <Menu.Item style={listMenu} className="listMenuItem">
-      <Link to="#"><span>Tải thư mục</span></Link>
-    </Menu.Item>
-  </Menu>
-);
+
 
 const topWarehourse = {
   height: '40px',
@@ -100,8 +91,23 @@ const iconAddNew = {
   borderRadius: '50%',
   marginRight: '8px',
 };
-function TopWarehourse() {
+function TopWarehourse(props) {
+  const currentFolder = (props.activeFolder.breadcumb.length > 0) ? props.activeFolder.breadcumb : 0;
+  // console.log('TopWarehourse', currentFolder.length);
   const { t } = useTranslation();
+  const menu = (
+    <Menu style={infoMenu}>
+      <Menu.Item style={listMenu} className="listMenuItem">
+        <WarehouseCreateFolder currentFolder={currentFolder}/>
+      </Menu.Item>
+      <Menu.Item style={listMenu} className="listMenuItem">
+        <WareHouseUploadFile currentFolder={currentFolder}/>
+      </Menu.Item>
+      <Menu.Item style={listMenu} className="listMenuItem">
+        <Link to="#"><span>Tải thư mục</span></Link>
+      </Menu.Item>
+    </Menu>
+  );
   return (
     <div style={topWarehourse}>
       <div style={titlePpage}>{t('Data Warehouse')}</div>
@@ -119,4 +125,11 @@ function TopWarehourse() {
     </div>
   );
 };
-export default TopWarehourse;
+const mapStateToProps = (state) => {
+  return {
+    activeFolder: state.childFolderReducer,
+  };
+};
+
+
+export default connect(mapStateToProps)(TopWarehourse);

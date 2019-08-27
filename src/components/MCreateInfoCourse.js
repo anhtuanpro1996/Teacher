@@ -1,8 +1,11 @@
 import React, {useState, useReducer, useEffect, useRef} from 'react';
 import { useTranslation } from 'react-i18next';
 import { bindActionCreators } from 'redux';
-import { Row, Col, Select, Input, Button } from 'antd';
+import { Row, Col, Select, OptGroup, Input, Button } from 'antd';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import * as URL from  '../constants/Url';
+
 import * as CourseActions from '../actions/CourseActions';
 
 const { Option } = Select;
@@ -12,6 +15,8 @@ function MCreateInfoCourse(props) {
   const {courseinfo, actions} = props;
   const { t } = useTranslation();
   const [coursesName, setcoursesName] = useState('');
+  const [category, setCategory] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [benefit, dispatch] = useReducer((myArray, { type, value, stt }) => {
     switch (type) {
     case 'addbenefit':
@@ -167,6 +172,33 @@ function MCreateInfoCourse(props) {
     console.log('actions', actions);
     actions.SetActivePage({page: 1});
   };
+
+  useEffect(() => {
+    if (isLoading === false) {
+      console.log('vao day');
+      axios.get(URL.CATEGORY, { headers: { ContentType: 'application/json' } })
+        .then(response => {
+          console.log('er', response.data);
+          setCategory(response.data);
+          setIsLoading(true);
+        })
+        .catch(error => {
+          console.log('er', error.response);
+        });
+    }
+  });
+
+  const GenCategoryDiv = () => {
+    if (category.length > 0) {
+      return (
+        <Select placeholder="Lựa chọn" style={{ width: 120 }}>
+          {category.map( (item, key) => {return (<Option value={item.name} key={key} >{item.name}</Option>);} )}
+        </Select>
+      );
+    } else {
+      return ( <Select placeholder="Lựa chọn" style={{ width: 120 }}/>);
+    }
+  };
   return (
     <Row>
       <Col className="gutter-row" span={20}>
@@ -183,20 +215,7 @@ function MCreateInfoCourse(props) {
                   Danh mục
                 </div>
                 <div className="select-category">
-                  <Select placeholder="Lựa chọn" style={{ width: 120 }} >
-                    <Option value="1">Jack</Option>
-                    <Option value="2">Lucy</Option>
-                    <Option value="3">yimingheihiuhhuihuhuihuihiuhhi</Option>
-                    <Option value="4">Jack</Option>
-                    <Option value="5">Lucy</Option>
-                    <Option value="6">yiminghe</Option>
-                    <Option value="7">Jack</Option>
-                    <Option value="8">Lucy</Option>
-                    <Option value="9">yiminghe</Option>
-                    <Option value="10">Jack</Option>
-                    <Option value="11">Lucy</Option>
-                    <Option value="12">yiminghe</Option>
-                  </Select>
+                  {GenCategoryDiv()}
                 </div>
               </div>
               <div className="M-category-2">
