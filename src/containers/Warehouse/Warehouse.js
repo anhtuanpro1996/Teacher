@@ -19,19 +19,30 @@ function Warehouse(props) {
   };
   const listFileUpload = (data) =>{
     console.log('kokoko', data[0]);
+    const arrClass = [];
+    for (let i = 0; i < data.length; i++) {
+      if ( data[i].progress === 100 && data[i].uploading === true ) {
+        arrClass.push('uploadSuccess');
+      } else if ( data[i].progress === 100 && data[i].uploading === false ) {
+        arrClass.push('uploadFail');
+      } else {
+        arrClass.push('uploading');
+      }
+    };
     return (
       <React.Fragment>
         {data.map( (item, key) =>
           <div key={key} className="infoProgress">
             <div className="iconFileType" style={{WebkitMask: getImageType(item.file.type)}}> </div>
             <div className="infoFile">
-              <p className="nameFile">{item.file.name}</p>
+              <p className={ 'nameFile ' + (item.progress === 100 && item.uploading === false ? 'changeName' : '') }>{item.file.name}</p>
+              <p className={ 'noUpload ' + (item.progress === 100 && item.uploading === false ? 'showText' : 'hideText') }>Tải lên không thành công</p>
               <div className="progress">
-                <div className="progressActive" style={{width: getPercentage(item.progress)}}> </div>
+                <div className={(item.progress === 100 && item.uploading === false ? 'progressFail' : 'progressActive') } style={{width: getPercentage(item.progress)}}> </div>
               </div>
             </div>
             <p>{item.uploading}</p>
-            <div className={'iconAction' + (item.progress === 100 && item.uploading === true ? ' uploadSuccess' : '') } style={{ WebkitMask: getImageProgress(item) }}> </div>
+            <div className={'iconAction ' + (arrClass[key]) }> </div>
           </div>
         )}
       </React.Fragment>
@@ -53,14 +64,17 @@ function Warehouse(props) {
       return 'url(/images/icon/folder.png) no-repeat 50% 50%';
     }
   };
-  const getImageProgress = (item)=> {
-    if (item.progress < 100 || item.uploading !== true) {
-      return 'url(/images/icon/closeimg.png) no-repeat 50% 50%';
-    };
-    if (item.uploading === true) {
-      return 'url(/images/icon/correct.png) no-repeat 50% 50%';
-    }
-  };
+  // const getImageProgress = (item)=> {
+  //   if (item.progress < 100 || item.uploading !== true) {
+  //     return 'url(/images/icon/closeimg.png) no-repeat 50% 50%';
+  //   };
+  //   if (item.uploading === true) {
+  //     return 'url(/images/icon/correct.png) no-repeat 50% 50%';
+  //   };
+  //   if (item.progress === 100 || item.uploading === false) {
+  //     return 'url(/images/icon/refresh.png) no-repeat 50% 50%';
+  //   };
+  // };
   const popupProgressUpload = (upload) => {
     const uploaded = upload.filter(c => c.progress === 100 && c.uploading === true).length;
     if (upload.length > 0) {
