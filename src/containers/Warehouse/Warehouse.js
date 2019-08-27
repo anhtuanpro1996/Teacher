@@ -18,7 +18,7 @@ function Warehouse(props) {
     return percent;
   };
   const listFileUpload = (data) =>{
-    console.log('kokoko', getImageType(data[0].file.type));
+    console.log('kokoko', data[0]);
     return (
       <React.Fragment>
         {data.map( (item, key) =>
@@ -30,13 +30,15 @@ function Warehouse(props) {
                 <div className="progressActive" style={{width: getPercentage(item.progress)}}> </div>
               </div>
             </div>
-            <div className={'iconAction' + (item.progress === 100 && item.uploading === true ? ' uploadSuccess' : '') } style={{ WebkitMask: getImageProgress(item.progress) }}> </div>
+            <p>{item.uploading}</p>
+            <div className={'iconAction' + (item.progress === 100 && item.uploading === true ? ' uploadSuccess' : '') } style={{ WebkitMask: getImageProgress(item) }}> </div>
           </div>
         )}
       </React.Fragment>
     );
   };
   const getImageType = (type)=> {
+    console.log('abcd', type);
     const fileType = validateFileType(type);
     if (fileType === 'image') {
       return 'url(/images/icon/collections.png) no-repeat 50% 50%';
@@ -51,10 +53,11 @@ function Warehouse(props) {
       return 'url(/images/icon/folder.png) no-repeat 50% 50%';
     }
   };
-  const getImageProgress = (progress)=> {
-    if (progress < 100) {
+  const getImageProgress = (item)=> {
+    if (item.progress < 100 || item.uploading !== true) {
       return 'url(/images/icon/closeimg.png) no-repeat 50% 50%';
-    } else {
+    };
+    if (item.uploading === true) {
       return 'url(/images/icon/correct.png) no-repeat 50% 50%';
     }
   };
