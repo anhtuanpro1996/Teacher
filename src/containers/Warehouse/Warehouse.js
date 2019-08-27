@@ -8,9 +8,10 @@ import TopWarehouse from '../../components/WarehouseTop';
 import WarehouseTopList from '../../components/WarehouseTopList';
 import WHBoxData from '../../components/WHBoxData';
 import {validateFileType} from '../../helpers/validateType';
-import * as URL from '../../constants/Url';
+import { useState } from 'react';
 function Warehouse(props) {
   const { t } = useTranslation();
+  const [showProgress, setShowProgress] = useState(true);
   const {upload, actions} = props;
   // eslint-disable-next-line react/prop-types
 
@@ -36,10 +37,10 @@ function Warehouse(props) {
           <div key={key} className="infoProgress">
             <div className="iconFileType" style={{WebkitMask: getImageType(item.file.type)}}> </div>
             <div className="infoFile">
-              <p className={ 'nameFile ' + (item.uploading === false ? 'changeName' : '') }>{item.file.name}</p>
-              <p className={ 'noUpload ' + (item.uploading === false ? 'showText' : 'hideText') }>Tải lên không thành công</p>
+              <p className={ 'nameFile ' + (item.progress === 100 && item.uploading === false ? 'changeName' : '') }>{item.file.name}</p>
+              <p className={ 'noUpload ' + (item.progress === 100 && item.uploading === false ? 'showText' : 'hideText') }>Tải lên không thành công</p>
               <div className="progress">
-                <div className={(item.uploading === false ? 'progressFail' : 'progressActive') } style={{width: getPercentage(item.progress)}}> </div>
+                <div className={(item.progress === 100 && item.uploading === false ? 'progressFail' : 'progressActive') } style={{width: getPercentage(item.progress)}}> </div>
               </div>
             </div>
             <p>{item.uploading}</p>
@@ -75,6 +76,9 @@ function Warehouse(props) {
   //     return 'url(/images/icon/refresh.png) no-repeat 50% 50%';
   //   };
   // };
+  const handleShowHideProgress = () => {
+    setShowProgress(!showProgress);
+  };
   const popupProgressUpload = (upload) => {
     const uploaded = upload.filter(c => c.progress === 100 && c.uploading === true).length;
     if (upload.length > 0) {
@@ -82,9 +86,12 @@ function Warehouse(props) {
         <div className="wrapperProgress">
           <div className="topProgress">
             <div className="txtProgress"> Đã tải lên {uploaded}/{upload.length} </div>
-            <div className="icon" > </div>
+            <div className="icon" >
+              <div className={ 'btnShowHideProgress ' + (showProgress === false ? 'arrow-up' : 'arrow-down') } onClick={ handleShowHideProgress } />
+              <div className="btnCloseProgress" />
+            </div>
           </div>
-          <div className="progressFile">
+          <div className={ 'progressFile ' + (showProgress === false ? 'hideProgress' : 'showProgress') }>
             {listFileUpload(upload)}
           </div>
         </div>

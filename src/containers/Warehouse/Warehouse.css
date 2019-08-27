@@ -175,7 +175,6 @@ body{
 }
 .wrapperProgress{
   width: 416px;
-  height: 248px;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -192,6 +191,8 @@ body{
   padding: 12px 16px;
 }
 .topProgress > .txtProgress{
+  width: calc(100% - 56px);
+  float: left;
   font-family: Open Sans;
   font-size: 16px;
   font-weight: normal;
@@ -202,6 +203,38 @@ body{
   text-align: left;
   color: #fff;
 }
+.topProgress > .icon{
+  width: 56px;
+  float: left;
+}
+.icon > .btnShowHideProgress{
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  float: left;
+  background-color: #fff;
+  -webkit-mask:url(/images/icon/arrowback.png) no-repeat 50% 50%;
+  -webkit-mask-size: 100% !important;
+}
+.icon > .arrow-down {
+  -ms-transform: rotate(270deg); /* IE 9 */
+  -webkit-transform: rotate(270deg); /* Safari 3-8 */
+  transform: rotate(270deg);
+}
+.icon > .arrow-up{
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari 3-8 */
+  transform: rotate(90deg);
+}
+.icon > .btnCloseProgress{
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  float: right;
+  background-color: #fff;
+  -webkit-mask:url(/images/icon/closeimg.png) no-repeat 50% 50%;
+  -webkit-mask-size: 100% !important;
+}
 .wrapperProgress > .progressFile {
   padding: 16px;
   width: 100%;
@@ -209,7 +242,12 @@ body{
   overflow-x: unset;
   max-height: 200px;
 }
-
+.wrapperProgress > .hideProgress{
+  display: none;
+}
+.wrapperProgress > .showProgress{
+  display: block;
+}
 .progressFile > .infoProgress{
   width: 100%;
   height: 40px;
