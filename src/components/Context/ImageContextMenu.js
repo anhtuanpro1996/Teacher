@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import './ImageContext.css';
 import { Modal } from 'antd';
 import { bindActionCreators } from 'redux';
-import { changeNameFile } from '../../actions/thunks/fileContextAction';
+import { changeNameFile, removeFile, downloadFile } from '../../actions/thunks/fileContextAction';
 import { connect } from 'react-redux';
+import * as URL from  '../../constants/Url';
 
 const headerModal = {
   width: '100%',
@@ -119,7 +120,7 @@ const ImageContextMenu = (props) => {
 
 
   const renderDetailModal = () => {
-    console.log('renderDetailModal',props.dataContext);
+    // console.log('renderDetailModal',props.dataContext);
     return (
       // <ImageDetail visible={visible} dataRender={props.dataContext}/>
       <Modal className="detail-modal" visible={visibleDetail}>
@@ -162,7 +163,7 @@ const ImageContextMenu = (props) => {
           <div className="title">Thầy/Cô có chắc chắn xóa tệp này không</div>
           <div className="action-btn">
             <div className="agree-btn">
-              <div className="name">Đồng ý</div>
+              <div className="name" onClick={() => confirmRemoveFile()}>Đồng ý</div>
             </div>
             <div className="cancel-btn" onClick={() => clickedCloseModalRemove()}>
               <div className="name">Hủy bỏ</div>
@@ -172,14 +173,21 @@ const ImageContextMenu = (props) => {
       </Modal>
     );
   };
+  const confirmRemoveFile = () => {
+    props.removeFile(props.dataContext.id);
+    showModalRemove(false);
+    // window.location.reload();
+  };
 
   const confirmChangeName = () => {
     // console.log('valueInputChangeName', valueInputChangeName);
     props.changeNameFile(props.dataContext.id, valueInputChangeName);
+    showModalChangeName(false);
+    // window.location.reload();
   };
 
   const renderChangeName = () => {
-    console.log('renderChangeName', props);
+    // console.log('renderChangeName', props);
     return (
       <Modal className="change-name-modal" visible={visibleChangeName}>
         <div className="content">
@@ -198,6 +206,11 @@ const ImageContextMenu = (props) => {
     );
   };
 
+  const downloadFileBtn = () => {
+    const url = URL.DOWNLOAD_FILE + props.dataContext.id + '/download';
+    window.location.href = url;
+  };
+
   // const renderMoveTo = (condition) => {
   //   return (
   //     <React.Fragment>
@@ -214,7 +227,7 @@ const ImageContextMenu = (props) => {
             <div className="itemContext" onClick={() => changeNameClicked()}>Đổi tên</div>
             <div className="itemContext">Sao chép</div>
             <div className="itemContext" onClick={() => detailClicked()}>Chi tiết</div>
-            <div className="itemContext">Tải xuống</div>
+            <div className="itemContext" onClick={() => downloadFileBtn()}>Tải xuống</div>
             <div className="itemContext" onClick={() => removeClicked()}>Xóa</div>
           </div>
         </div>
@@ -245,7 +258,7 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({changeNameFile: changeNameFile}, dispatch);
+  return bindActionCreators({changeNameFile: changeNameFile, removeFile: removeFile, downloadFile: downloadFile}, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImageContextMenu);
