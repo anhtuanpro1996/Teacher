@@ -8,8 +8,10 @@ import TopWarehouse from '../../components/WarehouseTop';
 import WarehouseTopList from '../../components/WarehouseTopList';
 import WHBoxData from '../../components/WHBoxData';
 import {validateFileType} from '../../helpers/validateType';
+import { useState } from 'react';
 function Warehouse(props) {
   const { t } = useTranslation();
+  const [showProgress, setShowProgress] = useState(true);
   const {upload, actions} = props;
   // eslint-disable-next-line react/prop-types
 
@@ -49,7 +51,6 @@ function Warehouse(props) {
     );
   };
   const getImageType = (type)=> {
-    console.log('abcd', type);
     const fileType = validateFileType(type);
     if (fileType === 'image') {
       return 'url(/images/icon/collections.png) no-repeat 50% 50%';
@@ -75,6 +76,9 @@ function Warehouse(props) {
   //     return 'url(/images/icon/refresh.png) no-repeat 50% 50%';
   //   };
   // };
+  const handleShowHideProgress = () => {
+    setShowProgress(!showProgress);
+  };
   const popupProgressUpload = (upload) => {
     const uploaded = upload.filter(c => c.progress === 100 && c.uploading === true).length;
     if (upload.length > 0) {
@@ -82,9 +86,12 @@ function Warehouse(props) {
         <div className="wrapperProgress">
           <div className="topProgress">
             <div className="txtProgress"> Đã tải lên {uploaded}/{upload.length} </div>
-            <div className="icon" > </div>
+            <div className="icon" >
+              <div className={ 'btnShowHideProgress ' + (showProgress === false ? 'arrow-up' : 'arrow-down') } onClick={ handleShowHideProgress } />
+              <div className="btnCloseProgress" />
+            </div>
           </div>
-          <div className="progressFile">
+          <div className={ 'progressFile ' + (showProgress === false ? 'hideProgress' : 'showProgress') }>
             {listFileUpload(upload)}
           </div>
         </div>
