@@ -2,6 +2,7 @@ import React from 'react';
 import {Modal, Button} from 'antd';
 import {useState, useRef } from 'react';
 import axios from 'axios';
+import * as URL from  '../constants/Url';
 
 const itemCreateFolder = {
   color: '#4a4a4a',
@@ -80,11 +81,11 @@ function WareHouseCreateFolder(props) {
     };
     const data = {
       'parentFolder': {
-        'id': 2,
+        'id': current_point.id,
       },
       'name': nameFolder,
     };
-    axios.post('http://157.230.255.33:8890/api/lms/folders', data, headers)
+    axios.post(URL.CREATE_FOLDER, data, headers)
       .then(response => {
         console.log('uploaddddd', response);
         closeModal();
