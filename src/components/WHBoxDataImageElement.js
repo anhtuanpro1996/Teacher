@@ -12,7 +12,7 @@ export default function WHBoxDataImageElement(props) {
     <Dropdown overlay={menu} trigger={['contextMenu']}>
       <Col span={6}>
         <div className="data-element">
-          <div className="image" style={imageBlock}>
+          <div className="image" >
             <img src={imageData.url} style={thumbnail}/>
           </div>
           <div className="title-data" style={titleBlock}>
@@ -27,7 +27,6 @@ export default function WHBoxDataImageElement(props) {
 
 const thumbnail = {
   width: '100%',
-  height: '128px',
   backgroundRepeat: 'no-repeat',
   display: 'flex',
   justifyContent: 'center',
@@ -38,7 +37,7 @@ const imageBlock = {
 };
 const titleBlock = {
   borderTop: 'solid 1px #e8e8e8',
-  padding: '8px',
+  padding: '12px 8px',
   display: 'flex',
 };
 

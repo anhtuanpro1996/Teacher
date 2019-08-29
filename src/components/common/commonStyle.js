@@ -13,6 +13,7 @@ const styleFileName = {
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis',
   textAlign: 'left',
+  marginBottom: '0',
 };
 
 export default styleFileName;

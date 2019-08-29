@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Row, Col, Select, OptGroup, Input, Button } from 'antd';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { Tooltip } from 'antd';
 import * as URL from  '../constants/Url';
 
 import * as CourseActions from '../actions/CourseActions';
@@ -142,17 +143,30 @@ function MCreateInfoCourse(props) {
     return <div/>;
   };
 
+  const generateTitle = (type) => {
+    if (type === 'benefit') {
+      return (t('CreateCoursesPage', {returnObjects: true}).benefitHover);
+    } else if (type === 'audience') {
+      return (t('CreateCoursesPage', {returnObjects: true}).audienceHover);
+    } else if (type === 'requirements') {
+      return (t('CreateCoursesPage', {returnObjects: true}).requireHover);
+    } else if (type === 'description') {
+      return (t('CreateCoursesPage', {returnObjects: true}).descriptionHover);
+    }
+  };
   const divcomon = (text, type) =>{
     return  (
       <Col className="gutter-row common-div" span={24}>
         <div className="common-div-txt">
           <span>{text}</span>
-          <div title="Những kiến thức học viên có được từ khóa học của Thầy/Cô" className="common-suggest"/>
+          <Tooltip placement="right" title={generateTitle(type)}>
+            <div className="common-suggest"/>
+          </Tooltip>
         </div>
         {generateDiv(type)}
         <div className="common-div-end" onClick = {() => handleAdd(type)}>
           <div className="icon-home" style={{WebkitMask: 'url(/images/add-circle.png) no-repeat 50% 50%', background: '#5c9cfe'}}/>
-          <div>Thêm</div>
+          <div className="txtAddIp">Thêm</div>
         </div>
       </Col>
     );
@@ -201,6 +215,7 @@ function MCreateInfoCourse(props) {
   };
   return (
     <Row>
+      <h1 className="title-create-course">Thông tin khóa học</h1>
       <Col className="gutter-row" span={20}>
         <div className="gutter-box">
           <div className="M-info-detail">
@@ -254,7 +269,9 @@ function MCreateInfoCourse(props) {
       <Col className="gutter-row common-div div-description" span={24}>
         <div className="common-div-txt">
           <span>Mô tả tổng quát</span>
-          <div title="World Health Organization" className="common-suggest"/>
+          <Tooltip placement="right" title={generateTitle('description')}>
+            <div className="common-suggest"/>
+          </Tooltip>
         </div>
         <div className="common-div-detail">
           <Input.TextArea className="common-div-description" placeholder={t('CreateCoursesPage', {returnObjects: true}).DescriptionPlaceholder} />

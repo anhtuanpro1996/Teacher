@@ -22,9 +22,13 @@
 "InfoCourse":"Thông tin khóa học",
 "CreateCoursesPage": {
   "NameCouresPlaceholder":"VD: Thành thạo Tiếng Anh trong 30 ngày",
-  "benefitPlaceholder":"VD: Tự biết cách luyện phát âm tiếng Anh sao cho  hiệu quả",
+  "benefitPlaceholder":"VD: Tự biết cách luyện phát âm tiếng Anh sao cho hiệu quả",
   "audiencePlaceholder":"VD: Những ai đã chán với việc đến trung tâm, đến lớp, tốn tiền học các khóa phát âm",
   "RequirePlaceholder":"VD: Máy tính/điện thoại có kết nối internet ổn định",
-  "DescriptionPlaceholder":"VD: Điểm đặc biệt của khóa học là người hướng dẫn cũng là người trực tiếp trải nghiệm phương pháp, đặt mình vào vị trí của người học để người học hình dung rõ được các bước đi và lộ trình"
+  "DescriptionPlaceholder":"VD: Điểm đặc biệt của khóa học là người hướng dẫn cũng là người trực tiếp trải nghiệm phương pháp, đặt mình vào vị trí của người học để người học hình dung rõ được các bước đi và lộ trình",
+  "benefitHover": "Những kiến thức học viên có được từ khóa học của Thầy/Cô",
+  "audienceHover": "Đối tượng học viên nào phù hợp với khóa học của Thầy/Cô",
+  "requireHover": "Các thiết bị/phần mềm/điều kiện cần chuẩn bị trước khi vào học ",
+  "descriptionHover": "Thông tin mô tả để học viên có cái nhìn tổng thể về khóa học của bạn"
   }
 }
