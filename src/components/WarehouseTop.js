@@ -24,7 +24,7 @@ const listMenu = {
   fontStretch: 'normal',
   lineHeight: '1.71',
   letterSpacing: 'normal',
-  paddingLeft: '16px',
+  padding: '0',
   color: '#4a4a4a',
   paddingTop: '8px',
 };
@@ -91,6 +91,9 @@ const iconAddNew = {
   borderRadius: '50%',
   marginRight: '8px',
 };
+const txtUploadFolder = {
+  padding: '10px 16px',
+};
 function TopWarehourse(props) {
   const currentFolder = (props.activeFolder.breadcumb.length > 0) ? props.activeFolder.breadcumb : 0;
   // console.log('TopWarehourse', currentFolder.length);
@@ -104,7 +107,7 @@ function TopWarehourse(props) {
         <WareHouseUploadFile currentFolder={currentFolder}/>
       </Menu.Item>
       <Menu.Item style={listMenu} className="listMenuItem">
-        <Link to="#"><span>Tải thư mục</span></Link>
+        <Link to="#"><span style={txtUploadFolder}>Tải thư mục</span></Link>
       </Menu.Item>
     </Menu>
   );
