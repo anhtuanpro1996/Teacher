@@ -2,6 +2,17 @@
   display: flex;
   align-items: center;
 }
+.title-create-course{
+  font-size: 24px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: #232731;
+  text-align: left;
+  margin-bottom: 16px;
+}
 .M-info-txt{
   width: 100%;
   text-align: left;
@@ -57,6 +68,11 @@
   height: 40px;
   border-radius: 4px;
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.06);
+  color: #232731;
+}
+.common-div-detail-txt::placeholder, .common-div-description::placeholder {
+  color: #646d84;
+  opacity: 1; /* Firefox */
 }
 .select-category{
   padding-left: 6px;
@@ -105,7 +121,9 @@
   text-align: left;
   background: #fff;
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
 }
+
 .common-div-txt{
   font-size: 16px;
   font-weight: 500;
@@ -132,7 +150,6 @@
   border-radius: 4px;
   height: 40px;
   padding-left: 16px;
-  width: 95%;
 }
 .div-description{
   margin-bottom: 16px;
@@ -147,20 +164,34 @@
   align-items: center;
   border-radius: 4px;
   height: 40px;
-  padding-left: 16px;
+  padding: 8px 16px;
   height: 100px !important;
 }
 .common-div-close-btn{
-  width: 5%;
+  margin-left: 16px;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 40px;
 }
 .common-div-end{
+  cursor: pointer;
   height: 24px;
   margin-top: 16px;
   max-width: 80px;
+}
+.common-div-end > .icon-home{
+  margin-right: 8px;
+}
+.common-div-end > .txtAddIp{
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.9;
+  letter-spacing: 0.1px;
+  color: #232731;
 }
 .icon-close{
   width: 24px;
@@ -350,7 +381,7 @@
 }
 .avatar-courses .add-avatar{
   height: 28px;
-  background: #464646;
+  background-color: #464646;
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -381,6 +412,25 @@
   -webkit-mask-size: 100% !important;
   margin-right: 8px;
 }
+.ant-tooltip-content{
+  opacity: 0.8;
+  background-color: #232731;
+  border-radius: 4px;
+}
+.ant-tooltip-inner{
+  width: 380px;
+  padding-top: 8px;
+  background-color: #232731;
+  font-family: Open Sans;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: 0.4px;
+  color: #fcfcfc;
+  border-radius: 4px;
+}
 .M-info-count{
   position: absolute;
   right: 5px;
@@ -390,4 +440,9 @@
   height: 32px;
   border-radius: 4px;
   background-color: #d8d8d8;
+}
+
+.warning-input{
+  border: solid 1px #df322f !important;
+  border-radius: 4px;
 }

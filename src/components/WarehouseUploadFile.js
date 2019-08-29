@@ -14,6 +14,9 @@ const inputFile = {
   position: 'absolute',
   zIndex: '-1',
 };
+const txtUploadFile = {
+  padding: '10px 55px 10px 16px',
+};
 
 function WareHouseUploadFile(props) {
   const current_point = props.currentFolder[props.currentFolder.length - 1];
@@ -46,7 +49,7 @@ function WareHouseUploadFile(props) {
   return (
     <React.Fragment>
       <input style={inputFile} type="file" ref={inputEl} name="file" id="file" className="inputfile" onChange={handleChange} multiple />
-      <label htmlFor="file">Tải tệp tin</label>
+      <label style={txtUploadFile} htmlFor="file">Tải tệp tin</label>
     </React.Fragment>
   );
 }
