@@ -29,7 +29,7 @@ const nameFolder = {
   fontSize: '14px',
   lineHeight: '1.71',
   letterSpacing: 'normal',
-  color: '#b0b5c1',
+  color: '#232731',
 };
 const footerModal = {
   width: '256px',
@@ -48,6 +48,7 @@ const btnCloseModal = {
   textAlign: 'center',
   color: '#232731',
   float: 'left',
+  border: 'none',
 };
 const btnCreateFolder = {
   width: '120px',
@@ -61,6 +62,7 @@ const btnCreateFolder = {
   textAlign: 'center',
   backgroundColor: '#e62020',
   color: '#fff',
+  border: 'none',
 };
 
 const txtCreate = {
@@ -71,6 +73,7 @@ function WareHouseCreateFolder(props) {
   const current_point = props.currentFolder[props.currentFolder.length - 1];
   console.log('WareHouseCreateFolder', current_point);
   const [modal, setModal] = useState(false);
+  const [valNameFolder, setValNameFolder] = useState('');
   const inputNameFolder = useRef();
   const showModal = () => {
     setModal(true);
@@ -98,6 +101,14 @@ function WareHouseCreateFolder(props) {
         console.log('falsUpload', error);
       });
   };
+  const inNameFolder = (e) => {
+    const txtName = e.target.value;
+    setValNameFolder(txtName);
+    if (txtName.length > 10) {
+      const only1000c = txtName.substring(0, 10);
+      setValNameFolder(only1000c);
+    }
+  };
   return (
     <div>
       <a style={itemCreateFolder} onClick={showModal}><span style={txtCreate}>Tạo thư mục</span></a>
@@ -107,7 +118,7 @@ function WareHouseCreateFolder(props) {
         onCancel={() => setModal(false)}
       >
         <h3 style={titleModal}>Thư mục mới</h3>
-        <input type="text" placeholder="Tên thư mục" ref={inputNameFolder} name="nameFolder" style={nameFolder} />
+        <input type="text" maxLength={10} placeholder="Tên thư mục" value = {valNameFolder} ref={inputNameFolder} name="nameFolder" style={nameFolder} onChange={(e)=>inNameFolder(e)} />
         <div style={footerModal}>
           <Button style={btnCloseModal} onClick={closeModal}>Hủy bỏ</Button>
           <Button style={btnCreateFolder} onClick={creatFolder}>Đồng ý</Button>
