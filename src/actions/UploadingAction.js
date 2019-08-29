@@ -1,4 +1,4 @@
-import { UPLOADING, ADD_FILE_UPLOAD, UPDATE_PROGRESS_UPLOAD, UPLOAD_SUCESS } from '../constants/ActionTypes';
+import { UPLOADING, ADD_FILE_UPLOAD, UPDATE_PROGRESS_UPLOAD, UPLOAD_SUCESS, CLOSE_PROGRESS } from '../constants/ActionTypes';
 
 export function getDataUpload(data) {
   console.log('kkk', data);
@@ -25,6 +25,13 @@ export function updateProgress(data) {
 export function uploadSucess(data) {
   return {
     type: UPLOAD_SUCESS,
+    data: data,
+  };
+}
+
+export function closeProgess(data) {
+  return {
+    type: CLOSE_PROGRESS,
     data: data,
   };
 }

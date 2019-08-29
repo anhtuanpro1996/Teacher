@@ -13,7 +13,6 @@ function Warehouse(props) {
   const { t } = useTranslation();
   const [showProgress, setShowProgress] = useState(true);
   const {upload, actions} = props;
-  // eslint-disable-next-line react/prop-types
 
   const getPercentage = (percentage) =>{
     const percent = percentage + '%';
@@ -79,6 +78,10 @@ function Warehouse(props) {
   const handleShowHideProgress = () => {
     setShowProgress(!showProgress);
   };
+  const handleCloseProgress = () => {
+    // eslint-disable-next-line react/prop-types
+    actions.closeProgess([]);
+  };
   const popupProgressUpload = (upload) => {
     const uploaded = upload.filter(c => c.progress === 100 && c.uploading === true).length;
     if (upload.length > 0) {
@@ -88,7 +91,7 @@ function Warehouse(props) {
             <div className="txtProgress"> Đã tải lên {uploaded}/{upload.length} </div>
             <div className="icon" >
               <div className={ 'btnShowHideProgress ' + (showProgress === false ? 'arrow-up' : 'arrow-down') } onClick={ handleShowHideProgress } />
-              <div className="btnCloseProgress" />
+              <div className="btnCloseProgress" onClick={ handleCloseProgress } />
             </div>
           </div>
           <div className={ 'progressFile ' + (showProgress === false ? 'hideProgress' : 'showProgress') }>

@@ -23,6 +23,7 @@ body{
     background-color: #fff;
     width: 100%;
     padding: 0 16px;
+    min-height: 860px;
 }
 /* .ant-select-arrow{
   display: none;
@@ -85,7 +86,6 @@ body{
 .wrapperWarehouse .list-folder {
   height: auto;
   border-top: solid 1px #e8e8e8;
-  border-bottom: solid 1px #e8e8e8;
   padding-top: 32px;
   padding-bottom: 16px;
   background-color: #ffffff;
@@ -124,6 +124,7 @@ body{
   height: auto;
   background-color: #ffffff;
   padding: 32px 0;
+  border-top: solid 1px #e8e8e8;
 }
 .wrapperWarehouse .folder-data .tab-data .ant-tabs-nav-animated {
   float: left;
