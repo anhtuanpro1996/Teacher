@@ -412,6 +412,25 @@
   -webkit-mask-size: 100% !important;
   margin-right: 8px;
 }
+.ant-tooltip-content{
+  opacity: 0.8;
+  background-color: #232731;
+  border-radius: 4px;
+}
+.ant-tooltip-inner{
+  width: 380px;
+  padding-top: 8px;
+  background-color: #232731;
+  font-family: Open Sans;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: 0.4px;
+  color: #fcfcfc;
+  border-radius: 4px;
+}
 .M-info-count{
   position: absolute;
   right: 5px;
