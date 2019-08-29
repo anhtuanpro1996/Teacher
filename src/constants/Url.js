@@ -11,4 +11,4 @@ export const CATEGORY = BASE_URL + 'category';
 export const CREATE_FOLDER = BASE_URL + 'folders';
 export const DELETE_FILE = BASE_URL + 'files/delete/';
 export const DOWNLOAD_FILE = BASE_URL + 'files/';
-
+export const COPY_FILE = BASE_URL + 'files/copy-file';

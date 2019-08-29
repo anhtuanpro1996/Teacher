@@ -18,6 +18,12 @@ const childFolderReducer = (state = childFolderInitialState, action) => {
       datas: action.payload.res,
       breadcumb: action.payload.breadcumb,
     };
+  case 'ACTION_CONTEXT_MENU':
+    return {
+      ...state,
+      pending: true,
+      datas: action.payload,
+    };
   default:
     return state;
   }
