@@ -237,17 +237,15 @@ function MCreateInfoCourse(props) {
     if (isLoading === false) {
       axios.get(URL.CATEGORY, { headers: { ContentType: 'application/json' } })
         .then(response => {
-          setCategory(response.data);
+          const categorydata = response.data;
+          setCategory(categorydata);
+          categorydata.map((cate) => cate.id === selectcategory ? setsubCatewhenchooseCate(cate.subCategories) : '' );
           setIsLoading(true);
         })
         .catch(error => {
         });
     }
-    if (selectcategory && category.length > 0) {
-      category.map((cate) => cate.id === selectcategory ? setsubCatewhenchooseCate(cate.subCategories) : '' );
-    };
   });
-
   const setsubCatewhenchooseCate = (subcatearr) => {
     setSubcategoryArr(subcatearr || []);
     if (subcatearr !== undefined && subcatearr.length > 0) {
@@ -259,6 +257,7 @@ function MCreateInfoCourse(props) {
     setSelectCategory(id);
   };
   const selectSubCategory = (id) =>{
+    console.log('a', id);
     setSubcategory(id);
   };
   const GenCategoryDiv = () => {
@@ -274,8 +273,9 @@ function MCreateInfoCourse(props) {
   };
   const GenChildCategory = () => {
     if (subcategoryarr.length > 0) {
+      console.log('d',subcategory);
       return (
-        <Select className = { (clicktosave && !subcategory) ? 'warning-input' : ''} placeholder="Lựa chọn" value={subcategory ? subcategory : undefined} style={{ width: 120 }} onChange={(id) => selectSubCategory(id)} >
+        <Select className = { (clicktosave && !subcategory) ? 'warning-input' : ''} placeholder="Lựa chọn" value={subcategory ? subcategory : undefined} style={{ width: 120 }} onChange={(value) => selectSubCategory(value)} >
           {subcategoryarr.map( (item, key) => {return (<Option value={item.id} key={key} >{item.name}</Option>);} )}
         </Select>
       );
