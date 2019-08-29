@@ -50,7 +50,6 @@ export function downloadFile(fileID) {
 
 export function copyFile(data, folderID, currentBreadcumb) {
   const url = URL.COPY_FILE;
-  console.log('copyFile',url);
   return (dispatch) => {
     return axios.post(url, data, {
       headers: {
@@ -62,8 +61,41 @@ export function copyFile(data, folderID, currentBreadcumb) {
         dispatch(clickedBreadcumb(currentBreadcumb, folderID));
       })
       .catch(error => {
-        console.log('copyFile',error);
         throw (error);
       });
   };
 }
+
+export function getListFolderForContext(idFolder, breadCumbs) {
+  const url = URL.GET_CHILD_FOLDER + idFolder;
+  const payload = {};
+  payload.breadCumbs = breadCumbs;
+  return dispatch => {
+    fetch(url)
+      .then(res => res.json())
+      .then(res => {
+        payload.res = res;
+        dispatch({ type: 'FETCH_FOLDER_FOR_CONTEXT_SUCCESS', payload: payload});
+      })
+      .catch(error => {
+        throw (error);
+      });
+  };
+};
+
+export function moveFileToFolder(data) {
+  const url = URL.MOVE_FILE;
+  return (dispatch) => {
+    return axios.post(url, data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(res => {
+        dispatch({ type: 'MOVE_FILE_SUCCESS', payload: res});
+      })
+      .catch(error => {
+        throw (error);
+      });
+  };
+};

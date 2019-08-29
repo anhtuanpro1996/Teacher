@@ -44,6 +44,7 @@
   width: 100%;
   height: 232px;
   background-color: #f9fafc;
+	overflow-y: scroll;
 }
 .move-to-block .body .folder-element {
   height: 40px;
@@ -53,6 +54,16 @@
   justify-content: space-between;
   margin-bottom: 8px;
   cursor: pointer;
+}
+.move-to-block .body .folder-element-active {
+  height: 40px;
+  width: 100%;
+  padding: 7px 16px 9px 16px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  cursor: pointer;
+  background-color: #e0e0e0;
 }
 .move-to-block .body .folder-element .title-folder {
   display: flex;
@@ -87,7 +98,7 @@
   justify-content: center;
   align-items: center;
 }
-.move-to-block .footer .move-btn {
+.move-to-block .footer .move-btn-disable {
   width: 170px;
   height: 40px;
   padding: 12px 8px 12px 8px;
@@ -96,12 +107,31 @@
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  cursor: pointer;
 }
-.move-to-block .footer .move-btn .title {
+.move-to-block .footer .move-btn-disable .title {
   font-family: Montserrat;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.71;
   color: #232731;
+}
+
+.move-to-block .footer .move-btn-active {
+  width: 170px;
+  height: 40px;
+  padding: 12px 8px 12px 8px;
+  background-color: #5c9cfe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.move-to-block .footer .move-btn-active .title {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.71;
+  color: #fcfcfc;
 }
