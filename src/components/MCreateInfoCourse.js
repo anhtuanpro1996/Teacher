@@ -108,13 +108,13 @@ function MCreateInfoCourse(props) {
   };
   const AddBenefit = (e, type, key)=>{
     if (type === 'benefit') {
-      dispatch({ type: 'editbenefit', value: e.target.value, stt: key});
+      dispatch({ type: 'editbenefit', value: e.target.value.substring(0, 300), stt: key});
     }
     if (type === 'audience') {
-      dispatchAudience({ type: 'editAudience', value: e.target.value, stt: key});
+      dispatchAudience({ type: 'editAudience', value: e.target.value.substring(0, 300), stt: key});
     }
     if (type === 'requirements') {
-      dispatchRequirements({ type: 'editRequirements', value: e.target.value, stt: key});
+      dispatchRequirements({ type: 'editRequirements', value: e.target.value.substring(0, 300), stt: key});
     }
   };
   const generateDiv = (type) => {
@@ -224,7 +224,6 @@ function MCreateInfoCourse(props) {
     const audienceStr = audience.toString();
     const requirementsStr = requirements.toString();
     const subcategoryId = subcategory;
-    console.log('he', !checkNull(subcategory), !checkArrEmptyString(benefit), !checkArrEmptyString(audience), !checkArrEmptyString(requirements), !checkEmptyString(imgcourse), !checkEmptyString(shortDes));
     if ( !checkArrEmptyString(benefit) && !checkArrEmptyString(audience) && !checkArrEmptyString(requirements) && !checkNull(subcategory) && !checkEmptyString(imgcourse) && !checkEmptyString(shortDes) && !checkEmptyString(coursesName)) {
       const data  = {'name': coursesName, 'benefit': benefitStr, 'target': audienceStr, 'requirement': requirementsStr, 'shortDes': shortDes, 'subCategoryId': subcategoryId, 'userId': 1 };
       actions.createCourseInfo({data});
@@ -318,7 +317,7 @@ function MCreateInfoCourse(props) {
       </Col>
       <Col className="gutter-row" span={4}>
         <div className={'gutter-box M-image ' + ((clicktosave && !imgcourse) ? 'warning-input' : '')}>
-          <div className="avatar-courses">
+          <div className="avatar-courses" style={{backgroundImage: 'url(' + imgcourse + ')'}}>
             <div className="burstmode"/>
             <div className="add-avatar">
               <div className="add-avatar-img"/>
