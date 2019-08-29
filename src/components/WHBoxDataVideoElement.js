@@ -8,7 +8,8 @@ export default function WHBoxDataVideoElement(props) {
   return (
     <Col span={6}>
       <div className="data-element" style={dataElement}>
-        <div className="image" style={imageBlock}>
+        <div className="image">
+          <div className="wrapper-image" />
           <img src ="https://picsum.photos/id/1/200/200" style={thumbnail}/>
           <div className="icon" style={iconData} />
         </div>
@@ -25,14 +26,13 @@ const dataElement = {
   flexDirection: 'column',
 };
 
-const imageBlock = {
-  padding: '8px',
-  height: '144px',
-};
+// const imageBlock = {
+//   padding: '8px',
+//   height: '144px',
+// };
 
 const thumbnail = {
   width: '100%',
-  height: '128px',
   backgroundRepeat: 'no-repeat',
   display: 'flex',
   justifyContent: 'center',
@@ -41,9 +41,8 @@ const thumbnail = {
 
 const titleBlock = {
   borderTop: 'solid 1px #e8e8e8',
-  padding: '8px',
+  padding: '12px 8px',
   display: 'flex',
-  height: '42px',
 };
 
 const iconData = {
@@ -52,8 +51,12 @@ const iconData = {
   backgroundColor: '#fff',
   WebkitMask: "url('/images/icon/play-circle.png') no-repeat 50% 50%",
   WebkitMaskSize: '100%',
-  marginTop: '-76px',
-  marginLeft: '45%',
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  marginLeft: '-16px',
+  marginTop: '-16px',
+  zIndex: '2',
 };
 
 

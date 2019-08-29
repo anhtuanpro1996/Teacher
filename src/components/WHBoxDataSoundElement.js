@@ -10,22 +10,26 @@ const iconData = {
   backgroundColor: '#b0b5c1',
   WebkitMask: "url('/images/icon/library-music.png') no-repeat 50% 50%",
   WebkitMaskSize: '100%',
-  marginRight: '8px',
 };
 const thumbnail = {
   width: '100%',
-  height: '128px',
   backgroundRepeat: 'no-repeat',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-};
-const imageBlock = {
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  bottom: '0',
+  right: '0',
   padding: '8px',
 };
+// const imageBlock = {
+//   padding: '8px',
+// };
 const titleBlock = {
   borderTop: 'solid 1px #e8e8e8',
-  padding: '8px',
+  padding: '12px 8px',
   display: 'flex',
 };
 
@@ -44,7 +48,7 @@ export default function WHBoxDataSoundElement(props) {
   return (
     <Col span={6}>
       <div className="data-element">
-        <div className="image" style={imageBlock}>
+        <div className="image">
           <div className="thumbnail" style={thumbnail}>
             <div className="icon" style={iconData} />
           </div>
