@@ -6,18 +6,32 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { Tooltip } from 'antd';
 import * as URL from  '../constants/Url';
-
 import * as CourseActions from '../actions/CourseActions';
+import { withRouter } from 'react-router-dom';
+import {checkEmptyString, checkArrEmptyString, checkNull} from '../helpers/helper';
+import PropTypes from 'prop-types';
 
 const { Option } = Select;
 
 function MCreateInfoCourse(props) {
-  console.log('hihi', props);
-  const {courseinfo, actions} = props;
   const { t } = useTranslation();
-  const [coursesName, setcoursesName] = useState('');
+  const {courseinfo, actions} = props;
+  const initBenefit =  courseinfo[0].data.benefit.split(',');
+  const initAudience =  courseinfo[0].data.target.split(',');
+  const initRequirement =  courseinfo[0].data.requirement.split(',');
+  const initShortDes = courseinfo[0].data.shortDes;
+  const initCourseName = courseinfo[0].data.name;
+  const initSubCategory = courseinfo[0].data.subCategory.id;
+  const initCategoryId = courseinfo[0].data.subCategory.parentCategory.id;
+  const [coursesName, setcoursesName] = useState(initCourseName);
+  const [imgcourse, setImgcourse] = useState('/images/avatar.jpg');
+  const [shortDes, setshortDes] = useState(initShortDes);
   const [category, setCategory] = useState([]);
+  const [selectcategory, setSelectCategory] = useState(initCategoryId);
+  const [subcategory, setSubcategory] = useState(initSubCategory);
+  const [subcategoryarr, setSubcategoryArr] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [clicktosave, setClickToSave] = useState(false);
   const [benefit, dispatch] = useReducer((myArray, { type, value, stt }) => {
     switch (type) {
     case 'addbenefit':
@@ -29,7 +43,7 @@ function MCreateInfoCourse(props) {
     default:
       return myArray;
     }
-  }, ['']);
+  }, initBenefit);
   const [audience, dispatchAudience] = useReducer((myArray, { type, value, stt }) => {
     switch (type) {
     case 'addAudience':
@@ -41,7 +55,7 @@ function MCreateInfoCourse(props) {
     default:
       return myArray;
     }
-  }, ['']);
+  }, initAudience);
   const [requirements, dispatchRequirements] = useReducer((myArray, { type, value, stt }) => {
     switch (type) {
     case 'addRequirements':
@@ -53,7 +67,7 @@ function MCreateInfoCourse(props) {
     default:
       return myArray;
     }
-  }, ['']);
+  }, initRequirement);
   const handleAdd = (type) => {
     switch (type) {
     case 'benefit':
@@ -94,13 +108,13 @@ function MCreateInfoCourse(props) {
   };
   const AddBenefit = (e, type, key)=>{
     if (type === 'benefit') {
-      dispatch({ type: 'editbenefit', value: e.target.value, stt: key});
+      dispatch({ type: 'editbenefit', value: e.target.value.substring(0, 300), stt: key});
     }
     if (type === 'audience') {
-      dispatchAudience({ type: 'editAudience', value: e.target.value, stt: key});
+      dispatchAudience({ type: 'editAudience', value: e.target.value.substring(0, 300), stt: key});
     }
     if (type === 'requirements') {
-      dispatchRequirements({ type: 'editRequirements', value: e.target.value, stt: key});
+      dispatchRequirements({ type: 'editRequirements', value: e.target.value.substring(0, 300), stt: key});
     }
   };
   const generateDiv = (type) => {
@@ -108,7 +122,7 @@ function MCreateInfoCourse(props) {
       return (
         <React.Fragment>
           {benefit.map( (item, key) => < div key={key} className="common-div-detail">
-            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item === '' ? null : item} placeholder={t('CreateCoursesPage', {returnObjects: true}).benefitPlaceholder} />
+            <Input onChange={(e)=> AddBenefit(e, type, key)} className={'common-div-detail-txt ' + ((checkEmptyString(item) && clicktosave ) ? 'warning-input' : '')} value={item === '' ? null : item} placeholder={t('CreateCoursesPage', {returnObjects: true}).benefitPlaceholder} />
             <div className="common-div-close-btn" onClick = {() => handleRemove(type, key)}>
               <div className="icon-close" style={{WebkitMask: 'url(/images/icon/closeimg.png) no-repeat 50% 50%'}}/>
             </div>
@@ -120,7 +134,7 @@ function MCreateInfoCourse(props) {
       return (
         <React.Fragment>
           {audience.map( (item, key) => < div key={key} className="common-div-detail">
-            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item === '' ? null : item} placeholder={t('CreateCoursesPage', {returnObjects: true}).audiencePlaceholder} />
+            <Input onChange={(e)=> AddBenefit(e, type, key)} className={'common-div-detail-txt ' + ((checkEmptyString(item) && clicktosave) ? 'warning-input' : '')} value={item === '' ? null : item} placeholder={t('CreateCoursesPage', {returnObjects: true}).audiencePlaceholder} />
             <div className="common-div-close-btn" onClick = {() => handleRemove(type, key)}>
               <div className="icon-close" style={{WebkitMask: 'url(/images/icon/closeimg.png) no-repeat 50% 50%'}}/>
             </div>
@@ -132,7 +146,7 @@ function MCreateInfoCourse(props) {
       return (
         <React.Fragment>
           {requirements.map( (item, key) => < div key={key} className="common-div-detail">
-            <Input onChange={(e)=> AddBenefit(e, type, key)} className="common-div-detail-txt" value={item === '' ? null : item} placeholder={t('CreateCoursesPage', {returnObjects: true}).RequirePlaceholder} />
+            <Input onChange={(e)=> AddBenefit(e, type, key)} className={'common-div-detail-txt ' + ((checkEmptyString(item) && clicktosave) ? 'warning-input' : '')} value={item === '' ? null : item} placeholder={t('CreateCoursesPage', {returnObjects: true}).RequirePlaceholder} />
             <div className="common-div-close-btn" onClick = {() => handleRemove(type, key)}>
               <div className="icon-close" style={{WebkitMask: 'url(/images/icon/closeimg.png) no-repeat 50% 50%'}}/>
             </div>
@@ -142,7 +156,24 @@ function MCreateInfoCourse(props) {
     }
     return <div/>;
   };
-
+  const disalbeAddbuttion = (type) => {
+    if (type === 'benefit') {
+      if (benefit.length === 15) {
+        return false;
+      } else return true;
+    }
+    if (type === 'audience') {
+      if (audience.length === 15) {
+        return false;
+      } else return true;
+    }
+    if (type === 'requirements') {
+      if (requirements.length === 15) {
+        return false;
+      } else return true;
+    }
+    return true;
+  };
   const generateTitle = (type) => {
     if (type === 'benefit') {
       return (t('CreateCoursesPage', {returnObjects: true}).benefitHover);
@@ -164,7 +195,7 @@ function MCreateInfoCourse(props) {
           </Tooltip>
         </div>
         {generateDiv(type)}
-        <div className="common-div-end" onClick = {() => handleAdd(type)}>
+        <div className={'common-div-end ' + ( disalbeAddbuttion(type) ? '' : 'di-active')} onClick = {() => handleAdd(type)}>
           <div className="icon-home" style={{WebkitMask: 'url(/images/add-circle.png) no-repeat 50% 50%', background: '#5c9cfe'}}/>
           <div className="txtAddIp">Thêm</div>
         </div>
@@ -179,38 +210,77 @@ function MCreateInfoCourse(props) {
       setcoursesName(only70c);
     }
   };
-  const CancelPage = () =>{
-    console.log('a');
+  const inputshortDes = (e) =>{
+    const txt = e.target.value;
+    setshortDes(txt);
+    if (txt.length >= 1000) {
+      const only1000c = txt.substring(0, 1000);
+      setshortDes(only1000c);
+    }
   };
-  const setPage = () => {
-    console.log('actions', actions);
-    actions.SetActivePage({page: 1});
+  const CreateCourse = () => {
+    setClickToSave(true);
+    const benefitStr = benefit.toString();
+    const audienceStr = audience.toString();
+    const requirementsStr = requirements.toString();
+    const subcategoryId = subcategory;
+    if ( !checkArrEmptyString(benefit) && !checkArrEmptyString(audience) && !checkArrEmptyString(requirements) && !checkNull(subcategory) && !checkEmptyString(imgcourse) && !checkEmptyString(shortDes) && !checkEmptyString(coursesName)) {
+      const data  = {'name': coursesName, 'benefit': benefitStr, 'target': audienceStr, 'requirement': requirementsStr, 'shortDes': shortDes, 'subCategoryId': subcategoryId, 'userId': 1 };
+      actions.createCourseInfo({data});
+    } else {
+      console.log('ERRROR');
+    }
+    // actions.SetActivePage({page: 1});
   };
 
   useEffect(() => {
     if (isLoading === false) {
-      console.log('vao day');
       axios.get(URL.CATEGORY, { headers: { ContentType: 'application/json' } })
         .then(response => {
-          console.log('er', response.data);
-          setCategory(response.data);
+          const categorydata = response.data;
+          setCategory(categorydata);
+          categorydata.map((cate) => cate.id === selectcategory ? setsubCatewhenchooseCate(cate.subCategories) : '' );
           setIsLoading(true);
         })
         .catch(error => {
-          console.log('er', error.response);
         });
     }
   });
-
+  const setsubCatewhenchooseCate = (subcatearr) => {
+    setSubcategoryArr(subcatearr || []);
+    if (subcatearr !== undefined && subcatearr.length > 0) {
+      setSubcategory(subcatearr[0].id);
+    };
+  };
+  const selectCategory = (id) =>{
+    category.map((cate) => cate.id === id ? setsubCatewhenchooseCate(cate.subCategories) : '' );
+    setSelectCategory(id);
+  };
+  const selectSubCategory = (id) =>{
+    console.log('a', id);
+    setSubcategory(id);
+  };
   const GenCategoryDiv = () => {
     if (category.length > 0) {
       return (
-        <Select placeholder="Lựa chọn" style={{ width: 120 }}>
-          {category.map( (item, key) => {return (<Option value={item.name} key={key} >{item.name}</Option>);} )}
+        <Select className = { (clicktosave && !selectcategory) ? 'warning-input' : ''}  placeholder="Lựa chọn" value={selectcategory ? selectcategory : undefined} style={{ width: 120 }} onChange={(value) => selectCategory(value)}>
+          {category.map( (item, key) => {return (<Option value={item.id} key={key} >{item.name}</Option>);} )}
         </Select>
       );
     } else {
-      return ( <Select placeholder="Lựa chọn" style={{ width: 120 }}/>);
+      return ( <Select className = { (clicktosave && !selectcategory) ? 'warning-input' : ''} placeholder="Lựa chọn" value={selectcategory ? selectcategory : undefined} style={{ width: 120 }}/>);
+    }
+  };
+  const GenChildCategory = () => {
+    if (subcategoryarr.length > 0) {
+      console.log('d',subcategory);
+      return (
+        <Select className = { (clicktosave && !subcategory) ? 'warning-input' : ''} placeholder="Lựa chọn" value={subcategory ? subcategory : undefined} style={{ width: 120 }} onChange={(value) => selectSubCategory(value)} >
+          {subcategoryarr.map( (item, key) => {return (<Option value={item.id} key={key} >{item.name}</Option>);} )}
+        </Select>
+      );
+    } else {
+      return ( <Select className = { (clicktosave && !subcategory) ? 'warning-input' : ''} placeholder="Lựa chọn" value={ undefined } style={{ width: 120 }}/>);
     }
   };
   return (
@@ -221,7 +291,7 @@ function MCreateInfoCourse(props) {
           <div className="M-info-detail">
             <div className="M-info-detail-name">
               <div className="M-info-detail-name-cate">Tên khóa học</div>
-              <Input value={coursesName} maxLength={70} className="M-info-detail-name-txt"  placeholder={t('CreateCoursesPage', {returnObjects: true}).NameCouresPlaceholder} onChange={(e)=>inputNameCourses(e)}/>
+              <Input value={coursesName} maxLength={70} className={'M-info-detail-name-txt ' + ((clicktosave && !coursesName) ? 'warning-input' : '')}  placeholder={t('CreateCoursesPage', {returnObjects: true}).NameCouresPlaceholder} onChange={(e)=>inputNameCourses(e)}/>
               <div className={'M-info-count' + (coursesName.length === 0 ? ' di-active' : '')}>{70 - coursesName.length}</div>
             </div>
             <div className="M-category">
@@ -238,14 +308,7 @@ function MCreateInfoCourse(props) {
                 Danh mục con
                 </div>
                 <div className="select-category">
-                  <Select placeholder="Lựa chọn" style={{ width: 120 }} >
-                    <Option value="choose" disabled>Lựa chọn</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
-                  </Select>
+                  {GenChildCategory()}
                 </div>
               </div>
             </div>
@@ -253,8 +316,8 @@ function MCreateInfoCourse(props) {
         </div>
       </Col>
       <Col className="gutter-row" span={4}>
-        <div className="gutter-box M-image">
-          <div className="avatar-courses">
+        <div className={'gutter-box M-image ' + ((clicktosave && !imgcourse) ? 'warning-input' : '')}>
+          <div className="avatar-courses" style={{backgroundImage: 'url(' + imgcourse + ')'}}>
             <div className="burstmode"/>
             <div className="add-avatar">
               <div className="add-avatar-img"/>
@@ -274,13 +337,13 @@ function MCreateInfoCourse(props) {
           </Tooltip>
         </div>
         <div className="common-div-detail">
-          <Input.TextArea className="common-div-description" placeholder={t('CreateCoursesPage', {returnObjects: true}).DescriptionPlaceholder} />
+          <Input.TextArea onChange={(e)=>inputshortDes(e)} value = {shortDes} className={'common-div-description ' + ((checkEmptyString(shortDes) && clicktosave) ? 'warning-input' : '')} placeholder={t('CreateCoursesPage', {returnObjects: true}).DescriptionPlaceholder} />
         </div>
       </Col>
       <Col className="gutter-row button-div" span={24}>
-        <Button className="btn-common cancel-btn" onClick={() => CancelPage()}>Hủy bỏ</Button>
+        <Button className="btn-common cancel-btn" onClick={() =>{props.history.goBack();}}>Hủy bỏ</Button>
         {/* <Button className={'btn-common cancel-btn' + (curentpage === 1  ? '' : ' di-active')} onClick={()=>previousPage()} >Quay lại</Button> */}
-        <Button className="btn-common next-btn" onClick={()=>setPage()} > Lưu và tiếp tục</Button>
+        <Button className="btn-common next-btn" onClick={()=>CreateCourse()} > Lưu và tiếp tục</Button>
       </Col>
     </Row>
 
@@ -294,5 +357,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(CourseActions, dispatch),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(MCreateInfoCourse);
+MCreateInfoCourse.propTypes = {
+  courseinfo: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired,
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MCreateInfoCourse));
 
