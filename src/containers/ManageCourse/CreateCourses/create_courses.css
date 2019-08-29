@@ -391,3 +391,8 @@
   border-radius: 4px;
   background-color: #d8d8d8;
 }
+
+.warning-input{
+  border: solid 1px #df322f !important;
+  border-radius: 4px;
+}

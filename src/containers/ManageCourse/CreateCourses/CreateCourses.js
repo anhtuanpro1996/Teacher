@@ -32,13 +32,13 @@ function CreateCourses(props) {
         <div id="Top-Tabs-1" className={ curentpage === 0 ? 'active' : ''}>
           <div className="c_circle"> 1 </div>
           <div className="c_cicrle_parent"> 1 </div>
-          <span>Tạo thông tin</span>
+          <span>Tạo mô tả</span>
           <h1>{process.env.BASE_API_URL}</h1>
         </div>
         <div id="Top-Tabs-2" className={curentpage === 1 ? 'active' : ''}>
           <div className="c_circle"> 2 </div>
           <div className="c_cicrle_parent"> 2 </div>
-          <span>Tạo đề cương</span>
+          <span>Tạo nội dung</span>
         </div>
         <div id="Top-Tabs-3" className={curentpage === 2 ? 'active' : ''}>
           <div className="c_circle"> 3 </div>
