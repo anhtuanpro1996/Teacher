@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import './ImageContext.css';
 import { Modal } from 'antd';
 import { bindActionCreators } from 'redux';
-import { changeNameFile, removeFile, downloadFile } from '../../actions/thunks/fileContextAction';
+import { changeNameFile, removeFile, downloadFile, copyFile } from '../../actions/thunks/fileContextAction';
 import { connect } from 'react-redux';
 import * as URL from  '../../constants/Url';
+import MoveToContext from './MoveToContext';
 
 const headerModal = {
   width: '100%',
@@ -75,6 +76,8 @@ const moveTo = {
   backgroundColor: 'blue',
 };
 const ImageContextMenu = (props) => {
+  const listBreadcumb = props.childFolderData.breadcumb;
+  const currentFolder = listBreadcumb[listBreadcumb.length -1];
   const [moveToValue, movedHandle] = useState(false);
   const [hiddenContext, clickHandle] = useState(false);
   const [visibleDetail, showModalDetail] = useState(false);
@@ -173,21 +176,20 @@ const ImageContextMenu = (props) => {
       </Modal>
     );
   };
+
   const confirmRemoveFile = () => {
-    props.removeFile(props.dataContext.id);
+    props.removeFile(props.dataContext.id, currentFolder.id, listBreadcumb);
     showModalRemove(false);
-    // window.location.reload();
+    clickHandle(false);
   };
 
   const confirmChangeName = () => {
-    // console.log('valueInputChangeName', valueInputChangeName);
-    props.changeNameFile(props.dataContext.id, valueInputChangeName);
+    props.changeNameFile(props.dataContext.id, valueInputChangeName, currentFolder.id, listBreadcumb);
     showModalChangeName(false);
-    // window.location.reload();
+    clickHandle(false);
   };
 
   const renderChangeName = () => {
-    // console.log('renderChangeName', props);
     return (
       <Modal className="change-name-modal" visible={visibleChangeName}>
         <div className="content">
@@ -218,14 +220,31 @@ const ImageContextMenu = (props) => {
   //     </React.Fragment>
   //   );
   // };
+
+  const copyFileBtn = () => {
+    const initData = {
+      'folder_id': currentFolder.id,
+      'file_id': props.dataContext.id,
+    };
+    props.copyFile(initData, currentFolder.id, listBreadcumb);
+    // clickHandle(false);
+    // console.log('copyFileBtn', initData);
+  };
+  const renderMoveTo = () => {
+    return (
+      <React.Fragment>
+        {moveToValue ? <MoveToContext/> : ''}
+      </React.Fragment>
+    );
+  };
   const renderContextMenu = () => {
     return (
       <React.Fragment>
         <div className="contextMenu"  >
           <div className="content-top">
-            <div className="itemContext" onClick={() => moveToClick(moveToValue)}>Di Chuyển tới</div>
+            <div className="itemContext" onClick={() => moveToClick()}>Di Chuyển tới</div>
             <div className="itemContext" onClick={() => changeNameClicked()}>Đổi tên</div>
-            <div className="itemContext">Sao chép</div>
+            <div className="itemContext" onClick={() => copyFileBtn()}>Sao chép</div>
             <div className="itemContext" onClick={() => detailClicked()}>Chi tiết</div>
             <div className="itemContext" onClick={() => downloadFileBtn()}>Tải xuống</div>
             <div className="itemContext" onClick={() => removeClicked()}>Xóa</div>
@@ -244,7 +263,7 @@ const ImageContextMenu = (props) => {
   return (
     <React.Fragment>
       {hiddenContext ? '' : initContexMenu()}
-      {/* {renderMoveTo(moveToValue)} */}
+      {renderMoveTo()}
       {renderDetailModal()}
       {renderRemoveFile()}
       {renderChangeName()}
@@ -255,10 +274,11 @@ const ImageContextMenu = (props) => {
 const mapStateToProps = (state) => {
   return {
     contextFileReducer: state.contextFileReducer,
+    childFolderData: state.childFolderReducer,
   };
 };
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({changeNameFile: changeNameFile, removeFile: removeFile, downloadFile: downloadFile}, dispatch);
+  return bindActionCreators({changeNameFile: changeNameFile, removeFile: removeFile, downloadFile: downloadFile, copyFile: copyFile}, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImageContextMenu);

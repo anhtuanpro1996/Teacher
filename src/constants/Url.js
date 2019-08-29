@@ -12,3 +12,4 @@ export const DELETE_FILE = BASE_URL + 'files/delete/';
 export const DOWNLOAD_FILE = BASE_URL + 'files/';
 export const CREATE_COURSES_INFO = BASE_URL + 'courses';
 
+export const COPY_FILE = BASE_URL + 'files/copy-file';
