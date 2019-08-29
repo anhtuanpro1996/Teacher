@@ -13,7 +13,7 @@ const MoveToContext = (props) => {
   const handleArrowRight = (folderData) => {
     const folderID1 = folderData.id;
     const folderName1 = folderData.name;
-    let BreadCubms = [...breadCumbs, {id: folderID1, title: folderName1}];
+    const BreadCubms = [...breadCumbs, {id: folderID1, title: folderName1}];
     props.fetchListFolder(folderID1, BreadCubms);
     checkActiveBtn(true);
     setFileID(props.dataFile.id);
@@ -21,11 +21,11 @@ const MoveToContext = (props) => {
   };
   const handleArrowLeft = () => {
     if (breadCumbs.length > 1) {
-      const currentBC = breadCumbs[breadCumbs.length-1];
+      const currentBC = breadCumbs[breadCumbs.length - 1];
       const prevBC = breadCumbs.filter((value) =>{
         return value.id !== currentBC.id;
       });
-      const prevFolder = prevBC[prevBC.length-1];
+      const prevFolder = prevBC[prevBC.length - 1];
       const prevFolderID = prevFolder.id;
       props.fetchListFolder(prevFolderID, prevBC);
       checkActiveBtn(true);
@@ -72,7 +72,7 @@ const MoveToContext = (props) => {
       <div className="header">
         <div className="header-title">
           <div className="arrow-left" onClick={() => handleArrowLeft()}/>
-          <div className="title">{breadCumbs[breadCumbs.length-1].title}</div>
+          <div className="title">{breadCumbs[breadCumbs.length - 1].title}</div>
         </div>
         <div className="close-modal"/>
       </div>

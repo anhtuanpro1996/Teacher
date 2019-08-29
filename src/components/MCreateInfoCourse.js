@@ -273,7 +273,7 @@ function MCreateInfoCourse(props) {
   };
   const GenChildCategory = () => {
     if (subcategoryarr.length > 0) {
-      console.log('d',subcategory);
+      console.log('d', subcategory);
       return (
         <Select className = { (clicktosave && !subcategory) ? 'warning-input' : ''} placeholder="Lựa chọn" value={subcategory ? subcategory : undefined} style={{ width: 120 }} onChange={(value) => selectSubCategory(value)} >
           {subcategoryarr.map( (item, key) => {return (<Option value={item.id} key={key} >{item.name}</Option>);} )}

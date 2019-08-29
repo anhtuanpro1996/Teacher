@@ -78,7 +78,7 @@ const moveTo = {
 };
 const ImageContextMenu = (props) => {
   const listBreadcumb = props.childFolderData.breadcumb;
-  const currentFolder = listBreadcumb[listBreadcumb.length -1];
+  const currentFolder = listBreadcumb[listBreadcumb.length - 1];
   const [moveToValue, movedHandle] = useState(false);
   const [hiddenContext, clickHandle] = useState(false);
   const [visibleDetail, showModalDetail] = useState(false);
