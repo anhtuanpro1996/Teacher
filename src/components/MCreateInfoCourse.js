@@ -152,7 +152,7 @@ function MCreateInfoCourse(props) {
         {generateDiv(type)}
         <div className="common-div-end" onClick = {() => handleAdd(type)}>
           <div className="icon-home" style={{WebkitMask: 'url(/images/add-circle.png) no-repeat 50% 50%', background: '#5c9cfe'}}/>
-          <div>Thêm</div>
+          <div className="txtAddIp">Thêm</div>
         </div>
       </Col>
     );
@@ -201,6 +201,7 @@ function MCreateInfoCourse(props) {
   };
   return (
     <Row>
+      <h1 className="title-create-course">Thông tin khóa học</h1>
       <Col className="gutter-row" span={20}>
         <div className="gutter-box">
           <div className="M-info-detail">
