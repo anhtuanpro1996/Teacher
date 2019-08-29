@@ -29,3 +29,18 @@ export function clickedBreadcumb(data, idFolder) {
       });
   };
 };
+
+// export function actionContext(idFolder) {
+//   const url = 'http://157.230.255.33:8890/api/lms/folders/' + idFolder;
+//   return dispatch => {
+//     fetch(url)
+//       .then(res => res.json())
+//       .then(res => {
+//         dispatch({ type: 'ACTION_CONTEXT_MENU', payload: res});
+//         // console.log('rest', res);
+//       })
+//       .catch(error => {
+//         throw (error);
+//       });
+//   };
+// };
