@@ -7,7 +7,7 @@ import * as UploadingAction from '../../actions/UploadingAction';
 import TopWarehouse from '../../components/WarehouseTop';
 import WarehouseTopList from '../../components/WarehouseTopList';
 import WHBoxData from '../../components/WHBoxData';
-import {validateFileType} from '../../helpers/validateType';
+import {validateFileType} from '../../helpers/helper';
 import { useState } from 'react';
 function Warehouse(props) {
   const { t } = useTranslation();
