@@ -63,6 +63,10 @@ const btnCreateFolder = {
   color: '#fff',
 };
 
+const txtCreate = {
+  padding: '10px 36px 10px 16px',
+};
+
 function WareHouseCreateFolder(props) {
   const current_point = props.currentFolder[props.currentFolder.length - 1];
   console.log('WareHouseCreateFolder', current_point);
@@ -96,7 +100,7 @@ function WareHouseCreateFolder(props) {
   };
   return (
     <div>
-      <a style={itemCreateFolder} onClick={showModal}><span>Tạo thư mục</span></a>
+      <a style={itemCreateFolder} onClick={showModal}><span style={txtCreate}>Tạo thư mục</span></a>
       <Modal className="wrapperModalCreateFolder"
         visible={modal}
         onOk={() => setModal(false)}

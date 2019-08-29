@@ -19,23 +19,24 @@ const nameWareHourse = {
   letterSpacing: 'normal',
   color: '#4a4a4a',
   textAlign: 'left',
-  width: 'calc(100% - 133px)',
+  width: 'calc(100% - 190px)',
   float: 'left',
   paddingTop: '16px',
   display: 'flex',
 };
 
 const selectDoc = {
-  width: '133px',
+  width: '190px',
   float: 'right',
   paddingTop: '16px',
   cursor: 'pointer',
+  paddingLeft: '8px',
 };
 
 const selectVal = {
   position: 'relative',
   float: 'left',
-  paddingLeft: '24px',
+  // paddingLeft: '24px',
   marginTop: '-2px',
   width: '100%',
   fontFamily: 'OpenSans',
@@ -45,7 +46,7 @@ const selectVal = {
   fontStretch: 'normal',
   lineHeight: '1.5',
   letterSpacing: 'normal',
-  textAlign: 'right',
+  textAlign: 'left',
   color: '#4a4a4a',
 };
 
@@ -60,13 +61,13 @@ const WarehouseTopList = ({t}) =>(
       <WHBreadcrumbTop/>
     </div>
     <div className="selectDoc" style={selectDoc}>
-      <div className="icon-menu" />
       <Select className="selectVal" style={selectVal} defaultValue="time" onChange={handleChange}>
         <Option value="time">{t('Time')}</Option>
         <Option value="name">{t('Name')}</Option>
         <Option value="capacity">{t('Capacity')}</Option>
       </Select>
       <div className="icon-dropdown" />
+      <div className="icon-menu" />
     </div>
   </div>
 );

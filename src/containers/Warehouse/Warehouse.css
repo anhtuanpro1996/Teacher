@@ -32,7 +32,7 @@ body{
 }
 .selectDoc > .icon-menu{
     position: absolute;
-    float: left;
+    right: 24px;
     width: 24px;
     height: 24px;
     background-color: #646d84;
@@ -41,20 +41,25 @@ body{
     
   }
 .selectDoc > .icon-dropdown{
-  float: left;
+  right: 80px;
   position: absolute;
   width: 24px;
   height: 24px;
   background-color: #646d84;
   -webkit-mask:url(https://dvkhfbm6djrbs.cloudfront.net/5acc7360f161b700446f8349/5d4d2ac33bcd2e000ddaa46a/arrow-downward-24-px@2x.png) no-repeat 50% 50%;
   -webkit-mask-size: 100% !important;
-  right: 16px;
   }
 .selectVal > .ant-select-selection{
   border: none;
 }
 .selectVal > .ant-select-selection:focus{
   -webkit-box-shadow: none;
+}
+.selectVal .ant-select-selection__rendered{
+  margin: 0;
+}
+.selectVal .ant-select-arrow{
+  display: none;
 }
 .imgNoDocument{
   width: 72px;
