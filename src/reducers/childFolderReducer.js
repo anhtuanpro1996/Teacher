@@ -1,6 +1,6 @@
 const childFolderInitialState = {
   pending: false,
-  datas: [],
+  datas: {childFolders:[], files:[]},
   breadcumb: [],
 };
 const childFolderReducer = (state = childFolderInitialState, action) => {
@@ -24,6 +24,13 @@ const childFolderReducer = (state = childFolderInitialState, action) => {
       pending: true,
       datas: action.payload,
     };
+  case 'REMOVE_FILE_CHILD_FOLDER':
+    const files = state.datas.files.filter((file) => file.id !== action.id);
+   
+    const data = state.datas;
+    data.files = files;
+    console.log('action la', data);
+    return { ...state, datas: data}
   default:
     return state;
   }

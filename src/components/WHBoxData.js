@@ -10,7 +10,7 @@ import { getChildFolderData } from '../actions/thunks/fetchChildFolders';
 
 const WHBoxData = (props) => {
   const dataRootFolder = props.dataRootFolder;
-  // console.log('WHBoxData-child',dataRootFolder);
+  console.log('WHBoxData-child',dataRootFolder);
   return (
     <React.Fragment>
       {dataRootFolder.pending ? renderRootFolder(dataRootFolder) : ''}
@@ -21,6 +21,8 @@ const WHBoxData = (props) => {
 const renderRootFolder = (dataRaw) => {
   const listFile = dataRaw.datas.files;
   const listFolder = dataRaw.datas.childFolders;
+  console.log('chil', listFile.length);
+  console.log('chil2', listFolder);
   if (listFile.length === 0 && listFolder.length > 0) {
     return (
       <WHListFolder listFolder = { listFolder } />
@@ -28,6 +30,7 @@ const renderRootFolder = (dataRaw) => {
   };
 
   if (listFile.length > 0 && listFolder.length === 0) {
+    console.log('cacacaca');
     return (
       <FilterTab listFile={listFile} />
     );

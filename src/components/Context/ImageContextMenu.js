@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import './ContextMenu.css';
 import './ImageContext.css';
 import { Modal } from 'antd';
@@ -79,18 +79,23 @@ const moveTo = {
 const ImageContextMenu = (props) => {
   const listBreadcumb = props.childFolderData.breadcumb;
   const currentFolder = listBreadcumb[listBreadcumb.length - 1];
+  const initHidenContext = props.movefileContext.loading;
   const [moveToValue, movedHandle] = useState(false);
-  const [hiddenContext, clickHandle] = useState(false);
+  const [hiddenContext, clickHandle] = useState(initHidenContext);
   const [visibleDetail, showModalDetail] = useState(false);
   const [visibleRemove, showModalRemove] = useState(false);
   const [visibleChangeName, showModalChangeName] = useState(false);
   const [valueInputChangeName, setValueInputChangeName] = useState('');
-
+  console.log('ab', props);
   const detailClicked = () => {
     showModalDetail(true);
     clickHandle(true);
   };
+  useEffect(()=>{
+    clickHandle(initHidenContext);
+  });
   const moveToClick = () => {
+    console.log('tai sao', hiddenContext);
     movedHandle(true);
     clickHandle(true);
     const folderID = props.childFolderData.datas.id;
@@ -234,6 +239,7 @@ const ImageContextMenu = (props) => {
     // console.log('copyFileBtn', initData);
   };
   const renderMoveTo = () => {
+    console.log('daaa', props.dataForMoveTo.loading);
     let dataForMoveTo = {};
     if (props.dataForMoveTo.loading) {
       dataForMoveTo = props.dataForMoveTo;
@@ -282,6 +288,7 @@ const mapStateToProps = (state) => {
   return {
     contextFileReducer: state.contextFileReducer,
     childFolderData: state.childFolderReducer,
+    movefileContext: state.listFolderForContextReducer,
     dataForMoveTo: state.listFolderForContextReducer,
   };
 };

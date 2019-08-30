@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import './MoveToContext.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getListFolderForContext, moveFileToFolder } from '../../actions/thunks/fileContextAction';
+import { getListFolderForContext, moveFileToFolder, closeModalContext } from '../../actions/thunks/fileContextAction';
+import PropTypes from 'prop-types';
 
 const MoveToContext = (props) => {
+  console.log('datafile', props);
   const listFolder = props.folderData.listFolder.childFolders;
   const breadCumbs = props.folderData.breadCubms;
   const [folderID, setFolderID] = useState('');
@@ -67,6 +69,9 @@ const MoveToContext = (props) => {
       </React.Fragment>
     );
   };
+  const closeConTexModal = () => {
+    props.closeModalContext();
+  };
   return (
     <div className="move-to-block">
       <div className="header">
@@ -74,7 +79,7 @@ const MoveToContext = (props) => {
           <div className="arrow-left" onClick={() => handleArrowLeft()}/>
           <div className="title">{breadCumbs[breadCumbs.length - 1].title}</div>
         </div>
-        <div className="close-modal"/>
+        <div className="close-modal" onClick={() => closeConTexModal()} />
       </div>
       <div className="body">
         {listFolder.map((value, index) => {
@@ -104,7 +109,15 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({fetchListFolder: getListFolderForContext, moveFileToFolder: moveFileToFolder}, dispatch);
+  return bindActionCreators({fetchListFolder: getListFolderForContext, moveFileToFolder: moveFileToFolder, closeModalContext: closeModalContext}, dispatch);
+};
+
+MoveToContext.propTypes = {
+  fetchListFolder: PropTypes.func.isRequired,
+  moveFileToFolder: PropTypes.func.isRequired,
+  closeModalContext: PropTypes.func.isRequired,
+  folderData: PropTypes.object.isRequired,
+  dataFile: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MoveToContext);
