@@ -7,6 +7,8 @@ import { getListFolderForContext } from '../../actions/thunks/fileContextAction'
 import { connect } from 'react-redux';
 import * as URL from  '../../constants/Url';
 import MoveToContext from './MoveToContext';
+
+
 const headerModal = {
   width: '100%',
   height: '56px',
@@ -74,7 +76,7 @@ const moveTo = {
   height: '200px',
   backgroundColor: 'blue',
 };
-const VideoContextMenu = (props) => {
+const OtherContextMenu = (props) => {
   const listBreadcumb = props.childFolderData.breadcumb;
   const currentFolder = listBreadcumb[listBreadcumb.length - 1];
   const [moveToValue, movedHandle] = useState(false);
@@ -264,7 +266,6 @@ const VideoContextMenu = (props) => {
   );
 };
 
-
 const mapStateToProps = (state) => {
   return {
     contextFileReducer: state.contextFileReducer,
@@ -276,4 +277,4 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({changeNameFile: changeNameFile, removeFile: removeFile, downloadFile: downloadFile, copyFile: copyFile, fileMoveTo: getListFolderForContext}, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(VideoContextMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(OtherContextMenu);
