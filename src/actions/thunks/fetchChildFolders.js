@@ -30,6 +30,14 @@ export function clickedBreadcumb(data, idFolder) {
   };
 };
 
+export function removeFileInChildFolder(id) {
+  console.log('vao day ko');
+  return {
+    type: 'REMOVE_FILE_CHILD_FOLDER',
+    id: id,
+  };
+}
+
 // export function actionContext(idFolder) {
 //   const url = 'http://157.230.255.33:8890/api/lms/folders/' + idFolder;
 //   return dispatch => {
