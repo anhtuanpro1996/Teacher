@@ -5,9 +5,7 @@ import PropTypes from 'prop-types';
 
 
 export default function WHBoxDataSoundList(props) {
-  const listAudio = props.dataFiles.filter((value)=>{
-    return value.fileType === 'AUDIO';
-  });
+  const listAudio = props.dataFiles.filter((value)=>value.fileType === 'AUDIO');
   return (
     <Row gutter={16}>
       {listAudio.map((item, index) => {

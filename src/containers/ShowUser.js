@@ -11,7 +11,6 @@ import { Form, Icon, Input, Button, Checkbox } from 'antd';
 const TodoApp = (props) => {
   const { users, actions } = props;
   // const { todos } = props.todos;
-  console.log('kokoka', props);
   // const [data,setData]= useState({name:'',username:''});
   // const toggleComplete = (todoId) => {
   //   props.toggleTodoComplete(todoId);
@@ -23,21 +22,18 @@ const TodoApp = (props) => {
   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
   const changeName = (e) =>{
-    console.log('e', e.target.value);
     setName(e.target.value);
   };
   const changeuserName = (e) =>{
-    console.log('e', e.target.value);
     setUsername(e.target.value);
   };
 
 
   const handleSubmit = (e)=>{
     e.preventDefault();
-    console.log('a', actions);
     actions.createPost({'name': name, 'username': username});
   };
-  console.log('data', props);
+
   return (
     <div>
       <Form onSubmit={handleSubmit} className="login-form">

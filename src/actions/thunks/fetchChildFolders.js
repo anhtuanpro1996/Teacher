@@ -5,7 +5,6 @@ export function getChildFolderData(idFolder) {
       .then(res => res.json())
       .then(res => {
         dispatch({ type: 'FETCH_DATA_CHILD_FOLDER_SUCCESS', payload: res});
-        // console.log('rest', res);
       })
       .catch(error => {
         dispatch({ type: 'FETCH_DATA_CHILD_FOLDER_ERROR', payload: error});
@@ -31,7 +30,6 @@ export function clickedBreadcumb(data, idFolder) {
 };
 
 export function removeFileInChildFolder(id) {
-  console.log('vao day ko');
   return {
     type: 'REMOVE_FILE_CHILD_FOLDER',
     id: id,

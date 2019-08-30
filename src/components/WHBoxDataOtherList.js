@@ -5,9 +5,7 @@ import PropTypes from 'prop-types';
 
 
 export default function WHBoxDataOtherList(props) {
-  const listOther = props.dataFiles.filter((value)=>{
-    return value.fileType === 'OTHER';
-  });
+  const listOther = props.dataFiles.filter((value)=>value.fileType === 'OTHER');
   return (
     <Row gutter={16}>
       {listOther.map((item, index) => {

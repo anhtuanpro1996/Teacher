@@ -52,7 +52,7 @@ const selectVal = {
 
 
 function handleChange(value) {
-  console.log(`selected ${value}`);
+
 }
 
 const WarehouseTopList = ({t}) =>(

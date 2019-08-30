@@ -9,7 +9,6 @@ export default function WHBoxDataImageElement(props) {
   const imageData = props.imageData;
 
   const menu = <ImageContextMenu dataContext = {imageData}/>;
-  console.log('koko', menu);
   return (
     <Dropdown overlay={menu} trigger={['contextMenu']}>
       <Col span={6}>

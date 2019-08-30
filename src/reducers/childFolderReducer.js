@@ -29,7 +29,6 @@ const childFolderReducer = (state = childFolderInitialState, action) => {
    
     const data = state.datas;
     data.files = files;
-    console.log('action la', data);
     return { ...state, datas: data}
   default:
     return state;

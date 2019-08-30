@@ -4,9 +4,7 @@ import WHBoxDataVideoElement from './WHBoxDataVideoElement';
 import PropTypes from 'prop-types';
 
 export default function WHBoxDataVideoList(props) {
-  const listVideo = props.dataFiles.filter((value)=>{
-    return value.fileType === 'VIDEO';
-  });
+  const listVideo = props.dataFiles.filter((value)=>value.fileType === 'VIDEO');
   return (
     <Row gutter={16}>
       {listVideo.map((item, index) => {

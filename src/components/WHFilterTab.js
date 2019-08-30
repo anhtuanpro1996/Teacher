@@ -11,9 +11,14 @@ import PropTypes from 'prop-types';
 
 const { TabPane } = Tabs;
 const WHFilterTab = (props) => {
+
+  const callback = () => {
+    const listImage = props.listFile.filter((value)=> value.fileType === 'IMAGE');
+    console.log('ze', listImage);
+  };
   return (
     <div className="folder-data">
-      <Tabs className="tab-data" defaultActiveKey="1">
+      <Tabs className="tab-data" defaultActiveKey="1" onChange={callback}>
         <TabPane tab="Tất cả" key="1">
           <WHBoxDataAll dataFiles = {props.listFile} />
         </TabPane>
