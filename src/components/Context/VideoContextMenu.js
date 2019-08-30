@@ -94,6 +94,7 @@ const VideoContextMenu = (props) => {
     const folderID = props.childFolderData.datas.id;
     const breadcumbs = props.childFolderData.breadcumb;
     props.fileMoveTo(folderID, breadcumbs);
+    clickHandle(false);
   };
 
   const removeClicked = () => {

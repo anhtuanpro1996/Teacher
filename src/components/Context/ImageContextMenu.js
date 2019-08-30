@@ -79,9 +79,8 @@ const moveTo = {
 const ImageContextMenu = (props) => {
   const listBreadcumb = props.childFolderData.breadcumb;
   const currentFolder = listBreadcumb[listBreadcumb.length - 1];
-  const initHidenContext = props.movefileContext.loading;
   const [moveToValue, movedHandle] = useState(false);
-  const [hiddenContext, clickHandle] = useState(initHidenContext);
+  const [hiddenContext, clickHandle] = useState(false);
   const [visibleDetail, showModalDetail] = useState(false);
   const [visibleRemove, showModalRemove] = useState(false);
   const [visibleChangeName, showModalChangeName] = useState(false);
@@ -90,15 +89,16 @@ const ImageContextMenu = (props) => {
     showModalDetail(true);
     clickHandle(true);
   };
-  useEffect(()=>{
-    clickHandle(initHidenContext);
-  });
+  // useEffect(()=>{
+  //   clickHandle(initHidenContext);
+  // });
   const moveToClick = () => {
     movedHandle(true);
     clickHandle(true);
     const folderID = props.childFolderData.datas.id;
     const breadcumbs = props.childFolderData.breadcumb;
     props.fileMoveTo(folderID, breadcumbs);
+    clickHandle(false);
   };
 
   const removeClicked = () => {
