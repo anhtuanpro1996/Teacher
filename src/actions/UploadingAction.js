@@ -1,7 +1,6 @@
 import { UPLOADING, ADD_FILE_UPLOAD, UPDATE_PROGRESS_UPLOAD, UPLOAD_SUCESS, CLOSE_PROGRESS } from '../constants/ActionTypes';
 
 export function getDataUpload(data) {
-  console.log('kkk', data);
   return {
     type: UPLOADING,
     data,

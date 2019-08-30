@@ -71,7 +71,6 @@ const txtCreate = {
 
 function WareHouseCreateFolder(props) {
   const current_point = props.currentFolder[props.currentFolder.length - 1];
-  console.log('WareHouseCreateFolder', current_point);
   const [modal, setModal] = useState(false);
   const [valNameFolder, setValNameFolder] = useState('');
   const inputNameFolder = useRef();

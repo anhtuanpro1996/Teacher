@@ -91,7 +91,6 @@ export function closeModalContext() {
 };
 
 export function moveFileToFolder(data) {
-  console.log('datafolder', data);
   const fileID = data.fileId;
   const url = URL.MOVE_FILE;
   return (dispatch) => {

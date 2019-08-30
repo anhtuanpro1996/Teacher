@@ -86,7 +86,6 @@ const ImageContextMenu = (props) => {
   const [visibleRemove, showModalRemove] = useState(false);
   const [visibleChangeName, showModalChangeName] = useState(false);
   const [valueInputChangeName, setValueInputChangeName] = useState('');
-  console.log('ab', props);
   const detailClicked = () => {
     showModalDetail(true);
     clickHandle(true);
@@ -95,7 +94,6 @@ const ImageContextMenu = (props) => {
     clickHandle(initHidenContext);
   });
   const moveToClick = () => {
-    console.log('tai sao', hiddenContext);
     movedHandle(true);
     clickHandle(true);
     const folderID = props.childFolderData.datas.id;
@@ -131,7 +129,6 @@ const ImageContextMenu = (props) => {
 
 
   const renderDetailModal = () => {
-    // console.log('renderDetailModal',props.dataContext);
     return (
       // <ImageDetail visible={visible} dataRender={props.dataContext}/>
       <Modal className="detail-modal" visible={visibleDetail}>
@@ -239,7 +236,6 @@ const ImageContextMenu = (props) => {
     // console.log('copyFileBtn', initData);
   };
   const renderMoveTo = () => {
-    console.log('daaa', props.dataForMoveTo.loading);
     let dataForMoveTo = {};
     if (props.dataForMoveTo.loading) {
       dataForMoveTo = props.dataForMoveTo;

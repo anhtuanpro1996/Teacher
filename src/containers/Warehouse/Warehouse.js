@@ -19,7 +19,6 @@ function Warehouse(props) {
     return percent;
   };
   const listFileUpload = (data) =>{
-    console.log('kokoko', data[0]);
     const arrClass = [];
     for (let i = 0; i < data.length; i++) {
       if ( data[i].progress === 100 && data[i].uploading === true ) {
