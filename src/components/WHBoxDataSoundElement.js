@@ -1,7 +1,8 @@
 import React from 'react';
-import {Col } from 'antd';
+import {Col, Dropdown} from 'antd';
 import styleFileName from './common/commonStyle';
 import PropTypes from 'prop-types';
+import AudioContextMenu from './Context/AudioContextMenu';
 
 
 const iconData = {
@@ -45,20 +46,23 @@ const titleIcon = {
 const titleName = styleFileName;
 export default function WHBoxDataSoundElement(props) {
   const audioData = props.audioData;
+  const menu = <AudioContextMenu dataContext = {audioData}/>;
   return (
-    <Col span={6}>
-      <div className="data-element">
-        <div className="image">
-          <div className="thumbnail" style={thumbnail}>
-            <div className="icon" style={iconData} />
+    <Dropdown overlay={menu} trigger={['contextMenu']}>
+      <Col span={6}>
+        <div className="data-element">
+          <div className="image">
+            <div className="thumbnail" style={thumbnail}>
+              <div className="icon" style={iconData} />
+            </div>
+          </div>
+          <div className="title-data" style={titleBlock}>
+            <div className="icon" style={titleIcon} />
+            <p style={titleName} title={audioData.name}>{ audioData.name }</p>
           </div>
         </div>
-        <div className="title-data" style={titleBlock}>
-          <div className="icon" style={titleIcon} />
-          <p style={titleName} title={audioData.name}>{ audioData.name }</p>
-        </div>
-      </div>
-    </Col>
+      </Col>
+    </Dropdown>
   );
 }
 

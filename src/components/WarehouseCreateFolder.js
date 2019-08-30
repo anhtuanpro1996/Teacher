@@ -3,6 +3,9 @@ import {Modal, Button} from 'antd';
 import {useState, useRef } from 'react';
 import axios from 'axios';
 import * as URL from  '../constants/Url';
+import {clickedBreadcumb} from '../actions/thunks/fetchChildFolders';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 const itemCreateFolder = {
   color: '#4a4a4a',
@@ -71,7 +74,6 @@ const txtCreate = {
 
 function WareHouseCreateFolder(props) {
   const current_point = props.currentFolder[props.currentFolder.length - 1];
-  console.log('WareHouseCreateFolder', current_point);
   const [modal, setModal] = useState(false);
   const [valNameFolder, setValNameFolder] = useState('');
   const inputNameFolder = useRef();
@@ -92,9 +94,13 @@ function WareHouseCreateFolder(props) {
       },
       'name': nameFolder,
     };
+    console.log('creatFolder', props.currentFolder);
+    console.log('creatFolder', current_point.id);
+
     axios.post(URL.CREATE_FOLDER, data, headers)
       .then(response => {
         console.log('uploaddddd', response);
+        props.clickedBreadcumb(props.currentFolder, current_point.id);
         closeModal();
       })
       .catch(error => {
@@ -127,4 +133,10 @@ function WareHouseCreateFolder(props) {
     </div>
   );
 };
-export default WareHouseCreateFolder;
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({clickedBreadcumb: clickedBreadcumb}, dispatch);
+};
+
+
+export default connect(null, mapDispatchToProps)(WareHouseCreateFolder);
