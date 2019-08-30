@@ -1,3 +1,5 @@
+import {CLOSE_MODAL_CONTEXT_MENU} from '../constants/ActionTypes';
+
 const listFolderForContextInitialState = {
   listFolder: [],
   breadCubms: [],
@@ -12,6 +14,8 @@ const listFolderForContextReducer = (state = listFolderForContextInitialState, a
       breadCubms: action.payload.breadCumbs,
       loading: true,
     }
+  case CLOSE_MODAL_CONTEXT_MENU:
+    return {...state, loading: false};
   default:
     return state
   }

@@ -7,6 +7,7 @@ import WHBoxDataVideoElement from './WHBoxDataVideoElement';
 import PropTypes from 'prop-types';
 
 export default function WHBoxDataAll(props) {
+  console.log('cacacaca', props.dataFiles);
   const files = props.dataFiles;
   return (
     <Row gutter={16}>

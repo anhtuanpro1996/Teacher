@@ -1,7 +1,8 @@
 import axios from 'axios';
 import * as URL from  '../../constants/Url';
 import {clickedBreadcumb} from './fetchChildFolders';
-
+import { CLOSE_MODAL_CONTEXT_MENU} from '../../constants/ActionTypes';
+import {removeFileInChildFolder} from './fetchChildFolders';
 export function changeNameFile(fileID, data, folderID, currentBreadcumb) {
   const url = 'http://157.230.255.33:8890/api/lms/files/' + fileID;
   const dataSend = {name: data};
@@ -83,7 +84,15 @@ export function getListFolderForContext(idFolder, breadCumbs) {
   };
 };
 
+export function closeModalContext() {
+  return {
+    type: CLOSE_MODAL_CONTEXT_MENU,
+  };
+};
+
 export function moveFileToFolder(data) {
+  console.log('datafolder', data);
+  const fileID = data.fileId;
   const url = URL.MOVE_FILE;
   return (dispatch) => {
     return axios.post(url, data, {
@@ -93,6 +102,8 @@ export function moveFileToFolder(data) {
     })
       .then(res => {
         dispatch({ type: 'MOVE_FILE_SUCCESS', payload: res});
+        dispatch({type: 'REMOVE_FILE_CHILD_FOLDER', id: fileID});
+        dispatch({type: CLOSE_MODAL_CONTEXT_MENU});
       })
       .catch(error => {
         throw (error);
