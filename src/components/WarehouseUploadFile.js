@@ -17,6 +17,7 @@ const inputFile = {
 };
 const txtUploadFile = {
   padding: '10px 55px 10px 16px',
+  cursor: 'pointer',
 };
 
 function WareHouseUploadFile(props) {

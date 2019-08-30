@@ -110,9 +110,9 @@ function WareHouseCreateFolder(props) {
   const inNameFolder = (e) => {
     const txtName = e.target.value;
     setValNameFolder(txtName);
-    if (txtName.length > 10) {
-      const only1000c = txtName.substring(0, 10);
-      setValNameFolder(only1000c);
+    if (txtName.length > 300) {
+      const only300c = txtName.substring(0, 300);
+      setValNameFolder(only300c);
     }
   };
   return (
@@ -124,7 +124,7 @@ function WareHouseCreateFolder(props) {
         onCancel={() => setModal(false)}
       >
         <h3 style={titleModal}>Thư mục mới</h3>
-        <input type="text" maxLength={10} placeholder="Tên thư mục" value = {valNameFolder} ref={inputNameFolder} name="nameFolder" style={nameFolder} onChange={(e)=>inNameFolder(e)} />
+        <input type="text" maxLength={300} placeholder="Tên thư mục" value = {valNameFolder} ref={inputNameFolder} name="nameFolder" style={nameFolder} onChange={(e)=>inNameFolder(e)} />
         <div style={footerModal}>
           <Button style={btnCloseModal} onClick={closeModal}>Hủy bỏ</Button>
           <Button style={btnCreateFolder} onClick={creatFolder}>Đồng ý</Button>
