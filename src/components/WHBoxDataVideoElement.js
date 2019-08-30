@@ -1,24 +1,28 @@
 import React from 'react';
-import {Col } from 'antd';
+import {Col, Dropdown } from 'antd';
 import styleFileName from './common/commonStyle';
 import PropTypes from 'prop-types';
+import VideoContextMenu from './Context/VideoContextMenu';
 
 export default function WHBoxDataVideoElement(props) {
   const videoData = props.videoData;
+  const menu = <VideoContextMenu dataContext = {videoData}/>;
   return (
-    <Col span={6}>
-      <div className="data-element" style={dataElement}>
-        <div className="image">
-          <div className="wrapper-image" />
-          <img src ="https://picsum.photos/id/1/200/200" style={thumbnail}/>
-          <div className="icon" style={iconData} />
+    <Dropdown overlay={menu} trigger={['contextMenu']}>
+      <Col span={6}>
+        <div className="data-element" style={dataElement}>
+          <div className="image">
+            <div className="wrapper-image" />
+            <img src ="https://picsum.photos/id/1/200/200" style={thumbnail}/>
+            <div className="icon" style={iconData} />
+          </div>
+          <div className="title-data" style={titleBlock}>
+            <div className="icon" style={titleIcon} />
+            <p style={titleName} title={videoData.name}>{videoData.name}</p>
+          </div>
         </div>
-        <div className="title-data" style={titleBlock}>
-          <div className="icon" style={titleIcon} />
-          <p style={titleName} title={videoData.name}>{videoData.name}</p>
-        </div>
-      </div>
-    </Col>
+      </Col>
+    </Dropdown>
   );
 }
 const dataElement = {

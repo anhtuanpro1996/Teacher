@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import './ContextMenu.css';
 import './ImageContext.css';
 import { Modal } from 'antd';
 import { bindActionCreators } from 'redux';
