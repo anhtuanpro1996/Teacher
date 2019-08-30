@@ -150,6 +150,10 @@ body{
   background-color: red ;
 }
 
+.wrapperWarehouse .folder-data .tab-data .ant-tabs-bar {
+  border-bottom: 0px;
+}
+
 .uploadSuccess {
   -webkit-mask:url(/images/icon/correct.png) no-repeat 50% 50%;
   -webkit-mask-size: 100% !important;

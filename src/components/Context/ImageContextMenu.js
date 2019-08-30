@@ -34,6 +34,7 @@ const closeModal = {
   WebkitMask: "url('/images/icon/closeimg.png') no-repeat 50% 50%",
   backgroundColor: '#232731',
   WebkitMaskSize: '100%',
+  cursor: 'pointer',
 };
 
 const titleModal = {
@@ -163,7 +164,7 @@ const ImageContextMenu = (props) => {
           <div onClick={() => clickedCloseModalRemove()} className="close-modal"/>
         </div>
         <div className="content">
-          <div className="title">Thầy/Cô có chắc chắn xóa tệp này không</div>
+          <div className="title">Thầy/Cô có chắc chắn xóa tệp này không?</div>
           <div className="action-btn">
             <div className="agree-btn">
               <div className="name" onClick={() => confirmRemoveFile()}>Đồng ý</div>
@@ -184,9 +185,13 @@ const ImageContextMenu = (props) => {
   };
 
   const confirmChangeName = () => {
-    props.changeNameFile(props.dataContext.id, valueInputChangeName, currentFolder.id, listBreadcumb);
-    showModalChangeName(false);
-    clickHandle(false);
+    if (valueInputChangeName.trim() != '') {
+      props.changeNameFile(props.dataContext.id, valueInputChangeName, currentFolder.id, listBreadcumb);
+      showModalChangeName(false);
+      clickHandle(false);
+    } else {
+      console.log('You need to type sth');
+    }
   };
 
   const renderChangeName = () => {
