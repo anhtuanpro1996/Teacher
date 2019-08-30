@@ -6,7 +6,6 @@ const initialState = [
 export default function getFileUploadReducer(state = initialState, action) {
   switch (action.type) {
   case ADD_FILE_UPLOAD:
-    console.log('file', action.file.name);
     return [{
       uploading: null,
       file: action.file,

@@ -7,6 +7,7 @@ import ImageContextMenu from './Context/ImageContextMenu';
 
 export default function WHBoxDataImageElement(props) {
   const imageData = props.imageData;
+
   const menu = <ImageContextMenu dataContext = {imageData}/>;
   return (
     <Dropdown overlay={menu} trigger={['contextMenu']}>

@@ -96,7 +96,7 @@ const txtUploadFolder = {
 };
 function TopWarehourse(props) {
   const currentFolder = (props.activeFolder.breadcumb.length > 0) ? props.activeFolder.breadcumb : 0;
-  // console.log('TopWarehourse', currentFolder.length);
+  // console.log('TopWarehourse', currentFolder);
   const { t } = useTranslation();
   const menu = (
     <Menu style={infoMenu}>

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as UploadingAction from '../actions/UploadingAction';
 import * as URL from  '../constants/Url';
+import {clickedBreadcumb} from '../actions/thunks/fetchChildFolders';
 
 const inputFile = {
   width: '0.1px',
@@ -21,7 +22,7 @@ const txtUploadFile = {
 function WareHouseUploadFile(props) {
   const current_point = props.currentFolder[props.currentFolder.length - 1];
   const inputEl = useRef(null);
-  const { upload, actions } = props;
+  const { upload, actions, reload } = props;
   // console.log('actions', actions);
   const handleChange = () => {
     const files = inputEl.current.files;
@@ -39,6 +40,7 @@ function WareHouseUploadFile(props) {
       }).then(function(response) {
         console.log('a', response);
         actions.uploadSucess({indx: i, upload: true});
+        reload.clickedBreadcumb(props.currentFolder, current_point.id);
       })
         .catch(function(error) {
           actions.uploadSucess({indx: i, upload: false});
@@ -60,6 +62,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(UploadingAction, dispatch),
+  reload: bindActionCreators({clickedBreadcumb: clickedBreadcumb}, dispatch),
 });
 
 export default  connect(mapStateToProps, mapDispatchToProps)(WareHouseUploadFile);

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import './ContextMenu.css';
 import './ImageContext.css';
 import { Modal } from 'antd';
 import { bindActionCreators } from 'redux';
 import { changeNameFile, removeFile, downloadFile, copyFile } from '../../actions/thunks/fileContextAction';
+import { getListFolderForContext } from '../../actions/thunks/fileContextAction';
 import { connect } from 'react-redux';
 import * as URL from  '../../constants/Url';
 import MoveToContext from './MoveToContext';
@@ -78,22 +79,27 @@ const moveTo = {
 };
 const ImageContextMenu = (props) => {
   const listBreadcumb = props.childFolderData.breadcumb;
-  const currentFolder = listBreadcumb[listBreadcumb.length -1];
+  const currentFolder = listBreadcumb[listBreadcumb.length - 1];
   const [moveToValue, movedHandle] = useState(false);
   const [hiddenContext, clickHandle] = useState(false);
   const [visibleDetail, showModalDetail] = useState(false);
   const [visibleRemove, showModalRemove] = useState(false);
   const [visibleChangeName, showModalChangeName] = useState(false);
   const [valueInputChangeName, setValueInputChangeName] = useState('');
-
   const detailClicked = () => {
     showModalDetail(true);
     clickHandle(true);
   };
-
+  // useEffect(()=>{
+  //   clickHandle(initHidenContext);
+  // });
   const moveToClick = () => {
     movedHandle(true);
     clickHandle(true);
+    const folderID = props.childFolderData.datas.id;
+    const breadcumbs = props.childFolderData.breadcumb;
+    props.fileMoveTo(folderID, breadcumbs);
+    clickHandle(false);
   };
 
   const removeClicked = () => {
@@ -124,7 +130,6 @@ const ImageContextMenu = (props) => {
 
 
   const renderDetailModal = () => {
-    // console.log('renderDetailModal',props.dataContext);
     return (
       // <ImageDetail visible={visible} dataRender={props.dataContext}/>
       <Modal className="detail-modal" visible={visibleDetail}>
@@ -236,11 +241,15 @@ const ImageContextMenu = (props) => {
     // console.log('copyFileBtn', initData);
   };
   const renderMoveTo = () => {
-    return (
-      <React.Fragment>
-        {moveToValue ? <MoveToContext/> : ''}
-      </React.Fragment>
-    );
+    let dataForMoveTo = {};
+    if (props.dataForMoveTo.loading) {
+      dataForMoveTo = props.dataForMoveTo;
+      return (
+        <React.Fragment>
+          {moveToValue ? <MoveToContext dataFile={props.dataContext} /> : ''}
+        </React.Fragment>
+      );
+    }
   };
   const renderContextMenu = () => {
     return (
@@ -280,10 +289,12 @@ const mapStateToProps = (state) => {
   return {
     contextFileReducer: state.contextFileReducer,
     childFolderData: state.childFolderReducer,
+    movefileContext: state.listFolderForContextReducer,
+    dataForMoveTo: state.listFolderForContextReducer,
   };
 };
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({changeNameFile: changeNameFile, removeFile: removeFile, downloadFile: downloadFile, copyFile: copyFile}, dispatch);
+  return bindActionCreators({changeNameFile: changeNameFile, removeFile: removeFile, downloadFile: downloadFile, copyFile: copyFile, fileMoveTo: getListFolderForContext}, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImageContextMenu);

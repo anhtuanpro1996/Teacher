@@ -1,7 +1,8 @@
 import React from 'react';
-import {Col } from 'antd';
+import {Col, Dropdown } from 'antd';
 import styleFileName from './common/commonStyle';
 import PropTypes from 'prop-types';
+import OtherContextMenu from './Context/OtherContextMenu';
 
 const iconData = {
   width: '72px',
@@ -46,20 +47,23 @@ const titleName = styleFileName;
 
 export default function WHBoxDataOtherElement(props) {
   const otherData = props.otherData;
+  const menu = <OtherContextMenu dataContext = {otherData}/>;
   return (
-    <Col span={6}>
-      <div className="data-element">
-        <div className="image">
-          <div className="thumbnail" style={thumbnail}>
-            <div className="icon" style={iconData} />
+    <Dropdown overlay={menu} trigger={['contextMenu']}>
+      <Col span={6}>
+        <div className="data-element">
+          <div className="image">
+            <div className="thumbnail" style={thumbnail}>
+              <div className="icon" style={iconData} />
+            </div>
+          </div>
+          <div className="title-data" style={titleBlock}>
+            <div className="icon" style={titleIcon} />
+            <p style={titleName} title={otherData.name}>{otherData.name}</p>
           </div>
         </div>
-        <div className="title-data" style={titleBlock}>
-          <div className="icon" style={titleIcon} />
-          <p style={titleName} title={otherData.name}>{otherData.name}</p>
-        </div>
-      </div>
-    </Col>
+      </Col>
+    </Dropdown>
   );
 }
 

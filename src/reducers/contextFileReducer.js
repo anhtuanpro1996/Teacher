@@ -28,6 +28,12 @@ const contextFileReducer = (state = contextFileInitialState, action) => {
       pending: false,
       response: action.payload,
     }
+  case 'MOVE_FILE_SUCCESS':
+    return {
+      ...state,
+      pending: false,
+      response: action.payload,
+    }
   default:
     return state
   }

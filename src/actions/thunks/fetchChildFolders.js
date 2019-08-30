@@ -5,7 +5,6 @@ export function getChildFolderData(idFolder) {
       .then(res => res.json())
       .then(res => {
         dispatch({ type: 'FETCH_DATA_CHILD_FOLDER_SUCCESS', payload: res});
-        // console.log('rest', res);
       })
       .catch(error => {
         dispatch({ type: 'FETCH_DATA_CHILD_FOLDER_ERROR', payload: error});
@@ -29,6 +28,13 @@ export function clickedBreadcumb(data, idFolder) {
       });
   };
 };
+
+export function removeFileInChildFolder(id) {
+  return {
+    type: 'REMOVE_FILE_CHILD_FOLDER',
+    id: id,
+  };
+}
 
 // export function actionContext(idFolder) {
 //   const url = 'http://157.230.255.33:8890/api/lms/folders/' + idFolder;

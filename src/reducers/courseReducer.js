@@ -43,7 +43,6 @@ const initialState = [{
 export default function courseReducer(state = initialState, action) {
   switch (action.type) {
   case CREATE_COURSE_INFOS:
-    console.log('result', action);
     return state.map((todo) => todo.page === 0 ? { ...todo, data: action.payload, loading: true } : todo);
   case SET_COURSE_INFOS:
     return state.map((todo) => todo.page === action.data.page ? { ...todo, data: action.data.data, page: action.data.page } : todo);
