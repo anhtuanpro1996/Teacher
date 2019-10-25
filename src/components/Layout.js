@@ -1,10 +1,10 @@
 
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import { Layout, Menu, Icon, Row, Col } from 'antd';
+import React from 'react';
+import { Layout, Row, Col } from 'antd';
 import NavLeft from './NavLeft';
 import 'antd/dist/antd.css';
-const { Header, Sider, Footer, Content } = Layout;
+const { Content } = Layout;
 
 const divStyle = {
   background: '#f9fafc',
@@ -18,7 +18,7 @@ const LayoutMain = ({ title, children }) => (
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>{title}</title>
       <NavLeft />
-      <Layout style={{ background: '#f9fafc' }}>
+      <Layout style={{ background: '#f9fafc'}}>
         {/* <Header style={{ background: '#fff', padding: 0 }} /> */}
         <Content style={{ background: '#f9fafc' }}>
           {children}

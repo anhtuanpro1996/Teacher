@@ -1,16 +1,19 @@
 import React from 'react';
 import { Input } from 'antd';
-import { withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { Menu, Dropdown } from 'antd';
 import {Link} from 'react-router-dom';
 import WarehouseCreateFolder from './WarehouseCreateFolder';
-import {ModalProvider} from 'react-modal-hook';
+import WareHouseUploadFile from './WarehouseUploadFile';
+import { bindActionCreators } from 'redux';
+import { clickedBreadcumb } from '../actions/thunks/fetchChildFolders';
+import { connect } from 'react-redux';
 
 const { Search } = Input;
 
 const infoMenu = {
-  padding: '0'
-}
+  padding: '0',
+};
 const listMenu = {
   height: '40px',
   cusor: 'pointer',
@@ -21,27 +24,13 @@ const listMenu = {
   fontStretch: 'normal',
   lineHeight: '1.71',
   letterSpacing: 'normal',
-  paddingLeft: '16px',
+  padding: '0',
   color: '#4a4a4a',
-  paddingTop: '8px'
-}
-const menu = (
-  <Menu style={infoMenu}>
-    <Menu.Item style={listMenu} className="listMenuItem" key="0">
-      <ModalProvider>
-        <WarehouseCreateFolder/>
-      </ModalProvider>
-    </Menu.Item>
-    <Menu.Item style={listMenu} className="listMenuItem" key="1">
-      <Link to="#"><span>Tải tệp tin</span></Link>
-    </Menu.Item>
-    <Menu.Item style={listMenu} className="listMenuItem" key="3">
-      <Link to="#"><span>Tải thư mục</span></Link>
-    </Menu.Item>
-  </Menu>
-);
+  paddingTop: '8px',
+};
 
-const topWarehourse={
+
+const topWarehourse = {
   height: '40px',
   marginBottom: '16px',
   paddingLeft: '8px',
@@ -80,9 +69,9 @@ const btnAddNew = {
   backgroundColor: '#4a90e2',
   borderRadius: '6px',
   padding: '0 20px',
-  alignItems: 'center'
-}
-const txtAddNew={
+  alignItems: 'center',
+};
+const txtAddNew = {
   width: '69px',
   fontFamily: 'Open Sans',
   fontSize: '14px',
@@ -90,9 +79,9 @@ const txtAddNew={
   fontStyle: 'normal',
   fontStretch: 'normal',
   letterSpacing: 'normal',
-  color: '#fff'
-}
-const iconAddNew={
+  color: '#fff',
+};
+const iconAddNew = {
   width: '24px',
   height: '24px',
   backgroundColor: '#fff',
@@ -100,22 +89,50 @@ const iconAddNew={
   WebkitMaskSize: '100% !important',
   float: 'left',
   borderRadius: '50%',
-  marginRight: '8px'
-}
-const TopWarehourse = ({t}) =>(
-  <div style={topWarehourse}>
-    <div style={titlePpage}>{t('Data Warehouse')}</div>
-    <Search
-      placeholder="Tìm kiếm..."
-      onSearch={value => console.log(value)}
-      style={searchInput}
-    />
-    <Dropdown overlay={menu} trigger={['click']}>
-      <a style={btnAddNew} href="#">
-        <div style={iconAddNew}></div>
-        <span style={txtAddNew}>Thêm mới</span>
-      </a>
-    </Dropdown>
-  </div>
-);
-export default withTranslation()(TopWarehourse);
+  marginRight: '8px',
+};
+const txtUploadFolder = {
+  padding: '10px 16px',
+};
+function TopWarehourse(props) {
+  const currentFolder = (props.activeFolder.breadcumb.length > 0) ? props.activeFolder.breadcumb : 0;
+  // console.log('TopWarehourse', currentFolder);
+  const { t } = useTranslation();
+  const menu = (
+    <Menu style={infoMenu}>
+      <Menu.Item style={listMenu} className="listMenuItem">
+        <WarehouseCreateFolder currentFolder={currentFolder}/>
+      </Menu.Item>
+      <Menu.Item style={listMenu} className="listMenuItem">
+        <WareHouseUploadFile currentFolder={currentFolder}/>
+      </Menu.Item>
+      <Menu.Item style={listMenu} className="listMenuItem">
+        <Link to="#"><span style={txtUploadFolder}>Tải thư mục</span></Link>
+      </Menu.Item>
+    </Menu>
+  );
+  return (
+    <div style={topWarehourse}>
+      <div style={titlePpage}>{t('Data Warehouse')}</div>
+      <Search
+        placeholder="Tìm kiếm..."
+        onSearch={value => console.log(value)}
+        style={searchInput}
+      />
+      <Dropdown overlay={menu} trigger={['click']}>
+        <a style={btnAddNew} href="#">
+          <div style={iconAddNew} />
+          <span style={txtAddNew}>Thêm mới</span>
+        </a>
+      </Dropdown>
+    </div>
+  );
+};
+const mapStateToProps = (state) => {
+  return {
+    activeFolder: state.childFolderReducer,
+  };
+};
+
+
+export default connect(mapStateToProps)(TopWarehourse);

@@ -1,29 +1,26 @@
-import React from 'react';
-import { Row,Dropdown,Menu } from 'antd';
+import React, {useState} from 'react';
+import { Row, Dropdown } from 'antd';
 import WHBoxDataImageElement from './WHBoxDataImageElement';
-import ContextMenu from '../containers/Context/ContextMenu';
+import PropTypes from 'prop-types';
 
-const contextMenuStyle = {
-  height:'242px',
-  width: '150px',
-  backgroundColor: 'white'
-}
-export default function WHBoxDataImageList(){
-  let arr = [1,2,3,4,5];
-  const menu = <ContextMenu />
-  return(
+export default function WHBoxDataImageList(props) {
+  const listImage = props.dataFiles.filter((value)=> value.fileType === 'IMAGE');
+  const [listimage, setListImage] = useState(listImage);
+  console.log('count_img', listimage);
+  // const menu = <ContextMenu data ={{name: 'quanbh'}} />;
+  return (
     <div>
       <Row gutter={16}>
-        {arr.map((item,index) => {
-          return(
-            <Dropdown overlay={menu} trigger={['contextMenu']} key={index}>
-              <div>
-                <WHBoxDataImageElement />
-              </div>
-            </Dropdown>
-          )
+        {listImage.map((item, index) => {
+          return (
+            <WHBoxDataImageElement imageData = {item} key={index} index={index} />
+          );
         })}
       </Row>
     </div>
   );
 }
+
+WHBoxDataImageList.propTypes = {
+  dataFiles: PropTypes.array.isRequired,
+};

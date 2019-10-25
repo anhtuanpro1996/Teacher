@@ -1,7 +1,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Dropdown, Menu, Icon, Button } from 'antd';
+import { Layout, Menu, Button } from 'antd';
 import { Avatar } from 'antd';
 import { withTranslation } from 'react-i18next';
 import {Link} from 'react-router-dom';
@@ -11,6 +11,8 @@ const { SubMenu } = Menu;
 const divStyle = {
   background: '#f9fafc',
   float: 'left',
+  marginRight: '33px',
+  minHeight: '900px',
 };
 const CourseStyle = {
   background: '#f9fafc',
@@ -25,7 +27,7 @@ const menuStyle = {
   textAlign: 'left',
 };
 
-const text_name = {
+const textName = {
   width: '104px',
   height: '24px',
   fontFamily: 'Montserrat, sans-serif',
@@ -41,7 +43,7 @@ const text_name = {
 const giangvien = {
   width: '72px',
   height: '24px',
-  fontFamily: 'Open Sans sans-serif',
+  fontFamily: 'Open Sans, sans-serif',
   fontSize: '14px',
   fontWeight: 'normal',
   fontStyle: 'normal',
@@ -52,9 +54,9 @@ const giangvien = {
 const divLogo = {
   padding: '0px 0px 32px 0px',
 };
-const text_buton = {
+const textButon = {
   paddingRight: '20px',
-  fontFamily: 'Open Sans sans-serif',
+  fontFamily: 'Open Sans, sans-serif',
   fontSize: '14px',
   fontWeight: 600,
   lineHeight: 1.71,
@@ -71,16 +73,17 @@ const NavLeft = ({t}) => (
     </div>
     <Avatar shape="circle" style={{width: '100px', height: '100px', marginBottom: '12px'}} src={'/images/avatar.jpg'} />
     <div>
-      <span style={text_name}> Carlos Wade </span>
+      <span style={textName}> Carlos Wade </span>
     </div>
     <div style={{marginBottom: '16px'}}>
       <span style={giangvien}> {t('Teacher')} </span>
     </div>
-    <Button type="danger" style={{height: '40px', background: '#df322f'}}>
-      <img  type="left" style={{filter: 'brightness(0) invert(1)', paddingRight: '27.5px'}} alt="add_circle" src={'/images/add-circle.png'} />
-      <span style={text_buton}>{t('Create Lecture')}</span>
-    </Button>
-
+    <Link to ="/manage/createcourses">
+      <Button type="danger" style={{height: '40px', background: '#df322f'}}>
+        <img  type="left" style={{filter: 'brightness(0) invert(1)', paddingRight: '27.5px'}} alt="add_circle" src={'/images/add-circle.png'} />
+        <span style={textButon}>{t('Create Lecture')}</span>
+      </Button>
+    </Link>
     <Menu style={menuStyle} defaultSelectedKeys={['1']} mode="inline">
       <Menu.Item key="1" style={{marginTop: '16px'}}>
         <div className="icon-home" style={{WebkitMask: 'url(/images/icon/acount.png) no-repeat 50% 50%'}}/>
